@@ -10,7 +10,7 @@ window.zambranaVehicles = [
     price: "Consultar",
     color: "Plata",
     status: "Disponible",
-    description: "La SUV ideal para el dia a dia y escapadas sin complicaciones. Con muy buen equilibrio entre consumo, confort y versatilidad, es una opcion confiable para ciudad, ruta y uso diario.",
+    description: "La SUV ideal para el día a día y escapadas sin complicaciones. Con muy buen equilibrio entre consumo, confort y versatilidad, es una opción confiable para ciudad, ruta y uso diario.",
     image: "assets/vehiculos/ecosport/ford-ecosport-frente-3-4.jpeg",
     gallery: [
       "assets/vehiculos/ecosport/ford-ecosport-frente.jpeg",
@@ -25,20 +25,21 @@ window.zambranaVehicles = [
       "Entrega inmediata",
       "Ideal para ciudad y viajes",
       "Buen espacio interior",
-      "Baul funcional"
+      "Baúl funcional"
     ]
   },
   {
     model: "Fiat Toro Volcano 2.0 4x4",
     year: "2017",
     kms: "Consultar",
-    transmission: "Automatica de 9 marchas",
-    fuel: "Diesel",
+    transmission: "Automática de 9 marchas",
+    fuel: "Diésel",
     price: "Consultar",
     color: "Blanco",
-    status: "Volcano",
-    description: "Potencia, tecnologia y versatilidad en una pick-up que se adapta a todo. Una opcion robusta, confiable y lista para trabajo, viajes o uso diario, con muy buen equilibrio entre confort y rendimiento.",
+    status: "Disponible",
+    description: "Potencia, tecnología y versatilidad en una pick-up que se adapta a todo. Una opción robusta, confiable y lista para trabajo, viajes o uso diario, con muy buen equilibrio entre confort y rendimiento.",
     image: "assets/vehiculos/toro/toro-frente-3-4.jpeg",
+    imagePosition: "center 58%",
     gallery: [
       "assets/vehiculos/toro/toro-frente.jpeg",
       "assets/vehiculos/toro/toro-lateral.jpeg",
@@ -47,9 +48,9 @@ window.zambranaVehicles = [
       "assets/vehiculos/toro/toro-asientos.jpeg"
     ],
     highlights: [
-      "Motor 2.0 turbodiesel",
-      "Traccion 4x4",
-      "Version tope de gama",
+      "Motor 2.0 turbodiésel",
+      "Tracción 4x4",
+      "Versión tope de gama",
       "Interior full equipamiento"
     ]
   },
@@ -61,8 +62,8 @@ window.zambranaVehicles = [
     fuel: "Nafta",
     price: "Consultar",
     color: "Blanco",
-    status: "Drive",
-    description: "Comodidad, eficiencia y diseno en uno de los sedanes mas buscados. Un auto moderno, confiable y economico, ideal para quienes buscan practicidad, buen baul y confort para todos los dias.",
+    status: "Disponible",
+    description: "Comodidad, eficiencia y diseño en uno de los sedanes más buscados. Un auto moderno, confiable y económico, ideal para quienes buscan practicidad, buen baúl y confort para todos los días.",
     image: "assets/vehiculos/cronos/cronos-frente-3-4.jpeg",
     gallery: [
       "assets/vehiculos/cronos/cronos-frente.jpeg",
@@ -72,7 +73,7 @@ window.zambranaVehicles = [
       "Excelente consumo",
       "Bajo mantenimiento",
       "Amplio interior",
-      "Gran capacidad de baul"
+      "Gran capacidad de baúl"
     ]
   }
 ];

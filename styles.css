@@ -68,6 +68,7 @@ img {
     linear-gradient(90deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2)),
     url("assets/agencia/fachada-1.jpeg") center center / cover no-repeat;
   transform: scale(1.03);
+  will-change: transform;
 }
 
 .hero-overlay {
@@ -100,7 +101,7 @@ img {
 }
 
 .brand img {
-  width: 52px;
+  width: 60px;
   aspect-ratio: 1;
   object-fit: contain;
 }
@@ -111,12 +112,12 @@ img {
 }
 
 .brand-copy strong {
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-weight: 600;
 }
 
 .brand-copy span {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: rgba(255, 255, 255, 0.76);
 }
 
@@ -264,10 +265,10 @@ img {
 .section-note,
 .gallery-lead p,
 .trust-grid p,
-.benefits-grid p,
 .process-grid p,
 .vehicle-card p,
 .location-card p,
+.hours-panel p,
 .cta-card p {
   margin: 0;
   line-height: 1.72;
@@ -318,11 +319,10 @@ img {
 .trust-grid article,
 .gallery-card,
 .vehicle-card,
-.benefits-grid article,
 .process-grid article,
 .socials-card,
 .location-card,
-.map-placeholder,
+.map-embed,
 .cta-card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   border: 1px solid var(--line);
@@ -334,11 +334,10 @@ img {
 .trust-grid article:hover,
 .gallery-card:hover,
 .vehicle-card:hover,
-.benefits-grid article:hover,
 .process-grid article:hover,
 .socials-card:hover,
 .location-card:hover,
-.map-placeholder:hover,
+.map-embed:hover,
 .cta-card:hover {
   transform: translateY(-6px);
   border-color: rgba(255, 255, 255, 0.18);
@@ -349,6 +348,8 @@ img {
   padding: 26px;
   border-radius: 24px;
   backdrop-filter: blur(12px);
+  max-width: 440px;
+  justify-self: end;
 }
 
 .panel-label {
@@ -371,12 +372,16 @@ img {
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-top: 20px;
 }
 
 .hero-stats article {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 0;
   padding: 16px;
   border-radius: 18px;
   background: rgba(0, 0, 0, 0.22);
@@ -389,18 +394,61 @@ img {
 }
 
 .hero-stats strong {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.25;
+  flex: 0 0 140px;
 }
 
 .hero-stats span {
   color: rgba(255, 255, 255, 0.76);
   font-size: 0.9rem;
+  flex: 1;
 }
 
 .section {
   padding: 92px 0;
+}
+
+.brands-strip {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.brands-track {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  animation: brandsMarquee 28s linear infinite;
+}
+
+.brands-track span {
+  min-width: 120px;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
+  font-family: "Sora", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.brands-track img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: grayscale(0.08) saturate(1.02);
 }
 
 .vehicles-section {
@@ -410,8 +458,9 @@ img {
 .vehicles-section::before {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1180px, calc(100% - 32px));
   top: 34px;
   height: 220px;
   background:
@@ -427,17 +476,29 @@ img {
 }
 
 .split {
-  grid-template-columns: 1fr minmax(260px, 380px);
-  align-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  align-items: start;
+  gap: 18px 24px;
 }
 
 .section-note {
   font-size: 1rem;
   max-width: 34ch;
+  justify-self: start;
+}
+
+.vehicles-heading {
+  position: relative;
+  padding-top: 26px;
+  margin-top: -10px;
+}
+
+.vehicles-heading > * {
+  position: relative;
+  z-index: 1;
 }
 
 .trust-grid,
-.benefits-grid,
 .process-grid,
 .vehicles-grid,
 .gallery-grid,
@@ -446,8 +507,7 @@ img {
   gap: 18px;
 }
 
-.trust-grid,
-.benefits-grid {
+.trust-grid {
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -457,14 +517,12 @@ img {
 }
 
 .trust-grid article,
-.benefits-grid article,
 .process-grid article {
   padding: 24px;
   border-radius: 20px;
 }
 
 .trust-grid strong,
-.benefits-grid strong,
 .process-grid strong,
 .location-card strong {
   display: block;
@@ -494,7 +552,6 @@ img {
 }
 
 .gallery-card img,
-.map-placeholder img,
 .vehicle-image {
   width: 100%;
   height: 100%;
@@ -504,7 +561,6 @@ img {
 }
 
 .gallery-card:hover img,
-.map-placeholder:hover img,
 .vehicle-card:hover .vehicle-image {
   transform: scale(1.04);
 }
@@ -536,6 +592,10 @@ img {
 
 .vehicle-image {
   aspect-ratio: 1 / 1;
+}
+
+.vehicle-card.vehicle-toro .vehicle-image {
+  object-position: center 58%;
 }
 
 .vehicle-media {
@@ -606,6 +666,21 @@ img {
   color: #ffd6d8;
   font-size: 0.82rem;
   font-weight: 600;
+}
+
+.vehicle-tag.status-disponible {
+  background: rgba(20, 184, 106, 0.16);
+  color: #c7ffe1;
+}
+
+.vehicle-tag.status-reservado {
+  background: rgba(245, 158, 11, 0.18);
+  color: #ffe1a5;
+}
+
+.vehicle-tag.status-vendido {
+  background: rgba(239, 68, 68, 0.18);
+  color: #ffc9c9;
 }
 
 .vehicle-title {
@@ -760,6 +835,29 @@ img {
   justify-content: center;
 }
 
+.review-list {
+  display: grid;
+  gap: 12px;
+}
+
+.review-list article {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.review-list strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.98rem;
+}
+
+.review-list p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
 .socials-card,
 .cta-card {
   width: min(1180px, calc(100% - 32px));
@@ -787,6 +885,14 @@ img {
   border: 1px solid var(--line);
 }
 
+.socials-links a.social-instagram {
+  color: #ff4fa0;
+}
+
+.socials-links a.social-facebook {
+  color: #1877f2;
+}
+
 .socials-links svg,
 .whatsapp-float svg {
   width: 22px;
@@ -801,7 +907,7 @@ img {
 }
 
 .location-card,
-.map-placeholder {
+.map-embed {
   border-radius: 24px;
   overflow: hidden;
 }
@@ -822,9 +928,60 @@ img {
   margin-top: 18px;
 }
 
-.map-placeholder {
+.contact-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-panel strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.seller-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.seller-actions a {
+  min-height: 46px;
+}
+
+.hours-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hours-panel strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.hours-panel p + p {
+  margin-top: 8px;
+}
+
+.map-embed {
   margin: 0;
   min-height: 420px;
+}
+
+.map-embed iframe {
+  width: 100%;
+  min-height: 420px;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #111;
 }
 
 .cta-section {
@@ -832,10 +989,39 @@ img {
 }
 
 .cta-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 28px;
+  align-items: start;
   background:
     radial-gradient(circle at top right, rgba(215, 25, 32, 0.22), transparent 28%),
     repeating-linear-gradient(120deg, transparent 0 18px, rgba(255, 255, 255, 0.02) 18px 19px),
     linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+}
+
+.cta-copy {
+  min-width: 0;
+}
+
+.cta-heading {
+  margin-bottom: 12px;
+}
+
+.cta-heading .eyebrow {
+  margin-bottom: 8px;
+}
+
+.cta-corner-logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.cta-corner-logo img {
+  width: 72px;
+  opacity: 0.94;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.28));
 }
 
 .whatsapp-float {
@@ -934,11 +1120,19 @@ img {
   }
 }
 
+@keyframes brandsMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 1100px) {
   .hero-content,
   .split,
   .trust-grid,
-  .benefits-grid,
   .vehicles-grid,
   .process-grid,
   .location-layout,
@@ -958,6 +1152,15 @@ img {
 
   .hero-card {
     max-width: 720px;
+    justify-self: stretch;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-card {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -983,9 +1186,16 @@ img {
   .hero-stats,
   .vehicle-specs,
   .trust-grid,
-  .benefits-grid,
   .process-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .vehicle-image {
+    aspect-ratio: 5 / 4;
+  }
+
+  .brands-track {
+    animation-duration: 22s;
   }
 }
 
@@ -1068,14 +1278,21 @@ img {
   .hero-stats,
   .vehicle-specs,
   .trust-grid,
-  .benefits-grid,
   .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-actions {
     grid-template-columns: 1fr;
   }
 
   .vehicle-thumbs img {
     width: 54px;
     height: 42px;
+  }
+
+  .vehicle-card .vehicle-body {
+    padding: 18px;
   }
 
   .socials-card,
@@ -1090,11 +1307,31 @@ img {
     max-width: none;
   }
 
-  .map-placeholder {
+  .map-embed,
+  .map-embed iframe {
     min-height: 280px;
   }
 
   .testimonial-card {
     min-height: 190px;
+  }
+
+  .brands-track span {
+    min-width: 98px;
+    min-height: 38px;
+    font-size: 0.8rem;
+  }
+
+  .brands-track img {
+    height: 34px;
+  }
+
+  .cta-corner-logo {
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .cta-corner-logo img {
+    width: 54px;
   }
 }

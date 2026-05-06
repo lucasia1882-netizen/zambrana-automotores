@@ -2,6 +2,17 @@ const whatsappNumber = "5493512308551";
 const vehicles = window.zambranaVehicles || [];
 
 const grid = document.querySelector("#vehicles-grid");
+const heroMedia = document.querySelector(".hero-media");
+
+function getVehicleStatusClass(status) {
+  const normalized = (status || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-");
+
+  return `status-${normalized}`;
+}
 
 function createWhatsAppLink(vehicle) {
   const message = `Hola Zambrana Automotores, quiero consultar por el ${vehicle.model} ${vehicle.year}.`;
@@ -45,26 +56,27 @@ function renderVehicles() {
 
   vehicles.forEach((vehicle) => {
     const card = document.createElement("article");
-    card.className = "vehicle-card reveal-up";
+    const vehicleSlug = vehicle.model.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-");
+    card.className = `vehicle-card reveal-up vehicle-${vehicleSlug}`;
 
     card.innerHTML = `
       <div class="vehicle-media">
-        <img class="vehicle-image" src="${vehicle.image}" alt="${vehicle.model}">
+        <img class="vehicle-image" src="${vehicle.image}" alt="${vehicle.model}"${vehicle.imagePosition ? ` style="object-position: ${vehicle.imagePosition};"` : ""}>
         ${vehicle.gallery ? `<span class="vehicle-photo-count">${vehicle.gallery.length + 1} fotos</span>` : ""}
         ${renderThumbs(vehicle)}
       </div>
       <div class="vehicle-body">
         <div class="vehicle-topline">
           <div>
-            <span class="vehicle-tag">${vehicle.status}</span>
+            <span class="vehicle-tag ${getVehicleStatusClass(vehicle.status)}">${vehicle.status}</span>
             <h3 class="vehicle-title">${vehicle.model}</h3>
             <p class="vehicle-price">${vehicle.price}</p>
           </div>
         </div>
         <ul class="vehicle-specs">
-          <li><strong>Ano</strong><span>${vehicle.year}</span></li>
-          <li><strong>Kilometraje</strong><span>${vehicle.kms}</span></li>
-          <li><strong>Transmision</strong><span>${vehicle.transmission}</span></li>
+          <li><strong>Año</strong><span>${vehicle.year}</span></li>
+          <li><strong>Kilómetros</strong><span>${vehicle.kms}</span></li>
+          <li><strong>Transmisión</strong><span>${vehicle.transmission}</span></li>
           <li><strong>Combustible</strong><span>${vehicle.fuel}</span></li>
           <li><strong>Color</strong><span>${vehicle.color}</span></li>
           <li><strong>Estado</strong><span>${vehicle.status}</span></li>
@@ -104,6 +116,18 @@ function renderVehicles() {
 }
 
 renderVehicles();
+
+function updateHeroParallax() {
+  if (!heroMedia) {
+    return;
+  }
+
+  const offset = Math.min(window.scrollY * 0.12, 120);
+  heroMedia.style.transform = `translate3d(${-offset}px, 0, 0) scale(1.08)`;
+}
+
+updateHeroParallax();
+window.addEventListener("scroll", updateHeroParallax, { passive: true });
 
 const revealItems = document.querySelectorAll(".reveal-up");
 

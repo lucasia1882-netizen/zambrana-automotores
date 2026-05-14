@@ -6,14 +6,14 @@
   <title>Zambrana Automotores | Usados y 0km en Córdoba</title>
   <meta
     name="description"
-    content="Zambrana Automotores vende autos usados, camionetas y unidades 0km en Córdoba. Atención personalizada, financiación y más de 26 años de trayectoria."
+    content="Empresa familiar con 26 años de trayectoria en Córdoba Capital. Zambrana Automotores ofrece usados, camionetas, motos y oportunidades reales con atención personalizada."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
   <a
     class="whatsapp-float"
     href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20hacer%20una%20consulta."
@@ -27,83 +27,83 @@
     </svg>
   </a>
 
-  <header class="hero" id="inicio">
-    <div class="hero-media"></div>
+  <header class="hero hero-home" id="inicio">
+    <div class="hero-slider" aria-hidden="true">
+      <div class="hero-slide is-active" style="background-image: url('assets/agencia/fachada-1.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/agencia/fachada-2.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/agencia/linea-camionetas.jpeg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/agencia/fachada-noche.jpeg');"></div>
+    </div>
     <div class="hero-overlay"></div>
+    <button class="hero-arrow hero-arrow-left" type="button" data-hero-prev aria-label="Ver imagen anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 10.83 12l4.58 4.59L14 18l-6-6 6-6z"/></svg>
+    </button>
+    <button class="hero-arrow hero-arrow-right" type="button" data-hero-next aria-label="Ver imagen siguiente">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.59 16.59 4.58-4.59-4.58-4.59L10 6l6 6-6 6z"/></svg>
+    </button>
 
-    <nav class="topbar">
-      <a class="brand" href="#inicio" aria-label="Zambrana Automotores">
-        <img src="assets/branding/logo-zambrana-positivo.png" alt="Logo Zambrana Automotores">
-        <div class="brand-copy">
-          <strong>Zambrana Automotores</strong>
-          <span>Usados, camionetas y 0km en Córdoba</span>
-        </div>
-      </a>
-
-      <div class="topbar-links">
-        <a class="nav-link" href="#destacados">Vehículos</a>
-        <a class="nav-link" href="#nosotros">Nosotros</a>
-        <a class="nav-link" href="#ubicacion">Ubicación</a>
-        <a
-          class="nav-cta"
-          href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20recibir%20asesoramiento."
-          target="_blank"
-          rel="noreferrer"
-        >
-          Consultar ahora
+    <div class="site-shell">
+      <nav class="topbar">
+        <a class="brand" href="index.html" aria-label="Zambrana Automotores">
+          <img src="assets/branding/logo-zambrana-positivo.png" alt="Logo Zambrana Automotores">
+          <div class="brand-copy">
+            <strong>Zambrana Automotores</strong>
+            <span>Usados, camionetas y 0km en Córdoba</span>
+          </div>
         </a>
-      </div>
-    </nav>
 
-    <section class="hero-content">
-      <div class="hero-copy reveal-up">
-        <p class="eyebrow">26 años de trayectoria | Córdoba Capital | atención real</p>
-        <h1>Subite hoy al auto que buscás con la confianza de siempre.</h1>
-        <p class="hero-text">
-          Unidades seleccionadas con entrega inmediata y financiación a tu medida.
-          No dejes que se lo lleve otro: hacé tu consulta ahora por WhatsApp.
-        </p>
-        <div class="hero-actions">
-          <a
-            class="primary-btn"
-            href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20ver%20qu%C3%A9%20veh%C3%ADculos%20tienen%20disponibles."
-            target="_blank"
-            rel="noreferrer"
-          >
-            Hablar por WhatsApp
-          </a>
-          <a class="secondary-btn" href="#destacados">Ver vehículos disponibles</a>
+        <div class="topbar-links">
+          <a class="nav-link is-active" href="index.html">Inicio</a>
+          <a class="nav-link" href="catalog.html">Catálogo</a>
+          <a class="nav-link" href="#vendetuauto">Vendé tu auto</a>
+          <a class="nav-link" href="#ubicacion">Ubicación</a>
+          <a class="nav-cta" href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noreferrer">WhatsApp</a>
         </div>
-        <ul class="hero-points">
-          <li>Autos usados y 0km en excelente estado</li>
-          <li>Financiación a tu medida</li>
-          <li>Atención personalizada y transparente</li>
-        </ul>
-      </div>
+      </nav>
 
-      <aside class="hero-card reveal-up reveal-delay-1">
-        <p class="panel-label">Consulta hoy</p>
-        <strong>Usados, camionetas y oportunidades reales para avanzar con tu próximo vehículo.</strong>
-        <p>
-          Mirá los vehículos, elegí la unidad que te interesa y recibí atención
-          personalizada con información clara, opciones de financiación y seguimiento directo.
-        </p>
-        <div class="hero-stats">
-          <article>
-            <strong>Usados y 0km</strong>
-            <span>stock para distintos presupuestos</span>
-          </article>
-          <article>
-            <strong>Financiación a tu medida</strong>
-            <span>opciones pensadas para vos</span>
-          </article>
-          <article>
-            <strong>WhatsApp directo</strong>
-            <span>respuesta rapida por cada unidad</span>
-          </article>
+      <section class="hero-layout">
+        <div class="hero-copy reveal-up">
+          <p class="eyebrow">Empresa familiar con 26 años de trayectoria en Córdoba Capital</p>
+          <h1>Subite hoy al auto que buscás con la confianza de siempre.</h1>
+          <p class="hero-text">
+            Unidades seleccionadas, entrega inmediata y atención clara para que el próximo paso sea mucho más simple.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="secondary-btn" href="catalog.html">Ver catálogo</a>
+          </div>
+          <ul class="hero-points">
+            <li>Usados y 0km seleccionados</li>
+            <li>Financiación a tu medida</li>
+            <li>Atención cercana en cada paso</li>
+          </ul>
         </div>
-      </aside>
-    </section>
+
+        <aside class="hero-form-card reveal-up reveal-delay-1">
+          <p class="panel-label">Dejanos tu consulta</p>
+          <strong>Recibí una respuesta rápida y personalizada.</strong>
+          <p class="panel-copy">
+            Completá estos datos y te contactamos para ayudarte a encontrar la unidad ideal.
+          </p>
+          <form class="lead-form" id="lead-form">
+            <label>
+              <span>Nombre y apellido</span>
+              <input type="text" name="name" placeholder="Ej. Juan Pérez" required>
+            </label>
+            <label>
+              <span>Número</span>
+              <input type="tel" name="phone" placeholder="Ej. 351 123 4567" required>
+            </label>
+            <label>
+              <span>Consulta</span>
+              <textarea name="message" rows="4" placeholder="Contanos qué vehículo te interesa o qué estás buscando." required></textarea>
+            </label>
+            <button class="primary-btn form-submit" type="submit">Quiero que me contacten</button>
+            <p class="form-feedback" id="lead-form-feedback" aria-live="polite"></p>
+          </form>
+        </aside>
+      </section>
+    </div>
   </header>
 
   <main>
@@ -134,263 +134,108 @@
       </div>
     </section>
 
-    <section class="section trust-band" id="nosotros">
+    <section class="quick-search-wrap">
+      <div class="site-shell">
+        <section class="quick-search reveal-up reveal-delay-2">
+          <div class="quick-search-copy">
+            <p class="eyebrow">Encontrá tu próximo auto</p>
+            <h2>Buscá más fácil desde el inicio.</h2>
+          </div>
+          <form class="quick-search-form" id="quick-search-form">
+            <label>
+              <span>Marca</span>
+              <select name="brand">
+                <option value="">Todas</option>
+              </select>
+            </label>
+            <label>
+              <span>Modelo</span>
+              <input type="text" name="model" placeholder="Ej. Toro, Cronos, Ecosport">
+            </label>
+            <label>
+              <span>Año</span>
+              <select name="year">
+                <option value="">Todos</option>
+              </select>
+            </label>
+            <button class="primary-btn" type="submit">Buscar en catálogo</button>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="section opportunities-section" id="oportunidades">
       <div class="section-heading split reveal-up">
         <div>
-          <p class="eyebrow">Quiénes somos</p>
-          <h2>Experiencia real, atención cercana y oportunidades para encontrar el vehículo indicado.</h2>
+          <p class="eyebrow">Oportunidades del mes</p>
+          <h2>Unidades listas para llamar la atención desde el primer vistazo.</h2>
         </div>
-        <p class="section-note">
-          Unidades seleccionadas, asesoramiento cercano, financiación a tu medida y
-          acompañamiento real para que cambiar el vehículo se sienta mucho más simple.
-        </p>
       </div>
 
-      <div class="trust-grid">
-        <article class="reveal-up">
-          <strong>Trayectoria real</strong>
-          <p>Más de 26 años trabajando en el rubro automotor en Córdoba.</p>
-        </article>
-        <article class="reveal-up reveal-delay-1">
-          <strong>Unidades seleccionadas</strong>
-          <p>Autos, camionetas y motos en excelente estado y con información clara.</p>
-        </article>
-        <article class="reveal-up reveal-delay-2">
-          <strong>Financiación a tu medida</strong>
-          <p>Buscamos una alternativa posible para que llegar a tu próximo vehículo sea más simple.</p>
-        </article>
-        <article class="reveal-up reveal-delay-3">
-          <strong>Atención personalizada</strong>
-          <p>Escuchamos, asesoramos y acompañamos sin vueltas ni promesas vacías.</p>
-        </article>
-        <article class="reveal-up">
-          <strong>Variedad real</strong>
-          <p>Opciones para distintos presupuestos, estilos de vida y necesidades de uso.</p>
-        </article>
-        <article class="reveal-up reveal-delay-1">
-          <strong>Seguimiento humano</strong>
-          <p>No es solo mostrar stock: importa responder bien y acompañar la decisión.</p>
-        </article>
-        <article class="reveal-up reveal-delay-2">
-          <strong>Usado en parte de pago</strong>
-          <p>También te ayudamos a cotizar tu unidad para acercarte más rápido al cambio.</p>
-        </article>
-        <article class="reveal-up reveal-delay-3">
-          <strong>Confianza para avanzar</strong>
-          <p>Transparencia, atención directa y una experiencia pensada para comprar con tranquilidad.</p>
-        </article>
+      <div class="carousel-shell reveal-up">
+        <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Ver oportunidad anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 10.83 12l4.58 4.59L14 18l-6-6 6-6z"/></svg>
+        </button>
+        <div class="opportunities-track" id="opportunities-track"></div>
+        <button class="carousel-arrow" type="button" data-carousel-next aria-label="Ver oportunidad siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.59 16.59 4.58-4.59-4.58-4.59L10 6l6 6-6 6z"/></svg>
+        </button>
       </div>
     </section>
 
-    <section class="section gallery-section">
-      <div class="gallery-lead reveal-up">
-        <p class="eyebrow">La agencia</p>
-        <h2>Una vidriera fuerte para elegir con confianza desde el primer vistazo.</h2>
-        <p>
-          Frente reconocido, stock a la vista y una presencia que transmite seriedad para que
-          cada consulta arranque con confianza y ganas de avanzar.
-        </p>
-      </div>
-
-      <div class="gallery-grid">
-        <figure class="gallery-card gallery-main reveal-up">
-          <img src="assets/agencia/fachada-1.jpeg" alt="Frente de Zambrana Automotores">
-        </figure>
-        <figure class="gallery-card reveal-up reveal-delay-1">
-          <img src="assets/agencia/fachada-2.jpeg" alt="Vista amplia del local Zambrana Automotores">
-        </figure>
-        <figure class="gallery-card reveal-up reveal-delay-2">
-          <img src="assets/agencia/linea-camionetas.jpeg" alt="Camionetas exhibidas frente a Zambrana Automotores">
-        </figure>
-        <figure class="gallery-card reveal-up reveal-delay-3">
-          <img src="assets/agencia/fachada-noche.jpeg" alt="Zambrana Automotores de noche">
-        </figure>
-      </div>
-    </section>
-
-    <section class="section vehicles-section" id="destacados">
-      <div class="section-heading split reveal-up vehicles-heading">
+    <section class="section used-car-section" id="vendetuauto">
+      <div class="used-car-card reveal-up">
         <div>
-          <p class="eyebrow">Oportunidades Zambrana</p>
-          <h2>Tu próximo auto te está esperando.</h2>
-        </div>
-        <p class="section-note">
-          Stock actualizado. Consultá por la unidad que te interesa antes de que se vaya.
-        </p>
-      </div>
-      <div class="vehicles-grid" id="vehicles-grid"></div>
-    </section>
-
-    <section class="section tradein-section">
-      <div class="tradein-card reveal-up">
-        <div>
-          <p class="eyebrow">Tomamos tu usado</p>
-          <h2>Entregá tu usado como parte de pago y subite al vehículo que más te guste.</h2>
+          <p class="eyebrow">Vendé tu auto</p>
+          <h2>Traé tu usado, cotizalo con nosotros y acercate más rápido al cambio.</h2>
           <p>
-            Cotizamos tu unidad, te asesoramos sin vueltas y te acercamos una propuesta
-            clara para que el cambio sea más simple.
+            Evaluamos tu unidad, te orientamos con una propuesta clara y te ayudamos a resolver el próximo paso sin vueltas.
           </p>
         </div>
-        <a
-          class="primary-btn"
-          href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20cotizar%20mi%20usado%20como%20parte%20de%20pago."
-          target="_blank"
-          rel="noreferrer"
-        >
-          Cotizar usado
-        </a>
+        <a class="primary-btn" href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20cotizar%20mi%20usado." target="_blank" rel="noreferrer">Cotizar mi usado</a>
       </div>
     </section>
 
-    <section class="section testimonials-section">
+    <section class="section contact-section" id="ubicacion">
       <div class="section-heading split reveal-up">
         <div>
-          <p class="eyebrow">Clientes que ya confiaron</p>
-          <h2>Entregas que hablan por nosotros y clientes que vuelven a elegirnos.</h2>
-        </div>
-        <p class="section-note">
-          Cada entrega refuerza lo más importante: atención humana, seguimiento real
-          y la tranquilidad de comprar con gente que responde.
-        </p>
-      </div>
-
-      <div class="testimonials-layout">
-        <figure class="testimonial-card reveal-up">
-          <img src="assets/clientes/entrega-familia.png" alt="Entrega de vehículo en Zambrana Automotores">
-        </figure>
-
-        <figure class="testimonial-card reveal-up reveal-delay-1">
-          <img src="assets/clientes/entrega-moto.png" alt="Cliente retirando una moto en Zambrana Automotores">
-        </figure>
-
-        <div class="testimonial-side reveal-up reveal-delay-2">
-          <p class="eyebrow">Lo que más valoran</p>
-          <h3>Opiniones que refuerzan la confianza antes de dar el siguiente paso.</h3>
-          <div class="review-list">
-            <article>
-              <strong>Atención clara y rápida</strong>
-              <p>“Respondieron todo con paciencia y me ayudaron a elegir sin vueltas.”</p>
-            </article>
-            <article>
-              <strong>Compra simple y acompañada</strong>
-              <p>“Desde la consulta hasta la entrega me sentí bien asesorado en cada paso.”</p>
-            </article>
-            <article>
-              <strong>Confianza para volver</strong>
-              <p>“Se nota la experiencia y la forma de trabajar con transparencia.”</p>
-            </article>
-            <article>
-              <strong>Unidades que llaman la atención</strong>
-              <p>“Muy buenas opciones y una atención cercana para resolver dudas rápido.”</p>
-            </article>
-          </div>
+          <p class="eyebrow">Ubicación y horarios</p>
+          <h2>Visitá la agencia, conocé el stock y seguinos de cerca.</h2>
         </div>
       </div>
-    </section>
 
-    <section class="section process-section">
-      <div class="section-heading reveal-up">
-        <p class="eyebrow">Cómo trabajamos</p>
-        <h2>Elegí, consultá y avanzá rápido con atención clara desde el primer mensaje.</h2>
-      </div>
-
-      <div class="process-grid">
-        <article class="reveal-up">
-          <span>01</span>
-          <strong>Elegís una unidad</strong>
-          <p>Entrás, mirás vehículos, revisás la ficha y detectás rápido cuál te interesa.</p>
-        </article>
-        <article class="reveal-up reveal-delay-1">
-          <span>02</span>
-          <strong>Consulta puntual</strong>
-          <p>Con un click iniciás una conversación de WhatsApp ya orientada a ese vehículo.</p>
-        </article>
-        <article class="reveal-up reveal-delay-2">
-          <span>03</span>
-          <strong>Asesoramiento real</strong>
-          <p>Desde la agencia responden, explican opciones y coordinan el siguiente paso.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section socials-section">
-      <div class="socials-card reveal-up">
-        <p class="eyebrow">Redes</p>
-        <h2>Seguinos y mirá ingresos, oportunidades y novedades antes que nadie.</h2>
-        <div class="socials-links">
-          <a class="social-instagram" href="https://www.instagram.com/zambrana_automotores/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 2h10c2.76 0 5 2.24 5 5v10c0 2.76-2.24 5-5 5H7c-2.76 0-5-2.24-5-5V7c0-2.76 2.24-5 5-5Zm0 2C5.34 4 4 5.34 4 7v10c0 1.66 1.34 3 3 3h10c1.66 0 3-1.34 3-3V7c0-1.66-1.34-3-3-3H7Zm10.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
-            </svg>
-          </a>
-          <a class="social-facebook" href="https://www.facebook.com/zambranaautomotores" target="_blank" rel="noreferrer" aria-label="Facebook" title="Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.08c0-.87.24-1.46 1.49-1.46H16.7V4.94c-.31-.04-1.38-.12-2.62-.12-2.59 0-4.36 1.58-4.36 4.48V11H7v3h2.72v8h3.78Z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section location-section" id="ubicacion">
-      <div class="section-heading reveal-up">
-        <p class="eyebrow">Ubicación y horarios</p>
-        <h2>Acercate, conocé el stock y vivilo en persona en nuestra agencia de Córdoba.</h2>
-      </div>
-
-      <div class="location-layout">
-        <article class="location-card reveal-up">
-          <img class="location-logo" src="assets/branding/logo-zambrana-positivo.png" alt="Zambrana Automotores">
-          <strong>Zambrana Automotores</strong>
-          <p>Av. La Cordillera 4833, Córdoba</p>
-          <div class="contact-panel">
-            <strong>Asesoramiento directo</strong>
-            <div class="seller-actions">
-              <a
-                class="secondary-dark-btn"
-                href="https://wa.me/5493512308551?text=Hola%20Francisco%2C%20quiero%20hacer%20una%20consulta%20por%20un%20veh%C3%ADculo%20de%20Zambrana%20Automotores."
-                target="_blank"
-                rel="noreferrer"
-              >
-                Francisco
-              </a>
-              <a
-                class="secondary-dark-btn"
-                href="https://wa.me/5493516258933?text=Hola%20Lucas%2C%20quiero%20hacer%20una%20consulta%20por%20un%20veh%C3%ADculo%20de%20Zambrana%20Automotores."
-                target="_blank"
-                rel="noreferrer"
-              >
-                Lucas
-              </a>
-            </div>
-          </div>
-          <div class="hours-panel">
+      <div class="contact-layout">
+        <div class="contact-stack">
+          <article class="contact-card reveal-up">
+            <strong>Ubicación</strong>
+            <p>Av. La Cordillera 4833, Córdoba Capital</p>
+            <a class="secondary-dark-btn" href="https://maps.google.com/?q=Av.+La+Cordillera+4833,+Cordoba" target="_blank" rel="noreferrer">Abrir en Maps</a>
+          </article>
+          <article class="contact-card reveal-up reveal-delay-1">
             <strong>Horarios</strong>
             <p>Lunes a viernes: 09:00 a 13:00 y 16:00 a 20:00 hs.</p>
             <p>Sábados: 09:00 a 13:30 hs.</p>
             <p>Domingo: cerrado.</p>
-          </div>
-          <div class="location-actions">
-            <a
-              class="primary-btn"
-              href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20saber%20como%20llegar."
-              target="_blank"
-              rel="noreferrer"
-            >
-              Pedir ubicación
-            </a>
-            <a
-              class="secondary-dark-btn"
-              href="https://maps.google.com/?q=Av.+La+Cordillera+4833,+Cordoba"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Abrir en Maps
-            </a>
-          </div>
-        </article>
+          </article>
+          <article class="contact-card reveal-up reveal-delay-2">
+            <strong>Redes sociales</strong>
+            <div class="socials-links">
+              <a class="social-instagram" href="https://www.instagram.com/zambrana_automotores/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10c2.76 0 5 2.24 5 5v10c0 2.76-2.24 5-5 5H7c-2.76 0-5-2.24-5-5V7c0-2.76 2.24-5 5-5Zm0 2C5.34 4 4 5.34 4 7v10c0 1.66 1.34 3 3 3h10c1.66 0 3-1.34 3-3V7c0-1.66-1.34-3-3-3H7Zm10.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+              </a>
+              <a class="social-facebook" href="https://www.facebook.com/zambranaautomotores" target="_blank" rel="noreferrer" aria-label="Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.08c0-.87.24-1.46 1.49-1.46H16.7V4.94c-.31-.04-1.38-.12-2.62-.12-2.59 0-4.36 1.58-4.36 4.48V11H7v3h2.72v8h3.78Z"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
 
-        <div class="map-embed reveal-up reveal-delay-1">
+        <div class="map-embed reveal-up reveal-delay-3">
+          <div class="map-overlay-card">
+            <strong>Zambrana Automotores</strong>
+            <span>Av. La Cordillera 4833 · Córdoba Capital</span>
+            <a class="secondary-dark-btn" href="https://maps.google.com/?q=Av.+La+Cordillera+4833,+Cordoba" target="_blank" rel="noreferrer">Abrir ubicación</a>
+          </div>
           <iframe
             title="Mapa de Zambrana Automotores"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3406.996696722425!2d-64.2396980251479!3d-31.359070374288205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94329949fd75a8a7%3A0x9680d5778ddd616c!2sZambrana%20Automotores!5e0!3m2!1ses!2sar!4v1778094989736!5m2!1ses!2sar"
@@ -401,38 +246,30 @@
       </div>
     </section>
 
-    <section class="section cta-section">
-      <div class="cta-card reveal-up">
-        <div class="cta-copy">
-          <div class="cta-heading">
-            <div>
-              <p class="eyebrow">Cierre directo</p>
-              <h2>Si viste una unidad que te gustó, este puede ser el momento de ir por ella.</h2>
-            </div>
-          </div>
-          <p>
-            Escribinos por WhatsApp y recibí atención directa, información clara y una propuesta
-            pensada para que avances con confianza.
-          </p>
-          <div class="hero-actions">
-            <a
-              class="primary-btn"
-              href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20recibir%20mas%20informacion."
-              target="_blank"
-              rel="noreferrer"
-            >
-              Escribir por WhatsApp
-            </a>
-            <a class="secondary-dark-btn" href="#destacados">Ver vehículos</a>
-          </div>
-        </div>
-        <div class="cta-corner-logo" aria-hidden="true">
-          <img src="assets/branding/logo-zambrana-positivo.png" alt="">
-        </div>
+    <section class="section sellers-section" id="vendedores">
+      <div class="section-heading reveal-up">
+        <p class="eyebrow">Asesoramiento comercial</p>
+        <h2>Conocé a quienes acompañan cada consulta dentro de Zambrana.</h2>
       </div>
+      <div class="sellers-grid" id="sellers-grid"></div>
     </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="site-shell footer-inner">
+      <div>
+        <strong>Zambrana Automotores</strong>
+        <p>Usados, camionetas y 0km con atención personalizada en Córdoba Capital.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="catalog.html">Catálogo</a>
+        <a href="#ubicacion">Ubicación</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
   <script src="vehicles.js"></script>
   <script src="script.js"></script>
 </body>

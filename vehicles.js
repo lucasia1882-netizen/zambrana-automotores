@@ -13,9 +13,9 @@ window.zambranaVehicles = [
     priceValue: null,
     color: "Plata",
     status: "Disponible",
-    shortDescription: "Una SUV cómoda, práctica y lista para acompañarte todos los días.",
+    shortDescription: "Una SUV c\u00f3moda, pr\u00e1ctica y lista para acompa\u00f1arte todos los d\u00edas.",
     description:
-      "La Ford Ecosport SE 1.6 combina altura, versatilidad y confort para ciudad, ruta y escapadas. Es una opción equilibrada para quienes buscan una SUV confiable, con buen espacio interior y una conducción simple para el uso diario.",
+      "La Ford Ecosport SE 1.6 combina altura, versatilidad y confort para ciudad, ruta y escapadas. Es una opci\u00f3n equilibrada para quienes buscan una SUV confiable, con buen espacio interior y una conducci\u00f3n simple para el uso diario.",
     image: "assets/vehiculos/ecosport/ford-ecosport-frente-3-4.jpeg",
     imagePosition: "center 58%",
     gallery: [
@@ -29,7 +29,7 @@ window.zambranaVehicles = [
     ],
     highlights: [
       "Altura ideal para distintos caminos",
-      "Buen espacio interior y baúl",
+      "Buen espacio interior y ba\u00fal",
       "Ideal para ciudad y viajes",
       "Entrega inmediata"
     ]
@@ -42,15 +42,15 @@ window.zambranaVehicles = [
     type: "Pickup",
     year: 2017,
     kms: 92000,
-    transmission: "Automática",
-    fuel: "Diésel",
+    transmission: "Autom\u00e1tica",
+    fuel: "Di\u00e9sel",
     price: "Consultar",
     priceValue: null,
     color: "Blanco",
     status: "Disponible",
-    shortDescription: "Potencia, tecnología y presencia en una pickup pensada para todo.",
+    shortDescription: "Potencia, tecnolog\u00eda y presencia en una pickup pensada para todo.",
     description:
-      "La Fiat Toro Volcano 2.0 4x4 ofrece un equilibrio ideal entre robustez, tecnología y confort. Es una pickup lista para trabajo, viajes o uso diario, con gran presencia, muy buen equipamiento y una respuesta sólida para distintos terrenos.",
+      "La Fiat Toro Volcano 2.0 4x4 ofrece un equilibrio ideal entre robustez, tecnolog\u00eda y confort. Es una pickup lista para trabajo, viajes o uso diario, con gran presencia, muy buen equipamiento y una respuesta s\u00f3lida para distintos terrenos.",
     image: "assets/vehiculos/toro/toro-frente-3-4.jpeg",
     imagePosition: "center 64%",
     gallery: [
@@ -62,10 +62,10 @@ window.zambranaVehicles = [
       "assets/vehiculos/toro/toro-asientos.jpeg"
     ],
     highlights: [
-      "Motor 2.0 turbodiésel",
-      "Caja automática de 9 marchas",
-      "Tracción 4x4",
-      "Versión tope de gama"
+      "Motor 2.0 turbodi\u00e9sel",
+      "Caja autom\u00e1tica de 9 marchas",
+      "Tracci\u00f3n 4x4",
+      "Versi\u00f3n tope de gama"
     ]
   },
   {
@@ -73,7 +73,7 @@ window.zambranaVehicles = [
     brand: "Fiat",
     model: "Cronos Drive 1.3",
     fullName: "Fiat Cronos Drive 1.3",
-    type: "Sedán",
+    type: "Sed\u00e1n",
     year: 2021,
     kms: 47000,
     transmission: "Consultar",
@@ -82,9 +82,9 @@ window.zambranaVehicles = [
     priceValue: null,
     color: "Blanco",
     status: "Disponible",
-    shortDescription: "Un sedán moderno, eficiente y cómodo para todos los días.",
+    shortDescription: "Un sed\u00e1n moderno, eficiente y c\u00f3modo para todos los d\u00edas.",
     description:
-      "El Fiat Cronos Drive 1.3 es una de las opciones más buscadas por su diseño, bajo consumo y practicidad. Ofrece un andar cómodo, buen baúl y una propuesta confiable para quienes quieren un auto actual, rendidor y fácil de mantener.",
+      "El Fiat Cronos Drive 1.3 es una de las opciones m\u00e1s buscadas por su dise\u00f1o, bajo consumo y practicidad. Ofrece un andar c\u00f3modo, buen ba\u00fal y una propuesta confiable para quienes quieren un auto actual, rendidor y f\u00e1cil de mantener.",
     image: "assets/vehiculos/cronos/cronos-frente-3-4.jpeg",
     imagePosition: "center 55%",
     gallery: [
@@ -95,8 +95,885 @@ window.zambranaVehicles = [
     highlights: [
       "Excelente consumo",
       "Amplio interior",
-      "Gran capacidad de baúl",
+      "Gran capacidad de ba\u00fal",
       "Ideal para uso diario"
+    ]
+  },
+  {
+    slug: "nissan-x-trail-25-cvt-2008",
+    brand: "Nissan",
+    model: "X-Trail 2.5 CVT",
+    fullName: "Nissan X-Trail 2.5 CVT",
+    type: "SUV",
+    year: 2008,
+    kms: null,
+    transmission: "Autom\u00e1tica CVT",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Champagne",
+    status: "Disponible",
+    shortDescription: "Una SUV amplia, suave de manejar y lista para acompa\u00f1ar a la familia en cada viaje.",
+    description:
+      "La Nissan X-Trail 2.5 CVT combina confort, espacio y una conducci\u00f3n muy suave para el uso diario o escapadas en ruta. Su posici\u00f3n de manejo elevada, el interior amplio y el gran ba\u00fal la convierten en una opci\u00f3n ideal para quienes buscan versatilidad y comodidad.",
+    image: "assets/vehiculos/xtrail/xtrail-frente-3-4.jpeg",
+    imagePosition: "center 58%",
+    gallery: [
+      "assets/vehiculos/xtrail/xtrail-frente.jpeg",
+      "assets/vehiculos/xtrail/xtrail-frente-3-4.jpeg",
+      "assets/vehiculos/xtrail/xtrail-frente-lateral.jpeg",
+      "assets/vehiculos/xtrail/xtrail-lateral-izq.jpeg",
+      "assets/vehiculos/xtrail/xtrail-lateral-izq-agencia.jpeg",
+      "assets/vehiculos/xtrail/xtrail-cola.jpeg",
+      "assets/vehiculos/xtrail/xtrail-interior.jpeg"
+    ],
+    highlights: [
+      "Motor 2.5 nafta",
+      "Caja autom\u00e1tica CVT",
+      "Excelente andar y suavidad de manejo",
+      "Ideal para familia y viajes"
+    ]
+  },
+  {
+    slug: "citroen-xsara-picasso-16-2007",
+    brand: "Citro\u00ebn",
+    model: "Xsara Picasso 1.6",
+    fullName: "Citro\u00ebn Xsara Picasso 1.6",
+    type: "Monovolumen",
+    year: 2007,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Plata",
+    status: "Disponible",
+    shortDescription: "Un familiar amplio, c\u00f3modo y muy pr\u00e1ctico para acompa\u00f1ar el uso diario y los viajes.",
+    description:
+      "La Citro\u00ebn Xsara Picasso 1.6 ofrece una propuesta ideal para quienes priorizan espacio, confort y funcionalidad. Su interior s\u00faper amplio, el gran ba\u00fal y la comodidad de marcha la convierten en una gran opci\u00f3n para familia, viajes y uso cotidiano.",
+    image: "assets/vehiculos/xsara-picasso/xsara-picasso-frente.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/xsara-picasso/xsara-picasso-frente.jpeg",
+      "assets/vehiculos/xsara-picasso/xsara-picasso-frente-3-4.jpeg",
+      "assets/vehiculos/xsara-picasso/xsara-picasso-lateral-izq.jpeg",
+      "assets/vehiculos/xsara-picasso/xsara-picasso-lateral-der.jpeg",
+      "assets/vehiculos/xsara-picasso/xsara-picasso-cola-3-4.jpeg",
+      "assets/vehiculos/xsara-picasso/xsara-picasso-cola.jpeg",
+      "assets/vehiculos/xsara-picasso/xsara-picasso-tablero.jpeg",
+      "assets/vehiculos/xsara-picasso/xsara-picasso-asientos.jpeg"
+    ],
+    highlights: [
+      "Motor 1.6 nafta",
+      "Interior s\u00faper amplio y c\u00f3modo",
+      "Gran capacidad de ba\u00fal",
+      "Ideal para viajes y uso familiar"
+    ]
+  },
+  {
+    slug: "fiat-titano-ranch-22-turbodiesel-2026",
+    brand: "Fiat",
+    model: "Titano Ranch 2.2 4x4",
+    fullName: "Fiat Titano Ranch 2.2 Turbodi\u00e9sel",
+    type: "Pickup",
+    year: 2026,
+    kms: null,
+    transmission: "Autom\u00e1tica de 8 marchas",
+    fuel: "Di\u00e9sel",
+    price: "Consultar",
+    priceValue: null,
+    color: "Blanco",
+    status: "Disponible",
+    shortDescription: "Una pickup 0km robusta, moderna y lista para combinar trabajo, confort y tecnolog\u00eda.",
+    description:
+      "La Fiat Titano Ranch 2.2 Turbodi\u00e9sel 0km es una pickup pensada para quienes buscan presencia, equipamiento y versatilidad. Su versi\u00f3n Ranch tope de gama suma dise\u00f1o moderno, interior premium, tecnolog\u00eda y una propuesta ideal tanto para el trabajo como para el uso personal.",
+    image: "assets/vehiculos/titano/titano-frente-3-4.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/titano/titano-frente-3-4.jpeg",
+      "assets/vehiculos/titano/titano-frente.jpeg",
+      "assets/vehiculos/titano/titano-lateral.jpeg",
+      "assets/vehiculos/titano/titano-cola.jpeg",
+      "assets/vehiculos/titano/titano-caja-abierta.jpeg",
+      "assets/vehiculos/titano/titano-interior.png",
+      "assets/vehiculos/titano/titano-asientos.png"
+    ],
+    highlights: [
+      "Motor 2.2 turbodi\u00e9sel",
+      "Caja autom\u00e1tica de 8 marchas",
+      "Versi\u00f3n Ranch tope de gama",
+      "Confort y potencia para cualquier terreno"
+    ]
+  },
+  {
+    slug: "citroen-c3-exclusive-14-hdi-2007",
+    brand: "Citro\u00ebn",
+    model: "C3 Exclusive 1.4 HDi",
+    fullName: "Citro\u00ebn C3 Exclusive 1.4 HDi",
+    type: "Hatchback",
+    year: 2007,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Di\u00e9sel",
+    price: "Consultar",
+    priceValue: null,
+    color: "Gris",
+    status: "Disponible",
+    shortDescription: "Un hatchback full, rendidor y muy pr\u00e1ctico para moverse todos los d\u00edas con bajo consumo.",
+    description:
+      "El Citro\u00ebn C3 Exclusive 1.4 HDi 5 puertas combina bajo consumo, equipamiento y practicidad en un formato ideal para ciudad. Su versi\u00f3n Exclusive suma confort interior y una propuesta equilibrada para quienes buscan un auto funcional, c\u00f3modo y econ\u00f3mico en el uso diario.",
+    image: "assets/vehiculos/c3/c3-frente-3-4.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/c3/c3-frente-3-4.jpeg",
+      "assets/vehiculos/c3/c3-frente.jpeg",
+      "assets/vehiculos/c3/c3-frente-lateral.jpeg",
+      "assets/vehiculos/c3/c3-lateral.jpeg",
+      "assets/vehiculos/c3/c3-cola-3-4.jpeg",
+      "assets/vehiculos/c3/c3-cola.jpeg",
+      "assets/vehiculos/c3/c3-tablero.jpeg",
+      "assets/vehiculos/c3/c3-asientos.jpeg"
+    ],
+    highlights: [
+      "Motor 1.4 HDi di\u00e9sel",
+      "Versi\u00f3n Exclusive full",
+      "Muy bajo consumo",
+      "Ideal para ciudad y uso diario"
+    ]
+  },
+  {
+    slug: "ford-ecosport-xls-20-2010",
+    brand: "Ford",
+    model: "Ecosport XLS 2.0",
+    fullName: "Ford Ecosport XLS 2.0",
+    type: "SUV",
+    year: 2010,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta / GNC",
+    price: "Consultar",
+    priceValue: null,
+    color: "Gris",
+    status: "Disponible",
+    shortDescription: "Una SUV pr\u00e1ctica y econ\u00f3mica para todos los d\u00edas, con GNC y buena versatilidad de uso.",
+    description:
+      "La Ford Ecosport XLS 2.0 2010 combina posici\u00f3n de manejo elevada, buen espacio interior y una propuesta rendidora para el d\u00eda a d\u00eda gracias a su equipo de GNC. Es una opci\u00f3n c\u00f3moda para ciudad, escapadas y uso familiar, con el plus de un andar confiable y funcional.",
+    image: "assets/vehiculos/ecosport-xls/ecosport-xls-frente.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/ecosport-xls/ecosport-xls-frente.jpeg",
+      "assets/vehiculos/ecosport-xls/ecosport-xls-frente-3-4.jpeg",
+      "assets/vehiculos/ecosport-xls/ecosport-xls-lateral.jpeg",
+      "assets/vehiculos/ecosport-xls/ecosport-xls-cola.jpeg",
+      "assets/vehiculos/ecosport-xls/ecosport-xls-tablero.jpeg",
+      "assets/vehiculos/ecosport-xls/ecosport-xls-volante.jpeg",
+      "assets/vehiculos/ecosport-xls/ecosport-xls-asientos.jpeg"
+    ],
+    highlights: [
+      "Motor 2.0 nafta",
+      "Equipado con GNC",
+      "Versi\u00f3n XLS",
+      "Ideal para ciudad y escapadas"
+    ]
+  },
+  {
+    slug: "chevrolet-tracker-ltz-manual-2017",
+    brand: "Chevrolet",
+    model: "Tracker LTZ Manual",
+    fullName: "Chevrolet Tracker LTZ Manual",
+    type: "SUV",
+    year: 2017,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta / GNC",
+    price: "Consultar",
+    priceValue: null,
+    color: "Gris",
+    status: "Disponible",
+    shortDescription: "Una SUV full, c\u00f3moda y muy bien equipada, ideal para uso diario y viajes con excelente presencia.",
+    description:
+      "La Chevrolet Tracker LTZ Manual 2017 ofrece una propuesta equilibrada entre confort, equipamiento y versatilidad. Su versi\u00f3n LTZ full, la caja manual y la combinaci\u00f3n nafta m\u00e1s GNC la convierten en una opci\u00f3n muy interesante para quienes buscan una SUV pr\u00e1ctica, econ\u00f3mica y en excelente estado general.",
+    image: "assets/vehiculos/tracker/tracker-frente.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/tracker/tracker-frente.jpeg",
+      "assets/vehiculos/tracker/tracker-frente-3-4.jpeg",
+      "assets/vehiculos/tracker/tracker-frente-3-4-2.jpeg",
+      "assets/vehiculos/tracker/tracker-cola.jpeg",
+      "assets/vehiculos/tracker/tracker-tablero.jpeg",
+      "assets/vehiculos/tracker/tracker-asientos.jpeg"
+    ],
+    highlights: [
+      "Versi\u00f3n LTZ full",
+      "Caja manual",
+      "Nafta + GNC",
+      "Excelente estado general"
+    ]
+  },
+  {
+    slug: "volkswagen-fox-trendline-16-2007",
+    brand: "Volkswagen",
+    model: "Fox Trendline 1.6",
+    fullName: "Volkswagen Fox Trendline 1.6",
+    type: "Hatchback",
+    year: 2007,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Rojo",
+    status: "Disponible",
+    shortDescription: "Un hatchback \u00e1gil, c\u00f3modo y muy pr\u00e1ctico para todos los d\u00edas, con buen espacio interior y manejo simple.",
+    description:
+      "El Volkswagen Fox Trendline 1.6 2007 ofrece una propuesta equilibrada entre practicidad, confort y agilidad de manejo. Su carrocer\u00eda de 5 puertas, el motor naftero 1.6 y el interior espacioso lo convierten en una opci\u00f3n muy \u00fatil para ciudad, uso diario y quienes buscan un auto funcional en buen estado general.",
+    image: "assets/vehiculos/fox/fox-frente-3-4.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/fox/fox-frente-3-4.jpeg",
+      "assets/vehiculos/fox/fox-frente.jpeg",
+      "assets/vehiculos/fox/fox-frente-3-4-2.jpeg",
+      "assets/vehiculos/fox/fox-lateral.jpeg",
+      "assets/vehiculos/fox/fox-cola.jpeg",
+      "assets/vehiculos/fox/fox-tablero.jpeg"
+    ],
+    highlights: [
+      "Motor 1.6 nafta",
+      "5 puertas",
+      "Versi\u00f3n Trendline full",
+      "Muy \u00e1gil y f\u00e1cil de manejar"
+    ]
+  },
+  {
+    slug: "volkswagen-virtus-highline-170-tsi-at-2025",
+    brand: "Volkswagen",
+    model: "Virtus Highline 170 TSI AT",
+    fullName: "Volkswagen Virtus Highline 170 TSI AT",
+    type: "Sed\u00e1n",
+    year: 2025,
+    kms: null,
+    transmission: "Autom\u00e1tica",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Gris",
+    status: "Disponible",
+    shortDescription: "Un sed\u00e1n moderno, autom\u00e1tico y muy bien equipado, con imagen premium y un andar impecable.",
+    description:
+      "El Volkswagen Virtus Highline 170 TSI AT 2025 combina dise\u00f1o actual, gran equipamiento y una experiencia de manejo muy confortable. Su motor turbo, la caja autom\u00e1tica y la versi\u00f3n Highline tope de gama lo convierten en una opci\u00f3n ideal para quienes buscan un sed\u00e1n moderno, refinado y en estado impecable.",
+    image: "assets/vehiculos/virtus/virtus-frente-3-4.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/virtus/virtus-frente-3-4.jpeg",
+      "assets/vehiculos/virtus/virtus-frente-3-4-2.jpeg",
+      "assets/vehiculos/virtus/virtus-frente.jpeg",
+      "assets/vehiculos/virtus/virtus-lateral.jpeg",
+      "assets/vehiculos/virtus/virtus-cola.jpeg",
+      "assets/vehiculos/virtus/virtus-asientos.jpeg",
+      "assets/vehiculos/virtus/virtus-tablero.jpeg"
+    ],
+    highlights: [
+      "Motor 170 TSI turbo",
+      "Caja autom\u00e1tica",
+      "Versi\u00f3n Highline tope de gama",
+      "Estado impecable"
+    ]
+  },
+  {
+    slug: "fiat-cronos-drive-full-13-gse-2022",
+    brand: "Fiat",
+    model: "Cronos Drive Full 1.3 GSE",
+    fullName: "Fiat Cronos Drive Full 1.3 GSE",
+    type: "Sed\u00e1n",
+    year: 2022,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un sed\u00e1n moderno, rendidor y muy pr\u00e1ctico para acompa\u00f1ar el uso diario con gran confort.",
+    description:
+      "El Fiat Cronos Drive Full 1.3 GSE 2022 combina dise\u00f1o actual, buen espacio interior y una propuesta equilibrada para ciudad, ruta y uso cotidiano. Es una opci\u00f3n muy buscada por su practicidad, su consumo contenido y la comodidad de su formato sed\u00e1n.",
+    image: "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-02.jpeg",
+    imagePosition: "center 52%",
+    gallery: [
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-02.jpeg",
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-01.jpeg",
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-03.jpeg",
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-04.jpeg",
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-05.jpeg",
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-06.jpeg",
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-07.jpeg",
+      "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-08.jpeg"
+    ],
+    highlights: [
+      "Motor 1.3 GSE",
+      "Versi\u00f3n Drive Full",
+      "Muy buen espacio interior",
+      "Ideal para uso diario"
+    ]
+  },
+  {
+    slug: "fiat-cronos-stile-13-gse-2025",
+    brand: "Fiat",
+    model: "Cronos Stile 1.3 GSE",
+    fullName: "Fiat Cronos Stile 1.3 GSE",
+    type: "Sed\u00e1n",
+    year: 2025,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un sed\u00e1n actual, c\u00f3modo y bien equipado, pensado para disfrutar manejo y practicidad todos los d\u00edas.",
+    description:
+      "El Fiat Cronos Stile 1.3 GSE ofrece una propuesta moderna con buen equipamiento, l\u00edneas actuales y una experiencia de manejo confortable. Es una alternativa ideal para quienes buscan un sed\u00e1n nuevo, funcional y con excelente presencia.",
+    image: "assets/vehiculos/fiat-cronos-stile-13-gse/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-01.jpeg",
+      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-02.jpeg",
+      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-03.jpeg",
+      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-04.jpeg",
+      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-05.jpeg",
+      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-06.jpeg",
+      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-07.jpeg"
+    ],
+    highlights: [
+      "Motor 1.3 GSE",
+      "Versi\u00f3n Stile",
+      "Muy buen equipamiento",
+      "Excelente presencia"
+    ]
+  },
+  {
+    slug: "fiat-mobi-easy-10-8v-2018",
+    brand: "Fiat",
+    model: "Mobi Easy 1.0 8V",
+    fullName: "Fiat Mobi Easy 1.0 8V",
+    type: "Hatchback",
+    year: 2018,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un hatchback chico, econ\u00f3mico y muy \u00e1gil para moverse con facilidad en ciudad.",
+    description:
+      "El Fiat Mobi Easy 1.0 8V 2018 es una opci\u00f3n ideal para quienes priorizan practicidad, maniobrabilidad y bajo costo de uso. Su tama\u00f1o compacto y su propuesta sencilla lo convierten en un gran aliado para el d\u00eda a d\u00eda.",
+    image: "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-01.jpeg",
+      "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-02.jpeg",
+      "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-03.jpeg",
+      "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-04.jpeg",
+      "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-05.jpeg",
+      "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-06.jpeg",
+      "assets/vehiculos/fiat-mobi-easy-10-8v-2018/foto-07.jpeg"
+    ],
+    highlights: [
+      "Motor 1.0 8V",
+      "Ideal para ciudad",
+      "Muy \u00e1gil de manejar",
+      "Bajo consumo"
+    ]
+  },
+  {
+    slug: "fiat-qubo-dynamic-full-14-nafta-gnc-2013",
+    brand: "Fiat",
+    model: "Qubo Dynamic Full 1.4",
+    fullName: "Fiat Qubo Dynamic Full 1.4",
+    type: "Monovolumen",
+    year: 2013,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta / GNC",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una opci\u00f3n amplia, funcional y rendidora, ideal para familia, trabajo o uso cotidiano.",
+    description:
+      "La Fiat Qubo Dynamic Full 1.4 2013 ofrece mucho espacio interior, practicidad y una configuraci\u00f3n muy vers\u00e1til para distintos usos. Con 5 plazas y equipo de GNC, es una alternativa muy interesante para quienes buscan funcionalidad y bajo costo de uso.",
+    image: "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-01.jpeg",
+      "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-02.jpeg",
+      "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-03.jpeg",
+      "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-04.jpeg",
+      "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-05.jpeg",
+      "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-06.jpeg",
+      "assets/vehiculos/fiat-qubo-dynamic-full-14-nafta-gnc-5-plazas-2013/foto-07.jpeg"
+    ],
+    highlights: [
+      "Motor 1.4 nafta",
+      "Nafta + GNC",
+      "5 plazas",
+      "Versi\u00f3n Dynamic Full"
+    ]
+  },
+  {
+    slug: "jeep-renegade-sport-aut-18-nafta-full-2021",
+    brand: "Jeep",
+    model: "Renegade Sport Aut. 1.8",
+    fullName: "Jeep Renegade Sport Aut. 1.8",
+    type: "SUV",
+    year: 2021,
+    kms: null,
+    transmission: "Autom\u00e1tica",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una SUV con mucha presencia, confort de marcha y el estilo Jeep para disfrutar todos los d\u00edas.",
+    description:
+      "La Jeep Renegade Sport Autom\u00e1tica 1.8 2021 combina dise\u00f1o, altura de manejo y equipamiento en un formato ideal para ciudad y viajes. Es una propuesta equilibrada para quienes buscan una SUV moderna, c\u00f3moda y con excelente imagen.",
+    image: "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-01.jpeg",
+      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-02.jpeg",
+      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-03.jpeg",
+      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-04.jpeg",
+      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-05.jpeg",
+      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-06.jpeg"
+    ],
+    highlights: [
+      "Motor 1.8 nafta",
+      "Caja autom\u00e1tica",
+      "Versi\u00f3n full",
+      "Excelente andar y confort"
+    ]
+  },
+  {
+    slug: "motomel-blitz-110-okm-2026",
+    brand: "Motomel",
+    model: "Blitz 110 OKM",
+    fullName: "Motomel Blitz 110 OKM",
+    type: "Moto",
+    year: 2026,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una moto 0km pr\u00e1ctica, econ\u00f3mica y lista para moverse con agilidad en el d\u00eda a d\u00eda.",
+    description:
+      "La Motomel Blitz 110 OKM es una opci\u00f3n ideal para quienes buscan movilidad simple, bajo consumo y practicidad. Su formato liviano y rendidor la convierte en una alternativa muy conveniente para traslados urbanos.",
+    image: "assets/vehiculos/motomel-blitz-110-okm/foto-01.jpg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/motomel-blitz-110-okm/foto-01.jpg",
+      "assets/vehiculos/motomel-blitz-110-okm/foto-02.jpg",
+      "assets/vehiculos/motomel-blitz-110-okm/foto-03.jpg",
+      "assets/vehiculos/motomel-blitz-110-okm/foto-04.jpg",
+      "assets/vehiculos/motomel-blitz-110-okm/foto-05.jpg"
+    ],
+    highlights: [
+      "110 cc",
+      "Unidad 0km",
+      "Ideal para ciudad",
+      "Muy econ\u00f3mica"
+    ]
+  },
+  {
+    slug: "toyota-corolla-xei-18-cvt-2016",
+    brand: "Toyota",
+    model: "Corolla XEI 1.8 CVT",
+    fullName: "Toyota Corolla XEI 1.8 CVT",
+    type: "Sed\u00e1n",
+    year: 2016,
+    kms: null,
+    transmission: "Autom\u00e1tica CVT",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un sed\u00e1n confiable, c\u00f3modo y muy equilibrado para quienes priorizan andar y durabilidad.",
+    description:
+      "El Toyota Corolla XEI 1.8 CVT 2016 es una referencia por confort, confiabilidad y calidad de marcha. Su caja CVT y su propuesta equilibrada lo convierten en una gran opci\u00f3n para uso diario, viajes y quienes buscan un sed\u00e1n probado.",
+    image: "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-01.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-02.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-03.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-04.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-05.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-06.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-07.jpeg"
+    ],
+    highlights: [
+      "Motor 1.8 nafta",
+      "Caja CVT",
+      "Versi\u00f3n XEI",
+      "Excelente confort de marcha"
+    ]
+  },
+  {
+    slug: "toyota-corolla-xei-aut-20-nafta-2023",
+    brand: "Toyota",
+    model: "Corolla XEI Aut. 2.0",
+    fullName: "Toyota Corolla XEI Aut. 2.0",
+    type: "Sed\u00e1n",
+    year: 2023,
+    kms: null,
+    transmission: "Autom\u00e1tica",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un sed\u00e1n moderno, refinado y muy bien equipado para disfrutar confort y tecnolog\u00eda.",
+    description:
+      "El Toyota Corolla XEI Autom\u00e1tico 2.0 2023 combina dise\u00f1o actual, excelente andar y un nivel de equipamiento muy completo. Es una propuesta ideal para quienes buscan un sed\u00e1n moderno, eficiente y con gran calidad percibida.",
+    image: "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-01.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-02.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-03.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-04.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-05.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-06.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-07.jpeg",
+      "assets/vehiculos/toyota-corolla-xei-aut-20-nafta-2023/foto-08.jpeg"
+    ],
+    highlights: [
+      "Motor 2.0 nafta",
+      "Caja autom\u00e1tica",
+      "Versi\u00f3n XEI",
+      "Muy buen equipamiento"
+    ]
+  },
+  {
+    slug: "volkswagen-voyage-16-msi-2017",
+    brand: "Volkswagen",
+    model: "Voyage 1.6 MSI",
+    fullName: "Volkswagen Voyage 1.6 MSI",
+    type: "Sed\u00e1n",
+    year: 2017,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un sed\u00e1n pr\u00e1ctico, confiable y c\u00f3modo para uso diario, con el equilibrio cl\u00e1sico de Volkswagen.",
+    description:
+      "El Volkswagen Voyage 1.6 MSI 2017 ofrece simplicidad, confort y buen espacio en un formato ideal para ciudad y ruta. Es una opci\u00f3n muy buscada por su confiabilidad, su mec\u00e1nica rendidora y la practicidad de su ba\u00fal.",
+    image: "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-01.jpeg",
+      "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-02.jpeg",
+      "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-03.jpeg",
+      "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-04.jpeg",
+      "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-05.jpeg",
+      "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-06.jpeg",
+      "assets/vehiculos/volkswagen-voyage-16-msi-2017/foto-07.jpeg"
+    ],
+    highlights: [
+      "Motor 1.6 MSI",
+      "Buen espacio interior",
+      "Ideal para uso diario",
+      "Confiable y rendidor"
+    ]
+  },
+  {
+    slug: "volkswagen-polo-trendline-16-ms-2018",
+    brand: "Volkswagen",
+    model: "Polo Trendline 1.6 MS",
+    fullName: "Volkswagen Polo Trendline 1.6 MS",
+    type: "Hatchback",
+    year: 2018,
+    kms: null,
+    transmission: "Manual",
+    fuel: "Nafta",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un hatchback moderno, c\u00f3modo y bien logrado para quienes buscan calidad y practicidad.",
+    description:
+      "El Volkswagen Polo Trendline 1.6 MS 2018 combina dise\u00f1o actual, buena calidad de terminaci\u00f3n y una propuesta muy equilibrada para el d\u00eda a d\u00eda. Es una opci\u00f3n ideal para quienes quieren un auto moderno, vers\u00e1til y con excelente comportamiento en ciudad y ruta.",
+    image: "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-01.jpeg",
+      "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-02.jpeg",
+      "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-03.jpeg",
+      "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-04.jpeg",
+      "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-05.jpeg",
+      "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-06.jpeg",
+      "assets/vehiculos/volkswagen-polo-trendline-16-ms-2018/foto-07.jpeg"
+    ],
+    highlights: [
+      "Motor 1.6",
+      "Versi\u00f3n Trendline",
+      "Muy buen confort de marcha",
+      "Dise\u00f1o moderno"
+    ]
+  },
+  {
+    slug: "toyota-hilux-dx-4x4-2025",
+    brand: "Toyota",
+    model: "Hilux DX 4x4",
+    fullName: "Toyota Hilux DX 4x4",
+    type: "Pickup",
+    year: 2025,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Consultar",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una pickup moderna, robusta y lista para trabajo o uso diario con la confiabilidad clásica de Hilux.",
+    description:
+      "La Toyota Hilux DX 4x4 2025 ofrece una propuesta sólida para quienes buscan una pickup nueva, confiable y versátil. Combina presencia, capacidad de trabajo y una base ideal para uso personal o laboral, con el respaldo y la durabilidad que caracterizan a la línea Hilux.",
+    image: "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-01.jpeg",
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-02.jpeg",
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-03.jpeg",
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-04.jpeg",
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-05.jpeg",
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-06.jpeg",
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-07.jpeg",
+      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-08.jpeg"
+    ],
+    highlights: [
+      "Versi\u00f3n DX 4x4",
+      "Gran versatilidad de uso",
+      "Ideal para trabajo y diario",
+      "Confiabilidad Toyota"
+    ]
+  },
+  {
+    slug: "toyota-hilux-srx-4x4-2018",
+    brand: "Toyota",
+    model: "Hilux SRX 4x4",
+    fullName: "Toyota Hilux SRX 4x4",
+    type: "Pickup",
+    year: 2018,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Consultar",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una pickup tope de gama, con presencia, equipamiento y la fortaleza de una Hilux pensada para todo.",
+    description:
+      "La Toyota Hilux SRX 4x4 2018 combina robustez, confort y equipamiento en una de las versiones más completas de la línea. Es una pickup ideal para quienes buscan capacidad, imagen y una propuesta sólida tanto para trabajo como para disfrutarla en uso personal.",
+    image: "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-02.jpeg",
+    imagePosition: "center 44%",
+    gallery: [
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-02.jpeg",
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-01.jpeg",
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-03.jpeg",
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-04.jpeg",
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-05.jpeg",
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-06.jpeg",
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-07.jpeg",
+      "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-08.jpeg"
+    ],
+    highlights: [
+      "Versi\u00f3n SRX 4x4",
+      "Muy buen nivel de equipamiento",
+      "Ideal para trabajo y viajes",
+      "Gran presencia y confort"
+    ]
+  },
+  {
+    slug: "ford-ka-s-2019",
+    brand: "Ford",
+    model: "Ka S",
+    fullName: "Ford Ka S",
+    type: "Hatchback",
+    year: 2019,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Consultar",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un hatchback compacto, práctico y rendidor para moverse cómodo todos los días.",
+    description:
+      "El Ford Ka S 2019 ofrece una propuesta simple, moderna y funcional para quienes buscan un auto ágil, práctico y económico para el uso urbano. Su formato compacto y su buen aprovechamiento interior lo vuelven una opción muy útil para el día a día.",
+    image: "assets/vehiculos/ford-ka-s-2019/foto-01.heic",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/ford-ka-s-2019/foto-01.heic",
+      "assets/vehiculos/ford-ka-s-2019/foto-02.heic",
+      "assets/vehiculos/ford-ka-s-2019/foto-03.heic",
+      "assets/vehiculos/ford-ka-s-2019/foto-04.heic",
+      "assets/vehiculos/ford-ka-s-2019/foto-05.heic",
+      "assets/vehiculos/ford-ka-s-2019/foto-06.heic",
+      "assets/vehiculos/ford-ka-s-2019/foto-07.heic"
+    ],
+    highlights: [
+      "Ideal para ciudad",
+      "Muy práctico de manejar",
+      "Buen aprovechamiento interior",
+      "Uso diario"
+    ]
+  },
+  {
+    slug: "nissan-kicks-exclusive-2020",
+    brand: "Nissan",
+    model: "Kicks Exclusive",
+    fullName: "Nissan Kicks Exclusive",
+    type: "SUV",
+    year: 2020,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Consultar",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una SUV moderna, cómoda y bien equipada, ideal para disfrutar ciudad y ruta con estilo.",
+    description:
+      "La Nissan Kicks Exclusive 2020 combina diseño actual, posición de manejo elevada y un nivel de equipamiento destacado. Es una opción ideal para quienes buscan una SUV urbana, cómoda y con una propuesta equilibrada entre imagen, practicidad y confort.",
+    image: "assets/vehiculos/nissan-kicks-exclusive-2020/foto-01.heic",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-01.heic",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-02.heic",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-03.heic",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-04.heic",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-05.heic",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-06.heic",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-07.heic"
+    ],
+    highlights: [
+      "Versión Exclusive",
+      "SUV urbana moderna",
+      "Muy buen confort de marcha",
+      "Excelente presencia"
+    ]
+  },
+  {
+    slug: "toyota-etios-x-2021",
+    brand: "Toyota",
+    model: "Etios X",
+    fullName: "Toyota Etios X",
+    type: "Hatchback",
+    year: 2021,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Consultar",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Un auto confiable, simple y funcional para quienes buscan practicidad y bajo costo de uso.",
+    description:
+      "El Toyota Etios X 2021 es una opción muy valorada por su confiabilidad, practicidad y economía de uso. Su formato compacto y su propuesta funcional lo convierten en un gran compañero para ciudad y para quienes priorizan simpleza y rendimiento.",
+    image: "assets/vehiculos/toyota-etios-x-2021/foto-01.heic",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/toyota-etios-x-2021/foto-01.heic",
+      "assets/vehiculos/toyota-etios-x-2021/foto-02.heic",
+      "assets/vehiculos/toyota-etios-x-2021/foto-03.heic",
+      "assets/vehiculos/toyota-etios-x-2021/foto-04.heic",
+      "assets/vehiculos/toyota-etios-x-2021/foto-05.heic",
+      "assets/vehiculos/toyota-etios-x-2021/foto-06.heic",
+      "assets/vehiculos/toyota-etios-x-2021/foto-07.heic"
+    ],
+    highlights: [
+      "Confiabilidad Toyota",
+      "Ideal para uso diario",
+      "Muy práctico",
+      "Bajo costo de uso"
+    ]
+  },
+  {
+    slug: "volkswagen-amarok-highline-4x4-2012",
+    brand: "Volkswagen",
+    model: "Amarok Highline 4x4",
+    fullName: "Volkswagen Amarok Highline 4x4",
+    type: "Pickup",
+    year: 2012,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Consultar",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una pickup con presencia, fortaleza y equipamiento para combinar trabajo y confort.",
+    description:
+      "La Volkswagen Amarok Highline 4x4 2012 ofrece una propuesta robusta y versátil, con una presencia muy marcada y una configuración ideal para quienes buscan una pickup equipada, capaz y cómoda para distintos usos.",
+    image: "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-01.heic",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-01.heic",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-02.heic",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-03.heic",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-04.heic",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-05.heic",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-06.heic",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-07.heic"
+    ],
+    highlights: [
+      "Versión Highline",
+      "Tracción 4x4",
+      "Pickup versátil",
+      "Muy buena presencia"
+    ]
+  },
+  {
+    slug: "volkswagen-nivus-2021",
+    brand: "Volkswagen",
+    model: "Nivus",
+    fullName: "Volkswagen Nivus",
+    type: "SUV",
+    year: 2021,
+    kms: null,
+    transmission: "Consultar",
+    fuel: "Consultar",
+    price: "Consultar",
+    priceValue: null,
+    color: "Consultar",
+    status: "Disponible",
+    shortDescription: "Una SUV coupé moderna, con gran diseño y una propuesta muy atractiva para el uso diario.",
+    description:
+      "El Volkswagen Nivus 2021 combina diseño, tecnología y practicidad en un formato moderno y muy buscado. Es una opción ideal para quienes quieren una SUV distinta, con buena posición de manejo, estilo actual y gran versatilidad para todos los días.",
+    image: "assets/vehiculos/volkswagen-nivus-2021/foto-01.jpeg",
+    imagePosition: "center 56%",
+    gallery: [
+      "assets/vehiculos/volkswagen-nivus-2021/foto-01.jpeg",
+      "assets/vehiculos/volkswagen-nivus-2021/foto-02.jpeg",
+      "assets/vehiculos/volkswagen-nivus-2021/foto-03.jpeg",
+      "assets/vehiculos/volkswagen-nivus-2021/foto-04.jpeg",
+      "assets/vehiculos/volkswagen-nivus-2021/foto-05.jpeg",
+      "assets/vehiculos/volkswagen-nivus-2021/foto-06.jpeg",
+      "assets/vehiculos/volkswagen-nivus-2021/foto-07.jpeg",
+      "assets/vehiculos/volkswagen-nivus-2021/foto-08.jpeg"
+    ],
+    highlights: [
+      "Diseño moderno",
+      "SUV coupé",
+      "Ideal para ciudad y ruta",
+      "Muy buena presencia"
     ]
   }
 ];

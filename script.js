@@ -5,10 +5,33 @@
 
   const STATUS_MAP = {
     disponible: "status-disponible",
-    señado: "status-senado",
+    señalado: "status-senado",
     senado: "status-senado",
     "en preparación": "status-en-preparacion",
     "en preparacion": "status-en-preparacion"
+  };
+
+  const BRAND_LOGO_MAP = {
+    audi: "assets/brands/audi.png",
+    bajaj: "assets/brands/bajaj.webp",
+    brava: "assets/brands/brava.png",
+    chevrolet: "assets/brands/chevrolet.png",
+    citroen: "assets/brands/citroen.png",
+    fiat: "assets/brands/fiat.png",
+    ford: "assets/brands/ford.png",
+    honda: "assets/brands/honda.png",
+    jeep: "assets/brands/jeep.png",
+    mercedes: "assets/brands/mercedes.png",
+    "mercedes-benz": "assets/brands/mercedes.png",
+    motomel: "assets/brands/motomel.png",
+    nissan: "assets/brands/nissan.png",
+    peugeot: "assets/brands/peugeot.png",
+    renault: "assets/brands/renault.png",
+    suzuki: "assets/brands/suzuki.png",
+    toyota: "assets/brands/toyota.png",
+    volkswagen: "assets/brands/volkswagen.png",
+    yamaha: "assets/brands/yamaha.png",
+    zanella: "assets/brands/zanella.png"
   };
 
   function slugify(value) {
@@ -35,6 +58,10 @@
     return STATUS_MAP[String(status || "").toLowerCase()] || "status-disponible";
   }
 
+  function getBrandLogoPath(brand) {
+    return BRAND_LOGO_MAP[slugify(brand)] || "";
+  }
+
   function createWhatsAppLink(vehicle) {
     const message = `Hola Zambrana Automotores, quiero consultar por el ${vehicle.fullName} ${vehicle.year}.`;
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -42,37 +69,40 @@
 
   function createVehicleCard(vehicle, compact = false) {
     const article = document.createElement("article");
+    const brandLogo = getBrandLogoPath(vehicle.brand);
     article.className = `vehicle-card ${compact ? "vehicle-card-compact" : ""}`;
 
     article.innerHTML = `
+      <a class="vehicle-card-overlay" href="vehiculo.html?slug=${vehicle.slug}" aria-label="Ver ficha de ${vehicle.fullName}"></a>
       <a class="vehicle-media-link" href="vehiculo.html?slug=${vehicle.slug}">
         <div class="vehicle-media">
+          <div class="vehicle-image-backdrop" style="background-image:url('${vehicle.image}');"></div>
           <img class="vehicle-image" src="${vehicle.image}" alt="${vehicle.fullName}"${vehicle.imagePosition ? ` style="object-position:${vehicle.imagePosition};"` : ""}>
           <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${vehicle.status}</span>
         </div>
       </a>
-      <div class="vehicle-body">
-        <div class="vehicle-meta">
-          <span>${vehicle.brand}</span>
-          <span>${vehicle.type}</span>
-        </div>
-        <a class="vehicle-title-link" href="vehiculo.html?slug=${vehicle.slug}">
-          <h3 class="vehicle-title">${vehicle.fullName}</h3>
-        </a>
-          <div class="vehicle-inline-specs">
-            <span>${formatKms(vehicle.kms)}</span>
-            <span>${vehicle.year}</span>
-            <span>${vehicle.fuel}</span>
+        <div class="vehicle-body">
+          <div class="vehicle-meta">
+            <span>${vehicle.brand}</span>
+            <span>${vehicle.type}</span>
           </div>
+          <a class="vehicle-title-link" href="vehiculo.html?slug=${vehicle.slug}">
+            <h3 class="vehicle-title">${vehicle.fullName}</h3>
+          </a>
+            <div class="vehicle-inline-specs">
+              <span class="vehicle-spec-basic">${formatKms(vehicle.kms)}</span>
+              <span class="vehicle-spec-basic">${vehicle.year}</span>
+              <span class="vehicle-spec-fuel">
+                <img src="assets/icons/gasolinera.png" alt="">
+                <span>${vehicle.fuel}</span>
+              </span>
+            </div>
           <div class="vehicle-card-footer">
             <strong class="vehicle-price ${shouldShowPrice(vehicle) ? "" : "is-hidden"}">${vehicle.price}</strong>
-            <div class="vehicle-card-actions">
-              <a class="card-action-primary" href="${createWhatsAppLink(vehicle)}" target="_blank" rel="noreferrer">Consultar</a>
-              <a class="card-action-secondary" href="vehiculo.html?slug=${vehicle.slug}">Ver ficha</a>
-            </div>
+            ${brandLogo ? `<div class="vehicle-card-footer-right"><div class="vehicle-brand-mark" aria-hidden="true"><img src="${brandLogo}" alt="${vehicle.brand}"></div></div>` : ""}
           </div>
-      </div>
-    `;
+        </div>
+      `;
 
     return article;
   }
@@ -83,12 +113,58 @@
 
     const sellers = config.sellers || [];
     grid.innerHTML = sellers.map((seller, index) => `
-      <article class="seller-card">
+      <article class="seller-card reveal-up seller-card-drive" style="transition-delay:${120 + (index * 110)}ms">
         <div class="seller-avatar">${seller.name.charAt(0)}</div>
         <strong>${seller.name}</strong>
         <span>${seller.role}</span>
       </article>
     `).join("");
+  }
+
+  function initBrandStrip() {
+    const track = document.querySelector(".brands-track");
+    if (!track) return;
+
+    const motoBrands = [
+      { name: "Honda", src: "assets/brands/honda.png" },
+      { name: "Yamaha", src: "assets/brands/yamaha.png" },
+      { name: "Suzuki", src: "assets/brands/suzuki.png" },
+      { name: "Bajaj", src: "assets/brands/bajaj.webp" },
+      { name: "Motomel", src: "assets/brands/motomel.png" },
+      { name: "Brava", src: "assets/brands/brava.png" },
+      { name: "Zanella", src: "assets/brands/zanella.png" }
+    ];
+
+    const existing = new Set(
+      [...track.querySelectorAll("img")]
+        .map((img) => (img.getAttribute("alt") || "").trim().toLowerCase())
+        .filter(Boolean)
+    );
+
+    motoBrands.forEach((brand) => {
+      if (existing.has(brand.name.toLowerCase())) return;
+      const logo = document.createElement("img");
+      logo.src = brand.src;
+      logo.alt = brand.name;
+      track.appendChild(logo);
+    });
+
+    motoBrands.forEach((brand) => {
+      const clone = document.createElement("img");
+      clone.src = brand.src;
+      clone.alt = "";
+      track.appendChild(clone);
+    });
+  }
+
+  function relocateUsedCarSection() {
+    const usedSection = document.querySelector("#vendetuauto");
+    const contactSection = document.querySelector("#ubicacion");
+    const sellersSection = document.querySelector("#vendedores");
+    if (!usedSection || !contactSection || !sellersSection) return;
+    if (usedSection.compareDocumentPosition(contactSection) & Node.DOCUMENT_POSITION_FOLLOWING) {
+      sellersSection.parentNode.insertBefore(usedSection, sellersSection);
+    }
   }
 
   function initReveals() {
@@ -112,6 +188,42 @@
     } else {
       revealItems.forEach((item) => item.classList.add("is-visible"));
     }
+  }
+
+  function initHeroIntro() {
+    const hero = document.querySelector(".hero-home");
+    if (!hero) return;
+
+    window.requestAnimationFrame(() => {
+      hero.classList.add("is-ready");
+    });
+  }
+
+  function initPageTransitions() {
+    document.body.classList.add("page-is-entering");
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        document.body.classList.remove("page-is-entering");
+      });
+    });
+
+    const pageLinks = document.querySelectorAll('a[href$=".html"], a[href*=".html?"]');
+    pageLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (link.getAttribute("target") === "_blank") return;
+
+        event.preventDefault();
+        document.body.classList.add("page-is-leaving");
+
+        window.setTimeout(() => {
+          window.location.href = href;
+        }, 420);
+      });
+    });
   }
 
   function initHeroSlider() {
@@ -236,7 +348,7 @@
       try {
         const result = await submitLeadForm(new FormData(form));
         feedback.textContent = result.mode === "demo"
-          ? "Consulta guardada en modo demo. Cuando definamos el endpoint real de Google Sheets, este formulario quedará conectado."
+          ? "Consulta guardada en modo demo. Cuando definamos el endpoint real de Google Sheets, este formulario queda conectado."
           : "Consulta enviada correctamente. Te vamos a contactar a la brevedad.";
         feedback.className = "form-feedback is-success";
         form.reset();
@@ -321,6 +433,7 @@
     }
 
     const gallery = [vehicle.image, ...(vehicle.gallery || []).filter((image) => image !== vehicle.image)];
+    const brandLogo = getBrandLogoPath(vehicle.brand);
 
     container.innerHTML = `
       <div class="vehicle-detail-shell">
@@ -328,31 +441,48 @@
           <div class="vehicle-detail-main">
             <img id="vehicle-detail-image" src="${vehicle.image}" alt="${vehicle.fullName}"${vehicle.imagePosition ? ` style="object-position:${vehicle.imagePosition};"` : ""}>
           </div>
-          <div class="vehicle-detail-thumbs">
-            ${gallery.map((image, index) => `
-              <button class="vehicle-detail-thumb ${index === 0 ? "is-active" : ""}" type="button" data-image="${image}">
-                <img src="${image}" alt="${vehicle.fullName} foto ${index + 1}">
-              </button>
-            `).join("")}
+          <div class="vehicle-detail-strip-shell">
+            <button class="vehicle-gallery-arrow" type="button" data-gallery-prev aria-label="Ver foto anterior">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 10.83 12l4.58 4.59L14 18l-6-6 6-6z"/></svg>
+            </button>
+            <div class="vehicle-detail-thumbs" id="vehicle-detail-strip">
+              ${gallery.map((image, index) => `
+                <button class="vehicle-detail-thumb ${index === 0 ? "is-active" : ""}" type="button" data-image="${image}">
+                  <img src="${image}" alt="${vehicle.fullName} foto ${index + 1}">
+                </button>
+              `).join("")}
+            </div>
+            <button class="vehicle-gallery-arrow" type="button" data-gallery-next aria-label="Ver foto siguiente">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.59 16.59 4.58-4.59-4.58-4.59L10 6l6 6-6 6z"/></svg>
+            </button>
           </div>
         </div>
         <div class="vehicle-detail-copy">
           <a class="text-link" href="catalog.html">Volver al catálogo</a>
-          <p class="eyebrow">${vehicle.brand} · ${vehicle.type}</p>
-          <h1>${vehicle.fullName}</h1>
-          <div class="vehicle-detail-header">
-            <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${vehicle.status}</span>
-            <strong class="vehicle-price">${vehicle.price}</strong>
+          <div class="vehicle-detail-top">
+            <div class="vehicle-detail-heading">
+              <p class="eyebrow">${vehicle.brand} · ${vehicle.type}</p>
+              <h1>${vehicle.fullName}</h1>
+              <div class="vehicle-detail-header">
+                <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${vehicle.status}</span>
+                <strong class="vehicle-price">${vehicle.price}</strong>
+              </div>
+            </div>
+            ${brandLogo ? `
+              <div class="vehicle-detail-brand-mark" aria-hidden="true">
+                <img src="${brandLogo}" alt="${vehicle.brand}">
+              </div>
+            ` : ""}
           </div>
-          <p class="vehicle-description">${vehicle.description}</p>
-          <ul class="vehicle-specs">
-            <li><strong>Año</strong><span>${vehicle.year}</span></li>
-            <li><strong>Kilómetros</strong><span>${formatKms(vehicle.kms)}</span></li>
-            <li><strong>Transmisión</strong><span>${vehicle.transmission}</span></li>
-            <li><strong>Combustible</strong><span>${vehicle.fuel}</span></li>
-            <li><strong>Color</strong><span>${vehicle.color}</span></li>
-            <li><strong>Estado</strong><span>${vehicle.status}</span></li>
-          </ul>
+            <p class="vehicle-description">${vehicle.description}</p>
+            <ul class="vehicle-specs">
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Año</strong><span>${vehicle.year}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/coche.png" alt="">Kilómetros</strong><span>${formatKms(vehicle.kms)}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/vehiculo.png" alt="">Transmisión</strong><span>${vehicle.transmission}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/gasolinera.png" alt="">Combustible</strong><span>${vehicle.fuel}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Color</strong><span>${vehicle.color}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Estado</strong><span>${vehicle.status}</span></li>
+            </ul>
           <div class="vehicle-highlights">
             ${vehicle.highlights.map((highlight) => `<span>${highlight}</span>`).join("")}
           </div>
@@ -365,7 +495,11 @@
     `;
 
     const mainImage = container.querySelector("#vehicle-detail-image");
+    const strip = container.querySelector("#vehicle-detail-strip");
+    const prev = container.querySelector("[data-gallery-prev]");
+    const next = container.querySelector("[data-gallery-next]");
     const thumbs = container.querySelectorAll(".vehicle-detail-thumb");
+
     thumbs.forEach((thumb) => {
       thumb.addEventListener("click", () => {
         const image = thumb.getAttribute("data-image");
@@ -373,7 +507,18 @@
         mainImage.src = image;
         thumbs.forEach((item) => item.classList.remove("is-active"));
         thumb.classList.add("is-active");
+        thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       });
+    });
+
+    const step = () => Math.max((strip?.clientWidth || 0) * 0.74, 220);
+
+    prev?.addEventListener("click", () => {
+      strip?.scrollBy({ left: -step(), behavior: "smooth" });
+    });
+
+    next?.addEventListener("click", () => {
+      strip?.scrollBy({ left: step(), behavior: "smooth" });
     });
   }
 
@@ -382,22 +527,28 @@
     config,
     slugify,
     formatKms,
+    getBrandLogoPath,
     getStatusClass,
     createVehicleCard,
     createWhatsAppLink
   };
 
   document.addEventListener("DOMContentLoaded", () => {
-    initReveals();
+    initPageTransitions();
+    initHeroIntro();
     initVehicleDetail();
 
     if (document.body.dataset.page === "home") {
       initHeroSlider();
+      initBrandStrip();
       populateQuickSearch();
       initQuickSearch();
       initLeadForm();
       initOpportunitiesCarousel();
+      relocateUsedCarSection();
       renderSellers();
     }
+
+    initReveals();
   });
 })();

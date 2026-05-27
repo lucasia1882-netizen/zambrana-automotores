@@ -18,6 +18,9 @@ window.zambranaVehicles = [
       "La Ford Ecosport SE 1.6 combina altura, versatilidad y confort para ciudad, ruta y escapadas. Es una opci\u00f3n equilibrada para quienes buscan una SUV confiable, con buen espacio interior y una conducci\u00f3n simple para el uso diario.",
     image: "assets/vehiculos/ecosport/ford-ecosport-frente-3-4.jpeg",
     imagePosition: "center 58%",
+    cardImage: "assets/vehiculos/ecosport/ford-ecosport-frente-3-4.jpeg",
+    cardImagePosition: "center 42%",
+    galleryImagePosition: "center 44%",
     gallery: [
       "assets/vehiculos/ecosport/ford-ecosport-frente.jpeg",
       "assets/vehiculos/ecosport/ford-ecosport-frente-3-4.jpeg",
@@ -53,6 +56,9 @@ window.zambranaVehicles = [
       "La Fiat Toro Volcano 2.0 4x4 ofrece un equilibrio ideal entre robustez, tecnolog\u00eda y confort. Es una pickup lista para trabajo, viajes o uso diario, con gran presencia, muy buen equipamiento y una respuesta s\u00f3lida para distintos terrenos.",
     image: "assets/vehiculos/toro/toro-frente-3-4.jpeg",
     imagePosition: "center 64%",
+    cardImage: "assets/vehiculos/toro/toro-frente-3-4.jpeg",
+    cardImagePosition: "center 39%",
+    galleryImagePosition: "center 43%",
     gallery: [
       "assets/vehiculos/toro/toro-frente.jpeg",
       "assets/vehiculos/toro/toro-frente-3-4.jpeg",
@@ -398,6 +404,9 @@ window.zambranaVehicles = [
       "El Fiat Cronos Drive Full 1.3 GSE 2022 combina dise\u00f1o actual, buen espacio interior y una propuesta equilibrada para ciudad, ruta y uso cotidiano. Es una opci\u00f3n muy buscada por su practicidad, su consumo contenido y la comodidad de su formato sed\u00e1n.",
     image: "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-02.jpeg",
     imagePosition: "center 52%",
+    cardImage: "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-02.jpeg",
+    cardImagePosition: "center 45%",
+    galleryImagePosition: "center 47%",
     gallery: [
       "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-02.jpeg",
       "assets/vehiculos/fiat-cronos-drive-full-13-gse-2022/foto-01.jpeg",
@@ -747,6 +756,9 @@ window.zambranaVehicles = [
       "La Toyota Hilux DX 4x4 2025 ofrece una propuesta sólida para quienes buscan una pickup nueva, confiable y versátil. Combina presencia, capacidad de trabajo y una base ideal para uso personal o laboral, con el respaldo y la durabilidad que caracterizan a la línea Hilux.",
     image: "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-01.jpeg",
     imagePosition: "center 56%",
+    cardImage: "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-02.jpeg",
+    cardImagePosition: "center 50%",
+    galleryImagePosition: "center 46%",
     gallery: [
       "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-01.jpeg",
       "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-02.jpeg",
@@ -783,6 +795,9 @@ window.zambranaVehicles = [
       "La Toyota Hilux SRX 4x4 2018 combina robustez, confort y equipamiento en una de las versiones más completas de la línea. Es una pickup ideal para quienes buscan capacidad, imagen y una propuesta sólida tanto para trabajo como para disfrutarla en uso personal.",
     image: "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-02.jpeg",
     imagePosition: "center 44%",
+    cardImage: "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-02.jpeg",
+    cardImagePosition: "center 47%",
+    galleryImagePosition: "center 45%",
     gallery: [
       "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-02.jpeg",
       "assets/vehiculos/toyota-hilux-srx-4x4-2018/foto-01.jpeg",
@@ -817,16 +832,16 @@ window.zambranaVehicles = [
     shortDescription: "Un hatchback compacto, práctico y rendidor para moverse cómodo todos los días.",
     description:
       "El Ford Ka S 2019 ofrece una propuesta simple, moderna y funcional para quienes buscan un auto ágil, práctico y económico para el uso urbano. Su formato compacto y su buen aprovechamiento interior lo vuelven una opción muy útil para el día a día.",
-    image: "assets/vehiculos/ford-ka-s-2019/foto-01.heic",
+    image: "assets/vehiculos/ford-ka-s-2019/IMG_0387.webp",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/ford-ka-s-2019/foto-01.heic",
-      "assets/vehiculos/ford-ka-s-2019/foto-02.heic",
-      "assets/vehiculos/ford-ka-s-2019/foto-03.heic",
-      "assets/vehiculos/ford-ka-s-2019/foto-04.heic",
-      "assets/vehiculos/ford-ka-s-2019/foto-05.heic",
-      "assets/vehiculos/ford-ka-s-2019/foto-06.heic",
-      "assets/vehiculos/ford-ka-s-2019/foto-07.heic"
+      "assets/vehiculos/ford-ka-s-2019/IMG_0387.webp",
+      "assets/vehiculos/ford-ka-s-2019/IMG_0388.webp",
+      "assets/vehiculos/ford-ka-s-2019/IMG_0391.webp",
+      "assets/vehiculos/ford-ka-s-2019/IMG_0394.webp",
+      "assets/vehiculos/ford-ka-s-2019/IMG_0398.webp",
+      "assets/vehiculos/ford-ka-s-2019/IMG_0402.webp",
+      "assets/vehiculos/ford-ka-s-2019/IMG_0406.webp"
     ],
     highlights: [
       "Ideal para ciudad",
@@ -852,16 +867,16 @@ window.zambranaVehicles = [
     shortDescription: "Una SUV moderna, cómoda y bien equipada, ideal para disfrutar ciudad y ruta con estilo.",
     description:
       "La Nissan Kicks Exclusive 2020 combina diseño actual, posición de manejo elevada y un nivel de equipamiento destacado. Es una opción ideal para quienes buscan una SUV urbana, cómoda y con una propuesta equilibrada entre imagen, practicidad y confort.",
-    image: "assets/vehiculos/nissan-kicks-exclusive-2020/foto-01.heic",
+    image: "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0411.webp",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-01.heic",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-02.heic",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-03.heic",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-04.heic",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-05.heic",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-06.heic",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/foto-07.heic"
+      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0411.webp",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0412.webp",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0413.webp",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0414.webp",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0422.webp",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0449.webp",
+      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_8044.webp"
     ],
     highlights: [
       "Versión Exclusive",
@@ -887,16 +902,16 @@ window.zambranaVehicles = [
     shortDescription: "Un auto confiable, simple y funcional para quienes buscan practicidad y bajo costo de uso.",
     description:
       "El Toyota Etios X 2021 es una opción muy valorada por su confiabilidad, practicidad y economía de uso. Su formato compacto y su propuesta funcional lo convierten en un gran compañero para ciudad y para quienes priorizan simpleza y rendimiento.",
-    image: "assets/vehiculos/toyota-etios-x-2021/foto-01.heic",
+    image: "assets/vehiculos/toyota-etios-x-2021/IMG_0295.webp",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/toyota-etios-x-2021/foto-01.heic",
-      "assets/vehiculos/toyota-etios-x-2021/foto-02.heic",
-      "assets/vehiculos/toyota-etios-x-2021/foto-03.heic",
-      "assets/vehiculos/toyota-etios-x-2021/foto-04.heic",
-      "assets/vehiculos/toyota-etios-x-2021/foto-05.heic",
-      "assets/vehiculos/toyota-etios-x-2021/foto-06.heic",
-      "assets/vehiculos/toyota-etios-x-2021/foto-07.heic"
+      "assets/vehiculos/toyota-etios-x-2021/IMG_0295.webp",
+      "assets/vehiculos/toyota-etios-x-2021/IMG_0296.webp",
+      "assets/vehiculos/toyota-etios-x-2021/IMG_0299.webp",
+      "assets/vehiculos/toyota-etios-x-2021/IMG_0301.webp",
+      "assets/vehiculos/toyota-etios-x-2021/IMG_0302.webp",
+      "assets/vehiculos/toyota-etios-x-2021/IMG_0306.webp",
+      "assets/vehiculos/toyota-etios-x-2021/IMG_0316.webp"
     ],
     highlights: [
       "Confiabilidad Toyota",
@@ -922,16 +937,16 @@ window.zambranaVehicles = [
     shortDescription: "Una pickup con presencia, fortaleza y equipamiento para combinar trabajo y confort.",
     description:
       "La Volkswagen Amarok Highline 4x4 2012 ofrece una propuesta robusta y versátil, con una presencia muy marcada y una configuración ideal para quienes buscan una pickup equipada, capaz y cómoda para distintos usos.",
-    image: "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-01.heic",
+    image: "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8496.webp",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-01.heic",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-02.heic",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-03.heic",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-04.heic",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-05.heic",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-06.heic",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/foto-07.heic"
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8496.webp",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8500.webp",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8505.webp",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8507.webp",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8517.webp",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8520.webp",
+      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8529.webp"
     ],
     highlights: [
       "Versión Highline",
@@ -959,6 +974,9 @@ window.zambranaVehicles = [
       "El Volkswagen Nivus 2021 combina diseño, tecnología y practicidad en un formato moderno y muy buscado. Es una opción ideal para quienes quieren una SUV distinta, con buena posición de manejo, estilo actual y gran versatilidad para todos los días.",
     image: "assets/vehiculos/volkswagen-nivus-2021/foto-01.jpeg",
     imagePosition: "center 56%",
+    cardImage: "assets/vehiculos/volkswagen-nivus-2021/foto-01.jpeg",
+    cardImagePosition: "center 46%",
+    galleryImagePosition: "center 45%",
     gallery: [
       "assets/vehiculos/volkswagen-nivus-2021/foto-01.jpeg",
       "assets/vehiculos/volkswagen-nivus-2021/foto-02.jpeg",

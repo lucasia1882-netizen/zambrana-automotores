@@ -111,11 +111,11 @@
           <div class="range-group">
             <div class="range-head">
               <span>Precio</span>
-              <strong id="price-range-output">Sin tope</strong>
+              <strong id="price-range-output">$0 - Sin tope</strong>
             </div>
             <div class="range-pair">
-              <input type="range" id="price-min" min="0" max="100" value="0">
-              <input type="range" id="price-max" min="0" max="100" value="100">
+              <input type="range" id="price-min" min="0" max="90000000" value="0" step="1000000">
+              <input type="range" id="price-max" min="0" max="90000000" value="90000000" step="1000000">
             </div>
             <small>Las unidades sin precio cargado se muestran siempre en esta maqueta.</small>
           </div>
@@ -131,6 +131,8 @@
             <span>Ordenar por</span>
             <select id="catalog-order">
               <option value="featured">Destacadas</option>
+              <option value="price-asc">Precio más barato a más caro</option>
+              <option value="price-desc">Precio más caro a más barato</option>
               <option value="year-desc">Más nuevas</option>
               <option value="year-asc">Más antiguas</option>
               <option value="brand-asc">Marca A-Z</option>

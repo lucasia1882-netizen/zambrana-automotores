@@ -26,13 +26,15 @@
     priceOutput: document.querySelector("#price-range-output")
   };
 
+  const PRICE_FILTER_LIMIT = 90000000;
+
   const years = vehicles.map((vehicle) => vehicle.year);
   const minYear = Math.min(...years);
   const maxYear = Math.max(...years);
 
   const pricedVehicles = vehicles.filter((vehicle) => Number.isFinite(vehicle.priceValue));
-  const minPrice = pricedVehicles.length ? Math.min(...pricedVehicles.map((vehicle) => vehicle.priceValue)) : 0;
-  const maxPrice = pricedVehicles.length ? Math.max(...pricedVehicles.map((vehicle) => vehicle.priceValue)) : 100;
+  const minPrice = 0;
+  const maxPrice = PRICE_FILTER_LIMIT;
 
   let state = {
     query: "",
@@ -49,9 +51,13 @@
 
   function formatPriceRange(value) {
     if (!Number.isFinite(value) || value <= 0) {
-      return "Sin tope";
+      return "$0";
     }
-    return `$${new Intl.NumberFormat("es-AR").format(value)}`;
+    const millions = value / 1000000;
+    const formatted = Number.isInteger(millions)
+      ? `${millions}`
+      : millions.toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    return `$${formatted}M`;
   }
 
   function populateSelect(select, values) {
@@ -76,12 +82,14 @@
     filterEls.yearMax.max = String(maxYear);
     filterEls.yearMax.value = String(maxYear);
 
-    filterEls.priceMin.min = String(minPrice);
-    filterEls.priceMin.max = String(maxPrice);
+    filterEls.priceMin.min = "0";
+    filterEls.priceMin.max = String(PRICE_FILTER_LIMIT);
     filterEls.priceMin.value = String(minPrice);
-    filterEls.priceMax.min = String(minPrice);
-    filterEls.priceMax.max = String(maxPrice);
+    filterEls.priceMin.step = "1000000";
+    filterEls.priceMax.min = "0";
+    filterEls.priceMax.max = String(PRICE_FILTER_LIMIT);
     filterEls.priceMax.value = String(maxPrice);
+    filterEls.priceMax.step = "1000000";
   }
 
   function readUrlState() {
@@ -119,8 +127,8 @@
 
     const priceLow = Math.min(Number(filterEls.priceMin.value), Number(filterEls.priceMax.value));
     const priceHigh = Math.max(Number(filterEls.priceMin.value), Number(filterEls.priceMax.value));
-    filterEls.priceOutput.textContent = priceHigh === maxPrice && priceLow === minPrice
-      ? "Sin tope"
+    filterEls.priceOutput.textContent = priceHigh >= PRICE_FILTER_LIMIT
+      ? `${formatPriceRange(priceLow)} - Sin tope`
       : `${formatPriceRange(priceLow)} - ${formatPriceRange(priceHigh)}`;
   }
 
@@ -134,6 +142,18 @@
   function sortVehicles(items) {
     const list = [...items];
     switch (state.order) {
+      case "price-asc":
+        return list.sort((a, b) => {
+          const aPrice = Number.isFinite(a.priceValue) ? a.priceValue : Number.POSITIVE_INFINITY;
+          const bPrice = Number.isFinite(b.priceValue) ? b.priceValue : Number.POSITIVE_INFINITY;
+          return aPrice - bPrice;
+        });
+      case "price-desc":
+        return list.sort((a, b) => {
+          const aPrice = Number.isFinite(a.priceValue) ? a.priceValue : Number.NEGATIVE_INFINITY;
+          const bPrice = Number.isFinite(b.priceValue) ? b.priceValue : Number.NEGATIVE_INFINITY;
+          return bPrice - aPrice;
+        });
       case "year-desc":
         return list.sort((a, b) => b.year - a.year);
       case "year-asc":
@@ -157,7 +177,9 @@
     if (vehicle.year < state.yearMin || vehicle.year > state.yearMax) return false;
 
     if (Number.isFinite(vehicle.priceValue)) {
-      if (vehicle.priceValue < state.priceMin || vehicle.priceValue > state.priceMax) return false;
+      const hasUpperLimit = state.priceMax < PRICE_FILTER_LIMIT;
+      if (vehicle.priceValue < state.priceMin) return false;
+      if (hasUpperLimit && vehicle.priceValue > state.priceMax) return false;
     }
 
     return true;

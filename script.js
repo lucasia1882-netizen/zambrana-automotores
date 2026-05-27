@@ -70,14 +70,16 @@
   function createVehicleCard(vehicle, compact = false) {
     const article = document.createElement("article");
     const brandLogo = getBrandLogoPath(vehicle.brand);
+    const cardImage = vehicle.cardImage || vehicle.image;
+    const cardImagePosition = vehicle.cardImagePosition || vehicle.imagePosition || "center 50%";
     article.className = `vehicle-card ${compact ? "vehicle-card-compact" : ""}`;
 
     article.innerHTML = `
       <a class="vehicle-card-overlay" href="vehiculo.html?slug=${vehicle.slug}" aria-label="Ver ficha de ${vehicle.fullName}"></a>
       <a class="vehicle-media-link" href="vehiculo.html?slug=${vehicle.slug}">
         <div class="vehicle-media">
-          <div class="vehicle-image-backdrop" style="background-image:url('${vehicle.image}');"></div>
-          <img class="vehicle-image" src="${vehicle.image}" alt="${vehicle.fullName}"${vehicle.imagePosition ? ` style="object-position:${vehicle.imagePosition};"` : ""}>
+          <div class="vehicle-image-backdrop" style="background-image:url('${cardImage}');"></div>
+          <img class="vehicle-image" src="${cardImage}" alt="${vehicle.fullName}" style="object-position:${cardImagePosition};">
           <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${vehicle.status}</span>
         </div>
       </a>
@@ -235,6 +237,34 @@
     const next = document.querySelector("[data-hero-next]");
     let intervalId = null;
 
+    slides.forEach((slide) => {
+      const video = slide.querySelector("video");
+      if (!video) return;
+
+      const markReady = () => {
+        slide.classList.add("is-video-ready");
+      };
+
+      const markFallback = () => {
+        slide.classList.remove("is-video-ready");
+      };
+
+      video.addEventListener("loadeddata", markReady, { once: true });
+      video.addEventListener("canplay", markReady);
+      video.addEventListener("playing", markReady);
+      video.addEventListener("timeupdate", markReady);
+      video.addEventListener("stalled", markFallback);
+      video.addEventListener("abort", markFallback);
+      video.addEventListener("error", markFallback);
+
+      const playPromise = video.play?.();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+          markFallback();
+        });
+      }
+    });
+
     const showSlide = (index) => {
       slides[currentIndex].classList.remove("is-active");
       currentIndex = (index + slides.length) % slides.length;
@@ -305,12 +335,19 @@
 
   async function submitLeadForm(formData) {
     const endpoint = (config.googleSheetsEndpoint || "").trim();
+    const now = new Date().toISOString();
     const payload = {
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-      message: formData.get("message"),
+      name: String(formData.get("name") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
       source: "zambrana-home",
-      createdAt: new Date().toISOString()
+      channel: "Web",
+      status: "Nuevo",
+      vendor: "",
+      pageUrl: window.location.href,
+      pageTitle: document.title,
+      createdAt: now,
+      submittedAt: now
     };
 
     if (!endpoint) {
@@ -318,6 +355,21 @@
       demoLeads.push(payload);
       localStorage.setItem("zambrana-demo-leads", JSON.stringify(demoLeads));
       return { mode: "demo" };
+    }
+
+    const isGoogleAppsScript = /script\.google\.com/i.test(endpoint);
+
+    if (isGoogleAppsScript) {
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      return { mode: "live" };
     }
 
     const response = await fetch(endpoint, {
@@ -432,31 +484,49 @@
       return;
     }
 
-    const gallery = [vehicle.image, ...(vehicle.gallery || []).filter((image) => image !== vehicle.image)];
-    const brandLogo = getBrandLogoPath(vehicle.brand);
+      const gallery = [vehicle.image, ...(vehicle.gallery || []).filter((image) => image !== vehicle.image)];
+      const galleryImagePosition = vehicle.galleryImagePosition || vehicle.imagePosition || "center 50%";
+      const brandLogo = getBrandLogoPath(vehicle.brand);
 
     container.innerHTML = `
-      <div class="vehicle-detail-shell">
-        <div class="vehicle-detail-gallery">
-          <div class="vehicle-detail-main">
-            <img id="vehicle-detail-image" src="${vehicle.image}" alt="${vehicle.fullName}"${vehicle.imagePosition ? ` style="object-position:${vehicle.imagePosition};"` : ""}>
-          </div>
-          <div class="vehicle-detail-strip-shell">
-            <button class="vehicle-gallery-arrow" type="button" data-gallery-prev aria-label="Ver foto anterior">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 10.83 12l4.58 4.59L14 18l-6-6 6-6z"/></svg>
-            </button>
-            <div class="vehicle-detail-thumbs" id="vehicle-detail-strip">
-              ${gallery.map((image, index) => `
-                <button class="vehicle-detail-thumb ${index === 0 ? "is-active" : ""}" type="button" data-image="${image}">
-                  <img src="${image}" alt="${vehicle.fullName} foto ${index + 1}">
+        <div class="vehicle-detail-shell">
+          <div class="vehicle-detail-gallery">
+            <div class="vehicle-detail-carousel">
+              <div class="vehicle-detail-carousel-track" id="vehicle-detail-track">
+                ${gallery.map((image, index) => `
+                  <button
+                    class="vehicle-detail-slide ${index === 0 ? "is-active" : ""}"
+                    type="button"
+                    data-gallery-slide="${index}"
+                    style="--slide-image:url('${image}')"
+                    aria-label="Ver foto ${index + 1}"
+                  >
+                    <img
+                      src="${image}"
+                      alt="${vehicle.fullName} foto ${index + 1}"
+                      style="object-position:${galleryImagePosition};"
+                    >
+                  </button>
+                `).join("")}
+                <button class="vehicle-gallery-arrow vehicle-gallery-arrow-left" type="button" data-gallery-prev aria-label="Ver foto anterior">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 10.83 12l4.58 4.59L14 18l-6-6 6-6z"/></svg>
                 </button>
-              `).join("")}
+                <button class="vehicle-gallery-arrow vehicle-gallery-arrow-right" type="button" data-gallery-next aria-label="Ver foto siguiente">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.59 16.59 4.58-4.59-4.58-4.59L10 6l6 6-6 6z"/></svg>
+                </button>
+              </div>
+              <div class="vehicle-gallery-dots" id="vehicle-gallery-dots" aria-label="Indicadores de galería">
+                ${gallery.map((_, index) => `
+                  <button
+                    class="vehicle-gallery-dot ${index === 0 ? "is-active" : ""}"
+                    type="button"
+                    data-gallery-dot="${index}"
+                    aria-label="Ir a foto ${index + 1}"
+                  ></button>
+                `).join("")}
+              </div>
             </div>
-            <button class="vehicle-gallery-arrow" type="button" data-gallery-next aria-label="Ver foto siguiente">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.59 16.59 4.58-4.59-4.58-4.59L10 6l6 6-6 6z"/></svg>
-            </button>
           </div>
-        </div>
         <div class="vehicle-detail-copy">
           <a class="text-link" href="catalog.html">Volver al catálogo</a>
           <div class="vehicle-detail-top">
@@ -494,33 +564,69 @@
       </div>
     `;
 
-    const mainImage = container.querySelector("#vehicle-detail-image");
-    const strip = container.querySelector("#vehicle-detail-strip");
-    const prev = container.querySelector("[data-gallery-prev]");
-    const next = container.querySelector("[data-gallery-next]");
-    const thumbs = container.querySelectorAll(".vehicle-detail-thumb");
+      const slides = Array.from(container.querySelectorAll("[data-gallery-slide]"));
+      const dots = Array.from(container.querySelectorAll("[data-gallery-dot]"));
+      const prev = container.querySelector("[data-gallery-prev]");
+      const next = container.querySelector("[data-gallery-next]");
+      let currentIndex = 0;
 
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener("click", () => {
-        const image = thumb.getAttribute("data-image");
-        if (!image || !mainImage) return;
-        mainImage.src = image;
-        thumbs.forEach((item) => item.classList.remove("is-active"));
-        thumb.classList.add("is-active");
-        thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      function updateGallery(index) {
+        currentIndex = (index + gallery.length) % gallery.length;
+
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.remove("is-active", "is-prev", "is-next", "is-hidden");
+
+          if (slideIndex === currentIndex) {
+            slide.classList.add("is-active");
+            return;
+          }
+
+          if (slideIndex === (currentIndex - 1 + gallery.length) % gallery.length) {
+            slide.classList.add("is-prev");
+            return;
+          }
+
+          if (slideIndex === (currentIndex + 1) % gallery.length) {
+            slide.classList.add("is-next");
+            return;
+          }
+
+          slide.classList.add("is-hidden");
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === currentIndex);
+        });
+      }
+
+      slides.forEach((slide) => {
+        slide.addEventListener("click", () => {
+          const nextIndex = Number(slide.dataset.gallerySlide);
+          if (!Number.isNaN(nextIndex)) {
+            updateGallery(nextIndex);
+          }
+        });
       });
-    });
 
-    const step = () => Math.max((strip?.clientWidth || 0) * 0.74, 220);
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const nextIndex = Number(dot.dataset.galleryDot);
+          if (!Number.isNaN(nextIndex)) {
+            updateGallery(nextIndex);
+          }
+        });
+      });
 
-    prev?.addEventListener("click", () => {
-      strip?.scrollBy({ left: -step(), behavior: "smooth" });
-    });
+      prev?.addEventListener("click", () => {
+        updateGallery(currentIndex - 1);
+      });
 
-    next?.addEventListener("click", () => {
-      strip?.scrollBy({ left: step(), behavior: "smooth" });
-    });
-  }
+      next?.addEventListener("click", () => {
+        updateGallery(currentIndex + 1);
+      });
+
+      updateGallery(0);
+    }
 
   window.ZambranaSite = {
     vehicles,

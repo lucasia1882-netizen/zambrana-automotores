@@ -310,6 +310,38 @@ p {
   transition: opacity 900ms ease, transform 6s ease;
 }
 
+.hero-slide.hero-slide-video {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-slide video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.04) contrast(1.02) brightness(0.9);
+  opacity: 0;
+  transition: opacity 420ms ease;
+}
+
+.hero-slide-video.is-video-ready video {
+  opacity: 1;
+}
+
+.hero-slide-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.32)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 62%);
+}
+
 .hero-slide.is-active {
   opacity: 1;
   transform: scale(1);
@@ -587,31 +619,32 @@ p {
 .quick-search-form label,
 .filters-form label {
   display: grid;
-  gap: 8px;
+  gap: 14px;
 }
 
 .filter-label {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 .filter-label-icon {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
-  flex: 0 0 14px;
+  flex: 0 0 18px;
   filter: brightness(0) invert(1);
-  opacity: 0.92;
+  opacity: 0.96;
 }
 
 .lead-form span,
 .quick-search-form span,
 .filters-form span,
 .catalog-order span {
-  font-size: 0.88rem;
+  font-size: 1.02rem;
   color: rgba(255, 255, 255, 0.84);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .lead-form input,
@@ -625,8 +658,14 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.05);
   color: var(--white);
-  padding: 14px 16px;
+  padding: 15px 17px;
   outline: none;
+}
+
+.quick-search-form select,
+.filters-form select {
+  min-height: 54px;
+  font-size: 1rem;
 }
 
 .quick-search-form select option,
@@ -831,7 +870,7 @@ p {
   position: relative;
   aspect-ratio: 16 / 11;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
 }
 
 .vehicle-image-backdrop {
@@ -856,47 +895,48 @@ p {
 
 .vehicle-card-compact .vehicle-media {
   aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   margin: 0;
   padding: 0;
   border-radius: 0;
   box-sizing: border-box;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 48%),
-    linear-gradient(180deg, rgba(22, 22, 22, 0.92), rgba(12, 12, 12, 0.98));
+  background: linear-gradient(180deg, rgba(18, 18, 18, 0.96), rgba(10, 10, 10, 0.99));
 }
 
 .vehicle-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 46%;
+  object-position: center 52%;
   position: relative;
   z-index: 1;
   transition: transform 320ms ease;
 }
 
 .vehicle-card-compact .vehicle-image {
+  position: absolute;
+  inset: 0;
   object-fit: cover;
   width: 100%;
   height: 100%;
   padding: 0;
   box-sizing: border-box;
   filter: none;
+  transform: scale(1.02);
 }
 
 .vehicle-card-compact .vehicle-image-backdrop {
-  opacity: 0.32;
-  filter: blur(16px) saturate(1.08);
-  transform: scale(1.12);
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  filter: blur(10px) saturate(1.04);
+  transform: scale(1.06);
 }
 
 .vehicle-card-compact .vehicle-image-backdrop::after {
   background:
-    linear-gradient(180deg, rgba(12, 12, 12, 0.08), rgba(12, 12, 12, 0.22)),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 58%);
+    linear-gradient(180deg, rgba(12, 12, 12, 0.04), rgba(12, 12, 12, 0.14)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.03), transparent 58%);
 }
 
 .vehicle-tag {
@@ -1453,13 +1493,14 @@ p {
 .filters-card {
   position: sticky;
   top: 20px;
-  padding: 22px;
+  padding: 28px 24px;
   border-radius: var(--radius);
 }
 
 .filters-head h2 {
-  font-size: 1.6rem;
+  font-size: 1.72rem;
   max-width: 12ch;
+  margin-bottom: 14px;
 }
 
 .range-group {
@@ -1585,77 +1626,149 @@ input[type="range"] {
   object-fit: contain;
 }
 
-.vehicle-detail-main {
-  border-radius: var(--radius);
+.vehicle-detail-carousel {
+  display: grid;
+  gap: 16px;
+}
+
+.vehicle-detail-carousel-track {
+  position: relative;
+  min-height: clamp(340px, 44vw, 540px);
   overflow: hidden;
-  aspect-ratio: 16 / 10;
 }
 
-.vehicle-detail-main img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.vehicle-detail-strip-shell {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: center;
-}
-
-.vehicle-detail-thumbs {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(220px, 1fr);
-  gap: 12px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  scroll-snap-type: x proximity;
-  padding-bottom: 4px;
-}
-
-.vehicle-detail-thumbs::-webkit-scrollbar {
-  display: none;
-}
-
-.vehicle-detail-thumb {
+.vehicle-detail-slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(170px, 21%, 220px);
   padding: 0;
-  border-radius: var(--radius);
+  border-radius: calc(var(--radius) + 2px);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 10, 0.98);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
   cursor: pointer;
-  min-height: 148px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  scroll-snap-align: start;
+  transition:
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    left 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    right 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 420ms ease;
+  will-change: transform, opacity, left, right, width;
 }
 
-.vehicle-detail-thumb.is-active {
-  border-color: rgba(255, 255, 255, 0.32);
-}
-
-.vehicle-detail-thumb img {
+.vehicle-detail-slide img {
+  position: relative;
   width: 100%;
   height: 100%;
-  min-height: 148px;
   object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.vehicle-detail-slide.is-active {
+  left: 50%;
+  width: clamp(286px, 42%, 394px);
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  z-index: 3;
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.24);
+}
+
+.vehicle-detail-slide.is-prev {
+  left: 0;
+  opacity: 0.84;
+  transform: translateX(-7%) scale(0.952);
+  z-index: 2;
+  filter: saturate(0.94) brightness(0.92);
+}
+
+.vehicle-detail-slide.is-next {
+  right: 0;
+  opacity: 0.84;
+  transform: translateX(7%) scale(0.952);
+  z-index: 2;
+  filter: saturate(0.94) brightness(0.92);
+}
+
+.vehicle-detail-slide.is-hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .vehicle-gallery-arrow {
-  width: 46px;
-  height: 46px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(8, 8, 8, 0.66);
+  backdrop-filter: blur(10px);
   color: var(--white);
   display: grid;
   place-items: center;
   cursor: pointer;
+  z-index: 4;
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.22);
+}
+
+.vehicle-gallery-arrow:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(18, 18, 18, 0.8);
+}
+
+.vehicle-gallery-arrow-left {
+  left: 18px;
+}
+
+.vehicle-gallery-arrow-right {
+  right: 18px;
 }
 
 .vehicle-gallery-arrow svg {
   width: 22px;
   fill: currentColor;
+}
+
+.vehicle-gallery-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.vehicle-gallery-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.24);
+  cursor: pointer;
+  transition:
+    width 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 280ms ease,
+    opacity 280ms ease,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vehicle-gallery-dot:hover {
+  opacity: 0.9;
+}
+
+.vehicle-gallery-dot.is-active {
+  width: 30px;
+  background: linear-gradient(135deg, var(--accent), #ff6a70);
+  transform: scale(1.02);
 }
 
 .vehicle-detail-header {
@@ -1819,12 +1932,23 @@ input[type="range"] {
     grid-template-columns: 1fr;
   }
 
-  .vehicle-detail-top,
-  .vehicle-detail-strip-shell {
+  .vehicle-detail-top {
     grid-template-columns: 1fr;
   }
 
-  .vehicle-gallery-arrow {
+  .vehicle-detail-carousel-track {
+    min-height: 320px;
+  }
+
+  .vehicle-detail-slide.is-active {
+    left: 0;
+    width: 100%;
+    transform: none;
+  }
+
+  .vehicle-detail-slide.is-prev,
+  .vehicle-detail-slide.is-next,
+  .vehicle-detail-slide.is-hidden {
     display: none;
   }
 

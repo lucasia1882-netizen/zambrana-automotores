@@ -40,8 +40,6 @@
     query: "",
     type: "",
     brand: "",
-    fuel: "",
-    transmission: "",
     yearMin: minYear,
     yearMax: maxYear,
     priceMin: minPrice,
@@ -72,8 +70,12 @@
   function populateFilters() {
     populateSelect(filterEls.type, [...new Set(vehicles.map((vehicle) => vehicle.type))]);
     populateSelect(filterEls.brand, [...new Set(vehicles.map((vehicle) => vehicle.brand))].sort());
-    populateSelect(filterEls.fuel, [...new Set(vehicles.map((vehicle) => vehicle.fuel))]);
-    populateSelect(filterEls.transmission, [...new Set(vehicles.map((vehicle) => vehicle.transmission))]);
+    if (filterEls.fuel) {
+      populateSelect(filterEls.fuel, [...new Set(vehicles.map((vehicle) => vehicle.fuel))]);
+    }
+    if (filterEls.transmission) {
+      populateSelect(filterEls.transmission, [...new Set(vehicles.map((vehicle) => vehicle.transmission))]);
+    }
 
     filterEls.yearMin.min = String(minYear);
     filterEls.yearMin.max = String(maxYear);
@@ -97,8 +99,6 @@
     state.query = params.get("q") || params.get("model") || "";
     state.brand = params.get("brand") || "";
     state.type = params.get("type") || "";
-    state.fuel = params.get("fuel") || "";
-    state.transmission = params.get("transmission") || "";
     state.yearMin = Number(params.get("yearMin") || params.get("year") || minYear);
     state.yearMax = Number(params.get("yearMax") || params.get("year") || maxYear);
     state.priceMin = Number(params.get("priceMin") || minPrice);
@@ -110,8 +110,8 @@
     queryInput.value = state.query;
     filterEls.type.value = state.type;
     filterEls.brand.value = state.brand;
-    filterEls.fuel.value = state.fuel;
-    filterEls.transmission.value = state.transmission;
+    if (filterEls.fuel) filterEls.fuel.value = state.fuel;
+    if (filterEls.transmission) filterEls.transmission.value = state.transmission;
     filterEls.yearMin.value = String(state.yearMin);
     filterEls.yearMax.value = String(state.yearMax);
     filterEls.priceMin.value = String(state.priceMin);
@@ -172,8 +172,6 @@
     if (query && !searchable.includes(query)) return false;
     if (state.type && vehicle.type !== state.type) return false;
     if (state.brand && vehicle.brand !== state.brand) return false;
-    if (state.fuel && vehicle.fuel !== state.fuel) return false;
-    if (state.transmission && vehicle.transmission !== state.transmission) return false;
     if (vehicle.year < state.yearMin || vehicle.year > state.yearMax) return false;
 
     if (Number.isFinite(vehicle.priceValue)) {
@@ -216,8 +214,6 @@
     if (state.query) params.set("q", state.query);
     if (state.type) params.set("type", state.type);
     if (state.brand) params.set("brand", state.brand);
-    if (state.fuel) params.set("fuel", state.fuel);
-    if (state.transmission) params.set("transmission", state.transmission);
     if (state.yearMin !== minYear) params.set("yearMin", String(state.yearMin));
     if (state.yearMax !== maxYear) params.set("yearMax", String(state.yearMax));
     if (state.priceMin !== minPrice) params.set("priceMin", String(state.priceMin));
@@ -230,8 +226,6 @@
     state.query = queryInput.value.trim();
     state.type = filterEls.type.value;
     state.brand = filterEls.brand.value;
-    state.fuel = filterEls.fuel.value;
-    state.transmission = filterEls.transmission.value;
     state.order = orderSelect.value;
     normalizeState();
     updateUrl();
@@ -243,8 +237,6 @@
       query: "",
       type: "",
       brand: "",
-      fuel: "",
-      transmission: "",
       yearMin: minYear,
       yearMax: maxYear,
       priceMin: minPrice,
@@ -257,6 +249,8 @@
   }
 
   populateFilters();
+  filterEls.fuel?.closest("label")?.remove();
+  filterEls.transmission?.closest("label")?.remove();
   readUrlState();
   syncInputsFromState();
   renderCatalog();
@@ -267,6 +261,7 @@
   });
 
   [filterEls.type, filterEls.brand, filterEls.fuel, filterEls.transmission, orderSelect]
+    .filter(Boolean)
     .forEach((input) => input.addEventListener("change", applyStateFromInputs));
 
   [filterEls.yearMin, filterEls.yearMax, filterEls.priceMin, filterEls.priceMax]

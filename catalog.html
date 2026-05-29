@@ -6,7 +6,7 @@
   <title>Catálogo | Zambrana Automotores</title>
   <meta
     name="description"
-    content="Explorá el catálogo de Zambrana Automotores con filtros por tipo, marca, año, combustible, transmisión y precio."
+    content="Explorá el catálogo de Zambrana Automotores con filtros por tipo, marca, año y precio."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +16,10 @@
 <body data-page="catalog">
   <a
     class="whatsapp-float"
-    href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20hacer%20una%20consulta."
+    href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20les%20escribo%20desde%20la%20web%20y%20quiero%20hacer%20una%20consulta."
     target="_blank"
     rel="noreferrer"
-    aria-label="Abrir WhatsApp"
+    aria-label="WhatsApp"
     title="WhatsApp"
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -34,7 +34,7 @@
           <img src="assets/branding/logo-zambrana-positivo.png" alt="Logo Zambrana Automotores">
           <div class="brand-copy">
             <strong>Zambrana Automotores</strong>
-            <span>Usados, camionetas y 0km en Córdoba</span>
+            <span>Autos, camionetas y motos usados y 0Km en Córdoba</span>
           </div>
         </a>
 
@@ -43,7 +43,7 @@
           <a class="nav-link is-active" href="catalog.html">Catálogo</a>
           <a class="nav-link" href="index.html#vendetuauto">Vendé tu auto</a>
           <a class="nav-link" href="index.html#ubicacion">Ubicación</a>
-          <a class="nav-cta" href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noreferrer"><img class="btn-icon" src="assets/icons/whatsapp.png" alt="">WhatsApp</a>
+          <a class="nav-cta" href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20les%20escribo%20desde%20la%20web%20y%20quiero%20hacer%20una%20consulta." target="_blank" rel="noreferrer"><img class="btn-icon" src="assets/icons/whatsapp.png" alt="">WhatsApp</a>
         </div>
       </nav>
 
@@ -52,7 +52,7 @@
           <p class="eyebrow">Catálogo Zambrana</p>
           <h1>Encontrá la unidad que mejor encaja con lo que estás buscando.</h1>
           <p class="hero-text">
-            Filtrá por tipo, marca, año, combustible, transmisión y precio para ir directo a las opciones que más te interesan.
+            Filtrá por tipo, marca, año y precio para ir directo a las opciones que más te interesan.
           </p>
         </div>
         <form class="catalog-search" id="catalog-search-form">
@@ -78,21 +78,10 @@
               <option value="">Todos</option>
             </select>
           </label>
+
           <label>
             <span class="filter-label"><img class="filter-label-icon" src="assets/icons/etiqueta.png" alt="">Marca</span>
             <select name="brand" id="filter-brand">
-              <option value="">Todas</option>
-            </select>
-          </label>
-          <label>
-            <span class="filter-label"><img class="filter-label-icon" src="assets/icons/gasolinera.png" alt="">Combustible</span>
-            <select name="fuel" id="filter-fuel">
-              <option value="">Todos</option>
-            </select>
-          </label>
-          <label>
-            <span class="filter-label"><img class="filter-label-icon" src="assets/icons/vehiculo.png" alt="">Transmisión</span>
-            <select name="transmission" id="filter-transmission">
               <option value="">Todas</option>
             </select>
           </label>
@@ -140,9 +129,131 @@
           </label>
         </div>
         <div class="catalog-grid" id="catalog-grid"></div>
+        <nav class="catalog-pagination" id="catalog-pagination" aria-label="Paginacion del catalogo"></nav>
       </section>
     </div>
+
+    <section class="section contact-section contact-section-catalog" id="catalog-contact">
+      <div class="site-shell">
+        <div class="contact-marquee reveal-up" aria-hidden="true">
+          <div class="contact-marquee-track">
+            <span>En Zambrana Automotores <em>te acompañamos</em> en cada paso hacia tu próximo vehículo</span>
+            <span>En Zambrana Automotores <em>te acompañamos</em> en cada paso hacia tu próximo vehículo</span>
+            <span>En Zambrana Automotores <em>te acompañamos</em> en cada paso hacia tu próximo vehículo</span>
+          </div>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-stack">
+            <article class="contact-card reveal-up">
+              <strong>Ubicación</strong>
+              <p>Av. La Cordillera 4833, Córdoba Capital</p>
+              <a class="secondary-dark-btn" href="https://maps.google.com/?q=Av.+La+Cordillera+4833,+Cordoba" target="_blank" rel="noreferrer">Abrir en Maps</a>
+            </article>
+            <article class="contact-card reveal-up reveal-delay-1">
+              <strong>Horarios</strong>
+              <p>Lunes a viernes: 09:00 a 13:00 y 16:00 a 20:00 hs.</p>
+              <p>Sábados: 09:00 a 13:30 hs.</p>
+              <p>Domingo: cerrado.</p>
+            </article>
+            <article class="contact-card reveal-up reveal-delay-2">
+              <strong>Redes sociales</strong>
+              <div class="socials-links">
+                <a class="social-instagram" href="https://www.instagram.com/zambrana_automotores/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10c2.76 0 5 2.24 5 5v10c0 2.76-2.24 5-5 5H7c-2.76 0-5-2.24-5-5V7c0-2.76 2.24-5 5-5Zm0 2C5.34 4 4 5.34 4 7v10c0 1.66 1.34 3 3 3h10c1.66 0 3-1.34 3-3V7c0-1.66-1.34-3-3-3H7Zm10.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+                </a>
+                <a class="social-facebook" href="https://www.facebook.com/zambranaautomotores" target="_blank" rel="noreferrer" aria-label="Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.08c0-.87.24-1.46 1.49-1.46H16.7V4.94c-.31-.04-1.38-.12-2.62-.12-2.59 0-4.36 1.58-4.36 4.48V11H7v3h2.72v8h3.78Z"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="map-embed reveal-up reveal-delay-3">
+            <div class="map-overlay-card map-overlay-card-compact">
+              <strong>Zambrana Automotores</strong>
+              <span>Av. La Cordillera 4833</span>
+            </div>
+            <iframe
+              title="Mapa de Zambrana Automotores"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3406.996696722425!2d-64.2396980251479!3d-31.359070374288205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94329949fd75a8a7%3A0x9680d5778ddd616c!2sZambrana%20Automotores!5e0!3m2!1ses!2sar!4v1778886511223!5m2!1ses!2sar"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="site-shell site-footer-shell">
+      <div class="footer-top-line" aria-hidden="true"></div>
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-mark">
+            <img src="assets/branding/logo-zambrana-negativo.png" alt="Zambrana Automotores">
+          </div>
+          <div class="footer-brand-title">
+            <strong>ZAMBRANA</strong>
+            <span>AUTOMOTORES</span>
+          </div>
+          <p>Más de 28 años acompañando a Córdoba en la búsqueda de su próximo vehículo.</p>
+
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/zambrana_automotores/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10c2.76 0 5 2.24 5 5v10c0 2.76-2.24 5-5 5H7c-2.76 0-5-2.24-5-5V7c0-2.76 2.24-5 5-5Zm0 2C5.34 4 4 5.34 4 7v10c0 1.66 1.34 3 3 3h10c1.66 0 3-1.34 3-3V7c0-1.66-1.34-3-3-3H7Zm10.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/zambranaautomotores" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.08c0-.87.24-1.46 1.49-1.46H16.7V4.94c-.31-.04-1.38-.12-2.62-.12-2.59 0-4.36 1.58-4.36 4.48V11H7v3h2.72v8h3.78Z"/></svg>
+            </a>
+            <a href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20les%20escribo%20desde%20la%20web%20y%20quiero%20hacer%20una%20consulta." target="_blank" rel="noreferrer" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.03 2C6.61 2 2.2 6.4 2.2 11.82c0 1.74.46 3.44 1.32 4.94L2 22l5.39-1.41a9.8 9.8 0 0 0 4.64 1.18h.01c5.42 0 9.82-4.4 9.83-9.82a9.78 9.78 0 0 0-2.82-7.04Zm-7.02 15.2h-.01a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.2.84.86-3.12-.2-.32a8.14 8.14 0 0 1 1.25-10.06 8.1 8.1 0 0 1 5.75-2.38c4.49 0 8.14 3.65 8.14 8.14a8.15 8.15 0 0 1-8.16 8.21Zm4.47-6.1c-.25-.13-1.47-.73-1.7-.82-.23-.08-.4-.13-.57.13-.17.25-.65.82-.8.98-.15.17-.3.19-.55.07-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.48-1.4-1.73-.15-.25-.02-.39.11-.52.12-.12.25-.3.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.77-1.88-.2-.48-.41-.42-.57-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.03 2.6c.13.17 1.77 2.7 4.28 3.79.6.26 1.08.42 1.45.54.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29Z"/></svg>
+            </a>
+            <a href="https://maps.google.com/?q=Av.+La+Cordillera+4833,+Cordoba" target="_blank" rel="noreferrer" aria-label="Ubicación">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 4.82 5.42 11.5 6.05 12.27a1.24 1.24 0 0 0 1.9 0C13.58 20.5 19 13.82 19 9a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Navegación</h3>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalog.html">Catálogo</a></li>
+            <li><a href="index.html#vendetuauto">Vendé tu auto</a></li>
+            <li><a href="index.html#testimonios">Testimonios</a></li>
+            <li><a href="#catalog-contact">Ubicación</a></li>
+            <li><a href="index.html#hero-contact-form">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contacto</h3>
+          <ul class="footer-contact-list">
+            <li><img class="footer-contact-icon" src="assets/icons/footer-whatsapp.svg" alt=""><div><strong>WhatsApp</strong><span>351 230 8551</span></div></li>
+            <li><img class="footer-contact-icon" src="assets/icons/footer-instagram.svg" alt=""><div><strong>Instagram</strong><span>@zambrana_automotores</span></div></li>
+            <li><img class="footer-contact-icon" src="assets/icons/footer-marker.svg" alt=""><div><strong>Dirección</strong><span>Av. La Cordillera 4833, Córdoba Capital</span></div></li>
+            <li><img class="footer-contact-icon" src="assets/icons/footer-clock.svg" alt=""><div><strong>Horarios</strong><span>Lunes a viernes: 09:00 a 13:00 y 16:00 a 20:00 hs. Sábados: 09:00 a 13:30 hs.</span></div></li>
+          </ul>
+        </div>
+
+        <div class="footer-column footer-cta-column">
+          <h3><img class="footer-title-icon" src="assets/icons/footer-comment.svg" alt="">¿Buscás tu próximo vehículo?</h3>
+          <p>Escribinos y te ayudamos a encontrar la unidad ideal para vos.</p>
+          <a class="primary-btn footer-cta-btn" href="https://wa.me/5493512308551?text=Hola%20Zambrana%20Automotores%2C%20les%20escribo%20desde%20la%20web%20y%20quiero%20hacer%20una%20consulta." target="_blank" rel="noreferrer"><img class="btn-icon" src="assets/icons/whatsapp.png" alt="">Consultar por WhatsApp</a>
+          <a class="secondary-dark-btn footer-cta-btn" href="catalog.html">Ver catálogo</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Zambrana Automotores. Todos los derechos reservados.</p>
+        <p>Sitio desarrollado por Lucas Lira</p>
+      </div>
+    </div>
+  </footer>
 
   <script src="config.js"></script>
   <script src="vehicles.js"></script>

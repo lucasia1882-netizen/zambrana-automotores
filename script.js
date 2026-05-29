@@ -628,6 +628,82 @@
       updateGallery(0);
     }
 
+    function initTestimonialsCarousel() {
+      const slider = document.querySelector("#testimonials-slider");
+      const track = slider?.querySelector(".testimonial-track");
+      const cards = track ? Array.from(track.querySelectorAll(".testimonial-card")) : [];
+      const prev = slider?.querySelector(".testimonial-arrow-prev");
+      const next = slider?.querySelector(".testimonial-arrow-next");
+      const dotsContainer = document.querySelector("#testimonial-dots");
+
+      if (!slider || !track || !cards.length || !dotsContainer) {
+        return;
+      }
+
+      let currentPage = 0;
+      let perView = 3;
+      let pageCount = 1;
+      let dots = [];
+
+      const getPerView = () => {
+        if (window.innerWidth <= 640) return 1;
+        if (window.innerWidth <= 980) return 2;
+        return 3;
+      };
+
+      const buildDots = () => {
+        dotsContainer.innerHTML = "";
+        dots = Array.from({ length: pageCount }, (_, index) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "testimonial-dot";
+          dot.setAttribute("aria-label", `Ir a la pÃ¡gina ${index + 1} de testimonios`);
+          dot.addEventListener("click", () => {
+            currentPage = index;
+            update();
+          });
+          dotsContainer.appendChild(dot);
+          return dot;
+        });
+      };
+
+      const update = () => {
+        const firstCard = cards[currentPage * perView] ?? cards[0];
+        const offset = firstCard ? firstCard.offsetLeft : 0;
+
+        track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("is-active", index === currentPage);
+        });
+
+        prev?.classList.toggle("is-disabled", pageCount <= 1);
+        next?.classList.toggle("is-disabled", pageCount <= 1);
+      };
+
+      const refresh = () => {
+        perView = getPerView();
+        pageCount = Math.max(1, Math.ceil(cards.length / perView));
+        currentPage = Math.min(currentPage, pageCount - 1);
+        slider.style.setProperty("--testimonial-per-view", String(perView));
+        buildDots();
+        update();
+      };
+
+      prev?.addEventListener("click", () => {
+        currentPage = (currentPage - 1 + pageCount) % pageCount;
+        update();
+      });
+
+      next?.addEventListener("click", () => {
+        currentPage = (currentPage + 1) % pageCount;
+        update();
+      });
+
+      window.addEventListener("resize", refresh);
+      refresh();
+    }
+
   window.ZambranaSite = {
     vehicles,
     config,
@@ -653,6 +729,7 @@
       initOpportunitiesCarousel();
       relocateUsedCarSection();
       renderSellers();
+      initTestimonialsCarousel();
     }
 
     initReveals();

@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const site = window.ZambranaSite;
   if (!site || document.body.dataset.page !== "catalog") {
     return;
@@ -7,6 +7,7 @@
   const { vehicles, createVehicleCard } = site;
 
   const grid = document.querySelector("#catalog-grid");
+  const pagination = document.querySelector("#catalog-pagination");
   const summary = document.querySelector("#catalog-summary");
   const orderSelect = document.querySelector("#catalog-order");
   const searchForm = document.querySelector("#catalog-search-form");
@@ -16,8 +17,6 @@
   const filterEls = {
     type: document.querySelector("#filter-type"),
     brand: document.querySelector("#filter-brand"),
-    fuel: document.querySelector("#filter-fuel"),
-    transmission: document.querySelector("#filter-transmission"),
     yearMin: document.querySelector("#year-min"),
     yearMax: document.querySelector("#year-max"),
     priceMin: document.querySelector("#price-min"),
@@ -27,12 +26,9 @@
   };
 
   const PRICE_FILTER_LIMIT = 90000000;
-
   const years = vehicles.map((vehicle) => vehicle.year);
   const minYear = Math.min(...years);
   const maxYear = Math.max(...years);
-
-  const pricedVehicles = vehicles.filter((vehicle) => Number.isFinite(vehicle.priceValue));
   const minPrice = 0;
   const maxPrice = PRICE_FILTER_LIMIT;
 
@@ -44,13 +40,21 @@
     yearMax: maxYear,
     priceMin: minPrice,
     priceMax: maxPrice,
-    order: "featured"
+    order: "featured",
+    page: 1
   };
+
+  let lastItemsPerPage = getItemsPerPage();
+
+  function getItemsPerPage() {
+    return window.matchMedia("(max-width: 640px)").matches ? 12 : 15;
+  }
 
   function formatPriceRange(value) {
     if (!Number.isFinite(value) || value <= 0) {
       return "$0";
     }
+
     const millions = value / 1000000;
     const formatted = Number.isInteger(millions)
       ? `${millions}`
@@ -59,6 +63,8 @@
   }
 
   function populateSelect(select, values) {
+    if (!select) return;
+
     values.forEach((value) => {
       const option = document.createElement("option");
       option.value = value;
@@ -70,12 +76,6 @@
   function populateFilters() {
     populateSelect(filterEls.type, [...new Set(vehicles.map((vehicle) => vehicle.type))]);
     populateSelect(filterEls.brand, [...new Set(vehicles.map((vehicle) => vehicle.brand))].sort());
-    if (filterEls.fuel) {
-      populateSelect(filterEls.fuel, [...new Set(vehicles.map((vehicle) => vehicle.fuel))]);
-    }
-    if (filterEls.transmission) {
-      populateSelect(filterEls.transmission, [...new Set(vehicles.map((vehicle) => vehicle.transmission))]);
-    }
 
     filterEls.yearMin.min = String(minYear);
     filterEls.yearMin.max = String(maxYear);
@@ -104,14 +104,13 @@
     state.priceMin = Number(params.get("priceMin") || minPrice);
     state.priceMax = Number(params.get("priceMax") || maxPrice);
     state.order = params.get("order") || "featured";
+    state.page = Math.max(1, Number(params.get("page") || 1));
   }
 
   function syncInputsFromState() {
     queryInput.value = state.query;
     filterEls.type.value = state.type;
     filterEls.brand.value = state.brand;
-    if (filterEls.fuel) filterEls.fuel.value = state.fuel;
-    if (filterEls.transmission) filterEls.transmission.value = state.transmission;
     filterEls.yearMin.value = String(state.yearMin);
     filterEls.yearMax.value = String(state.yearMax);
     filterEls.priceMin.value = String(state.priceMin);
@@ -130,6 +129,30 @@
     filterEls.priceOutput.textContent = priceHigh >= PRICE_FILTER_LIMIT
       ? `${formatPriceRange(priceLow)} - Sin tope`
       : `${formatPriceRange(priceLow)} - ${formatPriceRange(priceHigh)}`;
+
+    updateRangeTrackStyles(filterEls.yearMin, filterEls.yearMax);
+    updateRangeTrackStyles(filterEls.priceMin, filterEls.priceMax);
+  }
+
+  function updateRangeTrackStyles(minInput, maxInput) {
+    if (!minInput || !maxInput) return;
+
+    const min = Number(minInput.min);
+    const max = Number(minInput.max);
+    const lowValue = Math.min(Number(minInput.value), Number(maxInput.value));
+    const highValue = Math.max(Number(minInput.value), Number(maxInput.value));
+    const start = ((lowValue - min) / (max - min)) * 100;
+    const end = ((highValue - min) / (max - min)) * 100;
+    const gradient = `linear-gradient(90deg,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.28) ${start}%,
+      #ff2f37 ${start}%,
+      #d71920 ${end}%,
+      rgba(255, 255, 255, 0.28) ${end}%,
+      rgba(255, 255, 255, 0.28) 100%)`;
+
+    minInput.style.background = gradient;
+    maxInput.style.background = gradient;
   }
 
   function normalizeState() {
@@ -141,6 +164,7 @@
 
   function sortVehicles(items) {
     const list = [...items];
+
     switch (state.order) {
       case "price-asc":
         return list.sort((a, b) => {
@@ -183,22 +207,121 @@
     return true;
   }
 
-  function renderCatalog() {
+  function getVisiblePageItems(totalPages) {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    const pages = new Set([1, totalPages, state.page - 1, state.page, state.page + 1]);
+    const normalized = [...pages]
+      .filter((page) => page >= 1 && page <= totalPages)
+      .sort((a, b) => a - b);
+
+    const result = [];
+    normalized.forEach((page, index) => {
+      const previous = normalized[index - 1];
+      if (previous && page - previous > 1) {
+        result.push("ellipsis");
+      }
+      result.push(page);
+    });
+
+    return result;
+  }
+
+  function scrollToCatalogTop() {
+    const target = document.querySelector(".catalog-results");
+    if (!target) return;
+
+    const top = target.getBoundingClientRect().top + window.scrollY - 120;
+    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  }
+
+  function renderPagination(totalItems, itemsPerPage) {
+    const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+    pagination.innerHTML = "";
+
+    if (totalItems <= itemsPerPage) {
+      pagination.hidden = true;
+      return;
+    }
+
+    pagination.hidden = false;
+
+    const previousButton = document.createElement("button");
+    previousButton.type = "button";
+    previousButton.className = "pagination-btn";
+    previousButton.textContent = "Anterior";
+    previousButton.disabled = state.page === 1;
+    previousButton.addEventListener("click", () => {
+      if (state.page === 1) return;
+      state.page -= 1;
+      updateUrl();
+      renderCatalog({ scrollToTop: true });
+    });
+    pagination.appendChild(previousButton);
+
+    getVisiblePageItems(totalPages).forEach((item) => {
+      if (item === "ellipsis") {
+        const ellipsis = document.createElement("span");
+        ellipsis.className = "pagination-ellipsis";
+        ellipsis.textContent = "...";
+        pagination.appendChild(ellipsis);
+        return;
+      }
+
+      const pageButton = document.createElement("button");
+      pageButton.type = "button";
+      pageButton.className = `pagination-number${item === state.page ? " pagination-active" : ""}`;
+      pageButton.textContent = String(item);
+      pageButton.setAttribute("aria-label", `Ir a la página ${item}`);
+      if (item === state.page) {
+        pageButton.setAttribute("aria-current", "page");
+      }
+      pageButton.addEventListener("click", () => {
+        if (item === state.page) return;
+        state.page = item;
+        updateUrl();
+        renderCatalog({ scrollToTop: true });
+      });
+      pagination.appendChild(pageButton);
+    });
+
+    const nextButton = document.createElement("button");
+    nextButton.type = "button";
+    nextButton.className = "pagination-btn";
+    nextButton.textContent = "Siguiente";
+    nextButton.disabled = state.page === totalPages;
+    nextButton.addEventListener("click", () => {
+      if (state.page === totalPages) return;
+      state.page += 1;
+      updateUrl();
+      renderCatalog({ scrollToTop: true });
+    });
+    pagination.appendChild(nextButton);
+  }
+
+  function renderCatalog({ scrollToTop = false } = {}) {
     normalizeState();
     updateRangeOutputs();
 
     const filtered = sortVehicles(vehicles.filter(matchesFilters));
+    const itemsPerPage = getItemsPerPage();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
+    state.page = Math.min(Math.max(state.page, 1), totalPages);
+
+    const startIndex = (state.page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const visibleVehicles = filtered.slice(startIndex, endIndex);
+
     grid.innerHTML = "";
 
-    filtered.forEach((vehicle) => {
+    visibleVehicles.forEach((vehicle) => {
       grid.appendChild(createVehicleCard(vehicle, true));
     });
 
-    summary.textContent = filtered.length === 1
-      ? "Mostrando 1 unidad"
-      : `Mostrando ${filtered.length} unidades`;
-
     if (!filtered.length) {
+      summary.textContent = "Mostrando 0 unidades";
       grid.innerHTML = `
         <article class="catalog-empty">
           <p class="eyebrow">Sin resultados</p>
@@ -206,6 +329,14 @@
           <p>Probá limpiando algunos criterios o buscá una marca o modelo diferente.</p>
         </article>
       `;
+    } else {
+      summary.textContent = `Mostrando ${startIndex + 1}-${Math.min(endIndex, filtered.length)} de ${filtered.length} unidades`;
+    }
+
+    renderPagination(filtered.length, itemsPerPage);
+
+    if (scrollToTop) {
+      scrollToCatalogTop();
     }
   }
 
@@ -219,6 +350,7 @@
     if (state.priceMin !== minPrice) params.set("priceMin", String(state.priceMin));
     if (state.priceMax !== maxPrice) params.set("priceMax", String(state.priceMax));
     if (state.order !== "featured") params.set("order", state.order);
+    if (state.page > 1) params.set("page", String(state.page));
     history.replaceState({}, "", `${window.location.pathname}${params.toString() ? `?${params}` : ""}`);
   }
 
@@ -227,6 +359,7 @@
     state.type = filterEls.type.value;
     state.brand = filterEls.brand.value;
     state.order = orderSelect.value;
+    state.page = 1;
     normalizeState();
     updateUrl();
     renderCatalog();
@@ -241,7 +374,8 @@
       yearMax: maxYear,
       priceMin: minPrice,
       priceMax: maxPrice,
-      order: "featured"
+      order: "featured",
+      page: 1
     };
     syncInputsFromState();
     updateUrl();
@@ -249,8 +383,6 @@
   }
 
   populateFilters();
-  filterEls.fuel?.closest("label")?.remove();
-  filterEls.transmission?.closest("label")?.remove();
   readUrlState();
   syncInputsFromState();
   renderCatalog();
@@ -260,7 +392,7 @@
     applyStateFromInputs();
   });
 
-  [filterEls.type, filterEls.brand, filterEls.fuel, filterEls.transmission, orderSelect]
+  [filterEls.type, filterEls.brand, orderSelect]
     .filter(Boolean)
     .forEach((input) => input.addEventListener("change", applyStateFromInputs));
 
@@ -268,4 +400,12 @@
     .forEach((input) => input.addEventListener("input", applyStateFromInputs));
 
   clearFiltersButton.addEventListener("click", resetFilters);
+
+  window.addEventListener("resize", () => {
+    const nextItemsPerPage = getItemsPerPage();
+    if (nextItemsPerPage === lastItemsPerPage) return;
+    lastItemsPerPage = nextItemsPerPage;
+    renderCatalog();
+  });
 })();
+

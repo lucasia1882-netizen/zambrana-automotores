@@ -1066,7 +1066,10 @@ p {
 }
 
 .vehicle-price {
-  font-size: 1.28rem;
+  font-size: 1.44rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 
 .vehicle-price.is-hidden {
@@ -1201,7 +1204,7 @@ p {
 
 .vehicle-card-compact .vehicle-price {
   margin-right: 0;
-  font-size: 1.14rem;
+  font-size: 1.28rem;
 }
 
 .vehicle-card-compact .vehicle-price.is-hidden {
@@ -1224,11 +1227,34 @@ p {
 
 .used-car-card {
   border-radius: var(--radius);
-  padding: 28px;
+  padding: 34px 36px;
   display: grid;
   gap: 24px;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: 1fr;
   align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.used-car-card > div {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  max-width: min(1080px, 100%);
+}
+
+.used-car-card .eyebrow {
+  margin-bottom: 0;
+}
+
+.used-car-card h2 {
+  max-width: 21ch;
+  margin: 0 auto;
+}
+
+.used-car-card p {
+  max-width: 76ch;
+  margin: 0 auto;
 }
 
 .contact-layout {
@@ -1432,6 +1458,17 @@ p {
 
 .sellers-section {
   padding-top: 58px;
+}
+
+.sellers-section .section-heading {
+  max-width: min(1120px, 100%);
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.sellers-section .section-heading h2 {
+  max-width: 22ch;
+  margin: 0 auto;
 }
 
 .testimonials-section {

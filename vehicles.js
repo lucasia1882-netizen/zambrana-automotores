@@ -177,41 +177,6 @@ window.zambranaVehicles = [
     ]
   },
   {
-    slug: "fiat-titano-ranch-22-turbodiesel-2026",
-    brand: "Fiat",
-    model: "Titano Ranch 2.2 4x4",
-    fullName: "Fiat Titano Ranch 2.2 Turbodi\u00e9sel",
-    type: "Pickup",
-    year: 2026,
-    kms: null,
-    transmission: "Autom\u00e1tica de 8 marchas",
-    fuel: "Di\u00e9sel",
-    price: "$58.000.000",
-    priceValue: 58000000,
-    color: "Blanco",
-    status: "Disponible",
-    shortDescription: "Una pickup 0km robusta, moderna y lista para combinar trabajo, confort y tecnolog\u00eda.",
-    description:
-      "La Fiat Titano Ranch 2.2 Turbodi\u00e9sel 0km es una pickup pensada para quienes buscan presencia, equipamiento y versatilidad. Su versi\u00f3n Ranch tope de gama suma dise\u00f1o moderno, interior premium, tecnolog\u00eda y una propuesta ideal tanto para el trabajo como para el uso personal.",
-    image: "assets/vehiculos/titano/titano-frente-3-4.jpeg",
-    imagePosition: "center 56%",
-    gallery: [
-      "assets/vehiculos/titano/titano-frente-3-4.jpeg",
-      "assets/vehiculos/titano/titano-frente.jpeg",
-      "assets/vehiculos/titano/titano-lateral.jpeg",
-      "assets/vehiculos/titano/titano-cola.jpeg",
-      "assets/vehiculos/titano/titano-caja-abierta.jpeg",
-      "assets/vehiculos/titano/titano-interior.png",
-      "assets/vehiculos/titano/titano-asientos.png"
-    ],
-    highlights: [
-      "Motor 2.2 turbodi\u00e9sel",
-      "Caja autom\u00e1tica de 8 marchas",
-      "Versi\u00f3n Ranch tope de gama",
-      "Confort y potencia para cualquier terreno"
-    ]
-  },
-  {
     slug: "citroen-c3-exclusive-14-hdi-2007",
     brand: "Citro\u00ebn",
     model: "C3 Exclusive 1.4 HDi",
@@ -228,17 +193,16 @@ window.zambranaVehicles = [
     shortDescription: "Un hatchback full, rendidor y muy pr\u00e1ctico para moverse todos los d\u00edas con bajo consumo.",
     description:
       "El Citro\u00ebn C3 Exclusive 1.4 HDi 5 puertas combina bajo consumo, equipamiento y practicidad en un formato ideal para ciudad. Su versi\u00f3n Exclusive suma confort interior y una propuesta equilibrada para quienes buscan un auto funcional, c\u00f3modo y econ\u00f3mico en el uso diario.",
-    image: "assets/vehiculos/c3/c3-frente-3-4.jpeg",
+    image: "assets/vehiculos/titano/titano-cola.jpeg",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/c3/c3-frente-3-4.jpeg",
-      "assets/vehiculos/c3/c3-frente.jpeg",
-      "assets/vehiculos/c3/c3-frente-lateral.jpeg",
-      "assets/vehiculos/c3/c3-lateral.jpeg",
-      "assets/vehiculos/c3/c3-cola-3-4.jpeg",
-      "assets/vehiculos/c3/c3-cola.jpeg",
-      "assets/vehiculos/c3/c3-tablero.jpeg",
-      "assets/vehiculos/c3/c3-asientos.jpeg"
+      "assets/vehiculos/titano/titano-cola.jpeg",
+      "assets/vehiculos/titano/titano-caja-abierta.jpeg",
+      "assets/vehiculos/titano/titano-frente.jpeg",
+      "assets/vehiculos/titano/titano-frente-3-4.jpeg",
+      "assets/vehiculos/titano/titano-lateral.jpeg",
+      "assets/vehiculos/titano/titano-interior.png",
+      "assets/vehiculos/titano/titano-asientos.png"
     ],
     highlights: [
       "Motor 1.4 HDi di\u00e9sel",

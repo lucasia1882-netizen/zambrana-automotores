@@ -657,7 +657,7 @@
           const dot = document.createElement("button");
           dot.type = "button";
           dot.className = "testimonial-dot";
-          dot.setAttribute("aria-label", `Ir a la pÃ¡gina ${index + 1} de testimonios`);
+          dot.setAttribute("aria-label", `Ir a la página ${index + 1} de testimonios`);
           dot.addEventListener("click", () => {
             currentPage = index;
             update();

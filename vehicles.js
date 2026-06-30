@@ -867,16 +867,16 @@ window.zambranaVehicles = [
     shortDescription: "Una SUV moderna, cómoda y bien equipada, ideal para disfrutar ciudad y ruta con estilo.",
     description:
       "La Nissan Kicks Exclusive 2020 combina diseño actual, posición de manejo elevada y un nivel de equipamiento destacado. Es una opción ideal para quienes buscan una SUV urbana, cómoda y con una propuesta equilibrada entre imagen, practicidad y confort.",
-    image: "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0411.webp",
+    image: "Catalogo/Nissan Kicks Exclusive 2020/IMG_0411.webp",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0411.webp",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0412.webp",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0413.webp",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0414.webp",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0422.webp",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_0449.webp",
-      "assets/vehiculos/nissan-kicks-exclusive-2020/IMG_8044.webp"
+      "Catalogo/Nissan Kicks Exclusive 2020/IMG_0411.webp",
+      "Catalogo/Nissan Kicks Exclusive 2020/IMG_0412.webp",
+      "Catalogo/Nissan Kicks Exclusive 2020/IMG_0413.webp",
+      "Catalogo/Nissan Kicks Exclusive 2020/IMG_0414.webp",
+      "Catalogo/Nissan Kicks Exclusive 2020/IMG_0422.webp",
+      "Catalogo/Nissan Kicks Exclusive 2020/IMG_0449.webp",
+      "Catalogo/Nissan Kicks Exclusive 2020/IMG_8044.webp"
     ],
     highlights: [
       "Versión Exclusive",
@@ -902,16 +902,16 @@ window.zambranaVehicles = [
     shortDescription: "Un auto confiable, simple y funcional para quienes buscan practicidad y bajo costo de uso.",
     description:
       "El Toyota Etios X 2021 es una opción muy valorada por su confiabilidad, practicidad y economía de uso. Su formato compacto y su propuesta funcional lo convierten en un gran compañero para ciudad y para quienes priorizan simpleza y rendimiento.",
-    image: "assets/vehiculos/toyota-etios-x-2021/IMG_0295.webp",
+    image: "Catalogo/Toyota Etios X 2021/IMG_0295.webp",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/toyota-etios-x-2021/IMG_0295.webp",
-      "assets/vehiculos/toyota-etios-x-2021/IMG_0296.webp",
-      "assets/vehiculos/toyota-etios-x-2021/IMG_0299.webp",
-      "assets/vehiculos/toyota-etios-x-2021/IMG_0301.webp",
-      "assets/vehiculos/toyota-etios-x-2021/IMG_0302.webp",
-      "assets/vehiculos/toyota-etios-x-2021/IMG_0306.webp",
-      "assets/vehiculos/toyota-etios-x-2021/IMG_0316.webp"
+      "Catalogo/Toyota Etios X 2021/IMG_0295.webp",
+      "Catalogo/Toyota Etios X 2021/IMG_0296.webp",
+      "Catalogo/Toyota Etios X 2021/IMG_0299.webp",
+      "Catalogo/Toyota Etios X 2021/IMG_0301.webp",
+      "Catalogo/Toyota Etios X 2021/IMG_0302.webp",
+      "Catalogo/Toyota Etios X 2021/IMG_0306.webp",
+      "Catalogo/Toyota Etios X 2021/IMG_0316.webp"
     ],
     highlights: [
       "Confiabilidad Toyota",
@@ -937,16 +937,16 @@ window.zambranaVehicles = [
     shortDescription: "Una pickup con presencia, fortaleza y equipamiento para combinar trabajo y confort.",
     description:
       "La Volkswagen Amarok Highline 4x4 2012 ofrece una propuesta robusta y versátil, con una presencia muy marcada y una configuración ideal para quienes buscan una pickup equipada, capaz y cómoda para distintos usos.",
-    image: "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8496.webp",
+    image: "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8496.webp",
     imagePosition: "center 56%",
     gallery: [
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8496.webp",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8500.webp",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8505.webp",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8507.webp",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8517.webp",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8520.webp",
-      "assets/vehiculos/volkswagen-amarok-highline-4x4-2012/IMG_8529.webp"
+      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8496.webp",
+      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8500.webp",
+      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8505.webp",
+      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8507.webp",
+      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8517.webp",
+      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8520.webp",
+      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8529.webp"
     ],
     highlights: [
       "Versión Highline",

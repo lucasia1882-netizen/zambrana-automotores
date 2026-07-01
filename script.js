@@ -535,7 +535,6 @@
               <h1>${vehicle.fullName}</h1>
               <div class="vehicle-detail-header">
                 <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${vehicle.status}</span>
-                <strong class="vehicle-price">${vehicle.price}</strong>
               </div>
             </div>
             ${brandLogo ? `

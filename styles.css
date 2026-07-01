@@ -2314,46 +2314,62 @@ p {
   padding-top: 24px;
 }
 
+#vehicle-detail {
+  width: min(1400px, calc(100% - 40px));
+}
+
 .vehicle-detail-shell {
   border-radius: var(--radius);
   padding: 28px;
   display: grid;
-  gap: 28px;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 30px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.1fr);
+  align-items: start;
 }
 
 .vehicle-detail-gallery,
 .vehicle-detail-copy {
   display: grid;
-  gap: 16px;
+  gap: 18px;
+}
+
+.vehicle-detail-copy {
+  align-content: start;
 }
 
 .vehicle-detail-top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 124px;
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) 104px;
+  gap: 18px;
   align-items: start;
 }
 
 .vehicle-detail-heading {
   display: grid;
-  gap: 12px;
+  gap: 10px;
+}
+
+.vehicle-detail-heading h1 {
+  font-size: clamp(1.9rem, 2.2vw, 2.125rem);
+  line-height: 1.08;
+  max-width: 22ch;
+  text-wrap: balance;
 }
 
 .vehicle-detail-brand-mark {
-  min-height: 124px;
+  min-height: 104px;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: 18px;
 }
 
 .vehicle-detail-brand-mark img {
   width: 100%;
-  max-width: 84px;
-  max-height: 84px;
+  max-width: 72px;
+  max-height: 72px;
   object-fit: contain;
 }
 
@@ -2364,7 +2380,7 @@ p {
 
 .vehicle-detail-carousel-track {
   position: relative;
-  min-height: clamp(340px, 44vw, 540px);
+  min-height: clamp(420px, 36vw, 540px);
   overflow: hidden;
 }
 
@@ -2372,12 +2388,14 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: clamp(170px, 21%, 220px);
+  width: clamp(116px, 18%, 150px);
   padding: 0;
   border-radius: calc(var(--radius) + 2px);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(10, 10, 10, 0.98);
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 62%),
+    rgba(8, 8, 8, 0.98);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   transition:
@@ -2396,35 +2414,35 @@ p {
   position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
 }
 
 .vehicle-detail-slide.is-active {
   left: 50%;
-  width: clamp(286px, 42%, 394px);
+  width: clamp(390px, 74%, 620px);
   opacity: 1;
   transform: translateX(-50%) scale(1);
   z-index: 3;
   border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 22px 42px rgba(0, 0, 0, 0.3);
 }
 
 .vehicle-detail-slide.is-prev {
   left: 0;
-  opacity: 0.84;
-  transform: translateX(-7%) scale(0.952);
+  opacity: 0.42;
+  transform: translateX(-14%) scale(0.92);
   z-index: 2;
-  filter: saturate(0.94) brightness(0.92);
+  filter: saturate(0.72) brightness(0.72);
 }
 
 .vehicle-detail-slide.is-next {
   right: 0;
-  opacity: 0.84;
-  transform: translateX(7%) scale(0.952);
+  opacity: 0.42;
+  transform: translateX(14%) scale(0.92);
   z-index: 2;
-  filter: saturate(0.94) brightness(0.92);
+  filter: saturate(0.72) brightness(0.72);
 }
 
 .vehicle-detail-slide.is-hidden {
@@ -2736,6 +2754,11 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .vehicle-detail-heading h1 {
+    font-size: clamp(1.9rem, 2.12rem, 2.28rem);
+    max-width: none;
+  }
+
   .vehicle-detail-carousel-track {
     min-height: 320px;
   }
@@ -2778,6 +2801,20 @@ p {
 @media (max-width: 640px) {
   .site-shell {
     width: min(100%, calc(100% - 22px));
+  }
+
+  #vehicle-detail {
+    width: min(100%, calc(100% - 22px));
+  }
+
+  body[data-page="vehicle"] {
+    overflow-x: hidden;
+  }
+
+  @supports selector(html:has(body[data-page="vehicle"])) {
+    html:has(body[data-page="vehicle"]) {
+      overflow-x: hidden;
+    }
   }
 
   .section {

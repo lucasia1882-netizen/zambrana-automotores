@@ -281,40 +281,6 @@ window.zambranaVehicles = [
     ]
   },
   {
-    slug: "volkswagen-fox-trendline-16-2007",
-    brand: "Volkswagen",
-    model: "Fox Trendline 1.6",
-    fullName: "Volkswagen Fox Trendline 1.6",
-    type: "Hatchback",
-    year: 2007,
-    kms: null,
-    transmission: "Manual",
-    fuel: "Nafta",
-    price: "Consultar",
-    priceValue: null,
-    color: "Rojo",
-    status: "Disponible",
-    shortDescription: "Un hatchback \u00e1gil, c\u00f3modo y muy pr\u00e1ctico para todos los d\u00edas, con buen espacio interior y manejo simple.",
-    description:
-      "El Volkswagen Fox Trendline 1.6 2007 ofrece una propuesta equilibrada entre practicidad, confort y agilidad de manejo. Su carrocer\u00eda de 5 puertas, el motor naftero 1.6 y el interior espacioso lo convierten en una opci\u00f3n muy \u00fatil para ciudad, uso diario y quienes buscan un auto funcional en buen estado general.",
-    image: "assets/vehiculos/fox/fox-frente-3-4.jpeg",
-    imagePosition: "center 56%",
-    gallery: [
-      "assets/vehiculos/fox/fox-frente-3-4.jpeg",
-      "assets/vehiculos/fox/fox-frente.jpeg",
-      "assets/vehiculos/fox/fox-frente-3-4-2.jpeg",
-      "assets/vehiculos/fox/fox-lateral.jpeg",
-      "assets/vehiculos/fox/fox-cola.jpeg",
-      "assets/vehiculos/fox/fox-tablero.jpeg"
-    ],
-    highlights: [
-      "Motor 1.6 nafta",
-      "5 puertas",
-      "Versi\u00f3n Trendline full",
-      "Muy \u00e1gil y f\u00e1cil de manejar"
-    ]
-  },
-  {
     slug: "volkswagen-virtus-highline-170-tsi-at-2025",
     brand: "Volkswagen",
     model: "Virtus Highline 170 TSI AT",
@@ -885,41 +851,6 @@ window.zambranaVehicles = [
     ]
   },
   {
-    slug: "volkswagen-amarok-highline-4x4-2012",
-    brand: "Volkswagen",
-    model: "Amarok Highline 4x4",
-    fullName: "Volkswagen Amarok Highline 4x4",
-    type: "Pickup",
-    year: 2012,
-    kms: 168000,
-    transmission: "Manual",
-    fuel: "Diésel",
-    price: "$24.900.000",
-    priceValue: 24900000,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Una pickup con presencia, fortaleza y equipamiento para combinar trabajo y confort.",
-    description:
-      "La Volkswagen Amarok Highline 4x4 2012 ofrece una propuesta robusta y versátil, con una presencia muy marcada y una configuración ideal para quienes buscan una pickup equipada, capaz y cómoda para distintos usos.",
-    image: "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8496.webp",
-    imagePosition: "center 56%",
-    gallery: [
-      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8496.webp",
-      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8500.webp",
-      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8505.webp",
-      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8507.webp",
-      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8517.webp",
-      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8520.webp",
-      "Catalogo/Volkswagen Amarok Highline 4x4 2012/IMG_8529.webp"
-    ],
-    highlights: [
-      "Versión Highline",
-      "Tracción 4x4",
-      "Pickup versátil",
-      "Muy buena presencia"
-    ]
-  },
-  {
     slug: "volkswagen-nivus-2021",
     brand: "Volkswagen",
     model: "Nivus",
@@ -1036,45 +967,6 @@ window.zambranaVehicles = [
       "Unidad 0KM",
       "Ideal para trabajo y uso personal",
       "Diseno moderno"
-    ]
-  },
-  {
-    slug: "peugeot-208-like-2023",
-    brand: "Peugeot",
-    model: "208 Like",
-    fullName: "Peugeot 208 Like",
-    type: "Hatchback",
-    year: 2023,
-    kms: null,
-    transmission: "Consultar",
-    fuel: "Consultar",
-    price: "Consultar",
-    priceValue: null,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Un hatchback moderno, agil y comodo, pensado para quienes buscan diseno actual y buen uso diario.",
-    description:
-      "El Peugeot 208 Like 2023 combina un diseno actual con una propuesta muy equilibrada para ciudad y uso cotidiano. Su formato hatchback, su agilidad y su buen nivel de confort lo convierten en una opcion ideal para quienes buscan un auto moderno, practico y con una presencia muy atractiva.",
-    image: "assets/vehiculos/peugeot-208-like-2023/foto-01.jpeg",
-    imagePosition: "center 53%",
-    cardImage: "assets/vehiculos/peugeot-208-like-2023/foto-01.jpeg",
-    cardImagePosition: "center 45%",
-    galleryImagePosition: "center 48%",
-    gallery: [
-      "assets/vehiculos/peugeot-208-like-2023/foto-01.jpeg",
-      "assets/vehiculos/peugeot-208-like-2023/foto-02.jpeg",
-      "assets/vehiculos/peugeot-208-like-2023/foto-03.jpeg",
-      "assets/vehiculos/peugeot-208-like-2023/foto-04.jpeg",
-      "assets/vehiculos/peugeot-208-like-2023/foto-05.jpeg",
-      "assets/vehiculos/peugeot-208-like-2023/foto-06.jpeg",
-      "assets/vehiculos/peugeot-208-like-2023/foto-07.jpeg",
-      "assets/vehiculos/peugeot-208-like-2023/foto-08.jpeg"
-    ],
-    highlights: [
-      "Diseno moderno",
-      "Ideal para ciudad",
-      "Muy agil de manejar",
-      "Buen confort diario"
     ]
   }
 ];

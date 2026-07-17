@@ -161,9 +161,11 @@
 
   function relocateUsedCarSection() {
     const usedSection = document.querySelector("#vendetuauto");
+    const financingSection = document.querySelector("#financiacion");
     const contactSection = document.querySelector("#ubicacion");
     const sellersSection = document.querySelector("#vendedores");
     if (!usedSection || !contactSection || !sellersSection) return;
+    if (financingSection) return;
     if (usedSection.compareDocumentPosition(contactSection) & Node.DOCUMENT_POSITION_FOLLOWING) {
       sellersSection.parentNode.insertBefore(usedSection, sellersSection);
     }

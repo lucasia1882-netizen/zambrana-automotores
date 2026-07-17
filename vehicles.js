@@ -247,40 +247,6 @@ window.zambranaVehicles = [
     ]
   },
   {
-    slug: "chevrolet-tracker-ltz-manual-2017",
-    brand: "Chevrolet",
-    model: "Tracker LTZ Manual",
-    fullName: "Chevrolet Tracker LTZ Manual",
-    type: "SUV",
-    year: 2017,
-    kms: null,
-    transmission: "Manual",
-    fuel: "Nafta / GNC",
-    price: "$17.000.000",
-    priceValue: 17000000,
-    color: "Gris",
-    status: "Disponible",
-    shortDescription: "Una SUV full, c\u00f3moda y muy bien equipada, ideal para uso diario y viajes con excelente presencia.",
-    description:
-      "La Chevrolet Tracker LTZ Manual 2017 ofrece una propuesta equilibrada entre confort, equipamiento y versatilidad. Su versi\u00f3n LTZ full, la caja manual y la combinaci\u00f3n nafta m\u00e1s GNC la convierten en una opci\u00f3n muy interesante para quienes buscan una SUV pr\u00e1ctica, econ\u00f3mica y en excelente estado general.",
-    image: "assets/vehiculos/tracker/tracker-frente.jpeg",
-    imagePosition: "center 56%",
-    gallery: [
-      "assets/vehiculos/tracker/tracker-frente.jpeg",
-      "assets/vehiculos/tracker/tracker-frente-3-4.jpeg",
-      "assets/vehiculos/tracker/tracker-frente-3-4-2.jpeg",
-      "assets/vehiculos/tracker/tracker-cola.jpeg",
-      "assets/vehiculos/tracker/tracker-tablero.jpeg",
-      "assets/vehiculos/tracker/tracker-asientos.jpeg"
-    ],
-    highlights: [
-      "Versi\u00f3n LTZ full",
-      "Caja manual",
-      "Nafta + GNC",
-      "Excelente estado general"
-    ]
-  },
-  {
     slug: "volkswagen-virtus-highline-170-tsi-at-2025",
     brand: "Volkswagen",
     model: "Virtus Highline 170 TSI AT",
@@ -355,41 +321,6 @@ window.zambranaVehicles = [
     ]
   },
   {
-    slug: "fiat-cronos-stile-13-gse-2025",
-    brand: "Fiat",
-    model: "Cronos Stile 1.3 GSE",
-    fullName: "Fiat Cronos Stile 1.3 GSE",
-    type: "Sed\u00e1n",
-    year: 2025,
-    kms: null,
-    transmission: "Consultar",
-    fuel: "Nafta",
-    price: "Consultar",
-    priceValue: null,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Un sed\u00e1n actual, c\u00f3modo y bien equipado, pensado para disfrutar manejo y practicidad todos los d\u00edas.",
-    description:
-      "El Fiat Cronos Stile 1.3 GSE ofrece una propuesta moderna con buen equipamiento, l\u00edneas actuales y una experiencia de manejo confortable. Es una alternativa ideal para quienes buscan un sed\u00e1n nuevo, funcional y con excelente presencia.",
-    image: "assets/vehiculos/fiat-cronos-stile-13-gse/foto-01.jpeg",
-    imagePosition: "center 56%",
-    gallery: [
-      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-01.jpeg",
-      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-02.jpeg",
-      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-03.jpeg",
-      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-04.jpeg",
-      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-05.jpeg",
-      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-06.jpeg",
-      "assets/vehiculos/fiat-cronos-stile-13-gse/foto-07.jpeg"
-    ],
-    highlights: [
-      "Motor 1.3 GSE",
-      "Versi\u00f3n Stile",
-      "Muy buen equipamiento",
-      "Excelente presencia"
-    ]
-  },
-  {
     slug: "fiat-mobi-easy-10-8v-2018",
     brand: "Fiat",
     model: "Mobi Easy 1.0 8V",
@@ -460,40 +391,6 @@ window.zambranaVehicles = [
     ]
   },
   {
-    slug: "jeep-renegade-sport-aut-18-nafta-full-2021",
-    brand: "Jeep",
-    model: "Renegade Sport Aut. 1.8",
-    fullName: "Jeep Renegade Sport Aut. 1.8",
-    type: "SUV",
-    year: 2021,
-    kms: null,
-    transmission: "Autom\u00e1tica",
-    fuel: "Nafta",
-    price: "$26.500.000",
-    priceValue: 26500000,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Una SUV con mucha presencia, confort de marcha y el estilo Jeep para disfrutar todos los d\u00edas.",
-    description:
-      "La Jeep Renegade Sport Autom\u00e1tica 1.8 2021 combina dise\u00f1o, altura de manejo y equipamiento en un formato ideal para ciudad y viajes. Es una propuesta equilibrada para quienes buscan una SUV moderna, c\u00f3moda y con excelente imagen.",
-    image: "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-01.jpeg",
-    imagePosition: "center 56%",
-    gallery: [
-      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-01.jpeg",
-      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-02.jpeg",
-      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-03.jpeg",
-      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-04.jpeg",
-      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-05.jpeg",
-      "assets/vehiculos/jeep-renegade-sport-aut-18-nafta-full-2021/foto-06.jpeg"
-    ],
-    highlights: [
-      "Motor 1.8 nafta",
-      "Caja autom\u00e1tica",
-      "Versi\u00f3n full",
-      "Excelente andar y confort"
-    ]
-  },
-  {
     slug: "motomel-blitz-110-okm-2026",
     brand: "Motomel",
     model: "Blitz 110 OKM",
@@ -524,41 +421,6 @@ window.zambranaVehicles = [
       "Unidad 0km",
       "Ideal para ciudad",
       "Muy econ\u00f3mica"
-    ]
-  },
-  {
-    slug: "toyota-corolla-xei-18-cvt-2016",
-    brand: "Toyota",
-    model: "Corolla XEI 1.8 CVT",
-    fullName: "Toyota Corolla XEI 1.8 CVT",
-    type: "Sed\u00e1n",
-    year: 2016,
-    kms: 148000,
-    transmission: "Autom\u00e1tica CVT",
-    fuel: "Nafta",
-    price: "$23.500.000",
-    priceValue: 23500000,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Un sed\u00e1n confiable, c\u00f3modo y muy equilibrado para quienes priorizan andar y durabilidad.",
-    description:
-      "El Toyota Corolla XEI 1.8 CVT 2016 es una referencia por confort, confiabilidad y calidad de marcha. Su caja CVT y su propuesta equilibrada lo convierten en una gran opci\u00f3n para uso diario, viajes y quienes buscan un sed\u00e1n probado.",
-    image: "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-01.jpeg",
-    imagePosition: "center 56%",
-    gallery: [
-      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-01.jpeg",
-      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-02.jpeg",
-      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-03.jpeg",
-      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-04.jpeg",
-      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-05.jpeg",
-      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-06.jpeg",
-      "assets/vehiculos/toyota-corolla-xei-18-cvt-2016/foto-07.jpeg"
-    ],
-    highlights: [
-      "Motor 1.8 nafta",
-      "Caja CVT",
-      "Versi\u00f3n XEI",
-      "Excelente confort de marcha"
     ]
   },
   {
@@ -665,45 +527,6 @@ window.zambranaVehicles = [
       "Versi\u00f3n Trendline",
       "Muy buen confort de marcha",
       "Dise\u00f1o moderno"
-    ]
-  },
-  {
-    slug: "toyota-hilux-dx-4x4-2025",
-    brand: "Toyota",
-    model: "Hilux DX 4x4",
-    fullName: "Toyota Hilux DX 4x4",
-    type: "Pickup",
-    year: 2025,
-    kms: null,
-    transmission: "Consultar",
-    fuel: "Consultar",
-    price: "Consultar",
-    priceValue: null,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Una pickup moderna, robusta y lista para trabajo o uso diario con la confiabilidad clásica de Hilux.",
-    description:
-      "La Toyota Hilux DX 4x4 2025 ofrece una propuesta sólida para quienes buscan una pickup nueva, confiable y versátil. Combina presencia, capacidad de trabajo y una base ideal para uso personal o laboral, con el respaldo y la durabilidad que caracterizan a la línea Hilux.",
-    image: "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-01.jpeg",
-    imagePosition: "center 56%",
-    cardImage: "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-02.jpeg",
-    cardImagePosition: "center 50%",
-    galleryImagePosition: "center 46%",
-    gallery: [
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-01.jpeg",
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-02.jpeg",
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-03.jpeg",
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-04.jpeg",
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-05.jpeg",
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-06.jpeg",
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-07.jpeg",
-      "assets/vehiculos/toyota-hilux-dx-4x4-2025/foto-08.jpeg"
-    ],
-    highlights: [
-      "Versi\u00f3n DX 4x4",
-      "Gran versatilidad de uso",
-      "Ideal para trabajo y diario",
-      "Confiabilidad Toyota"
     ]
   },
   {
@@ -931,45 +754,6 @@ window.zambranaVehicles = [
     ]
   },
   {
-    slug: "fiat-strada-volcano-0km",
-    brand: "Fiat",
-    model: "Strada Volcano 0KM",
-    fullName: "Fiat Strada Volcano 0KM",
-    type: "Pickup",
-    year: 2026,
-    kms: 0,
-    transmission: "Consultar",
-    fuel: "Nafta",
-    price: "$38.500.000",
-    priceValue: 38500000,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Una pickup moderna y versatil, ideal para combinar trabajo, uso personal y una presencia muy actual.",
-    description:
-      "La Fiat Strada Volcano 0KM ofrece una propuesta moderna, versatil y muy buscada para quienes quieren una pickup compacta con buena imagen, equipamiento y gran utilidad diaria. Es una opcion pensada para responder bien tanto en trabajo como en uso personal, con el plus de ser una unidad a estrenar.",
-    image: "assets/vehiculos/fiat-strada-volcano-0km/foto-01.jpeg",
-    imagePosition: "center 54%",
-    cardImage: "assets/vehiculos/fiat-strada-volcano-0km/foto-01.jpeg",
-    cardImagePosition: "center 46%",
-    galleryImagePosition: "center 48%",
-    gallery: [
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-01.jpeg",
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-02.jpeg",
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-03.jpeg",
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-04.jpeg",
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-05.jpeg",
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-06.jpeg",
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-07.jpeg",
-      "assets/vehiculos/fiat-strada-volcano-0km/foto-08.jpeg"
-    ],
-    highlights: [
-      "Version Volcano",
-      "Unidad 0KM",
-      "Ideal para trabajo y uso personal",
-      "Diseno moderno"
-    ]
-  },
-  {
     slug: "chevrolet-classic-ls-14-nafta-gnc-2012",
     brand: "Chevrolet",
     model: "Classic LS Spirit 1.4",
@@ -1000,46 +784,6 @@ window.zambranaVehicles = [
       "Catalogo/chevrolet-classic-ls-2012/WhatsApp Image 2026-06-25 at 11.26.47 AM (1).jpeg",
       "Catalogo/chevrolet-classic-ls-2012/WhatsApp Image 2026-06-25 at 11.26.47 AM (2).jpeg",
       "Catalogo/chevrolet-classic-ls-2012/WhatsApp Image 2026-06-25 at 11.26.47 AM.jpeg"
-    ],
-    highlights: [
-      "Precio a consultar",
-      "Kilometraje a confirmar",
-      "Color a consultar",
-      "Datos comerciales pendientes"
-    ]
-  },
-  {
-    slug: "kia-sportage-automatica-full-gnc-2012",
-    brand: "Kia",
-    model: "Sportage Automática Full",
-    fullName: "Kia Sportage Automática Full con GNC",
-    type: "SUV",
-    year: 2012,
-    kms: null,
-    transmission: "Automática",
-    fuel: "Nafta / GNC",
-    price: "Consultar",
-    priceValue: null,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Ficha base cargada con datos pendientes de completar.",
-    description:
-      "Kia Sportage Automática Full con GNC 2012. Precio, kilometraje, color y datos comerciales pendientes de completar.",
-    image: "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.12 AM (1).jpeg",
-    imagePosition: "center 56%",
-    cardImage: "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.12 AM (1).jpeg",
-    cardImagePosition: "center 50%",
-    galleryImagePosition: "center 50%",
-    gallery: [
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.12 AM (1).jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.12 AM (2).jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.12 AM (3).jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.13 AM (1).jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.13 AM (2).jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.13 AM (3).jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.13 AM (4).jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.13 AM.jpeg",
-      "Catalogo/kia-sportage-2012/WhatsApp Image 2026-06-24 at 11.25.14 AM.jpeg"
     ],
     highlights: [
       "Precio a consultar",
@@ -1080,86 +824,6 @@ window.zambranaVehicles = [
       "Catalogo/toyota-c-hr-hev-2023/WhatsApp Image 2026-06-25 at 11.22.15 AM.jpeg",
       "Catalogo/toyota-c-hr-hev-2023/WhatsApp Image 2026-06-25 at 11.22.16 AM (1).jpeg",
       "Catalogo/toyota-c-hr-hev-2023/WhatsApp Image 2026-06-25 at 11.22.16 AM.jpeg"
-    ],
-    highlights: [
-      "Precio a consultar",
-      "Kilometraje a confirmar",
-      "Color a consultar",
-      "Datos comerciales pendientes"
-    ]
-  },
-  {
-    slug: "toyota-yaris-s-cvt-15-nafta-full-2024",
-    brand: "Toyota",
-    model: "Yaris S CVT 1.5",
-    fullName: "Toyota Yaris S CVT 1.5 Nafta Full",
-    type: "Hatchback",
-    year: 2024,
-    kms: null,
-    transmission: "Automática CVT",
-    fuel: "Nafta",
-    price: "Consultar",
-    priceValue: null,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Ficha base cargada con datos pendientes de completar.",
-    description:
-      "Toyota Yaris S CVT 1.5 Nafta Full 2024. Precio, kilometraje, color y datos comerciales pendientes de completar.",
-    image: "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.43 AM (1).jpeg",
-    imagePosition: "center 56%",
-    cardImage: "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.43 AM (1).jpeg",
-    cardImagePosition: "center 50%",
-    galleryImagePosition: "center 50%",
-    gallery: [
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.43 AM (1).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.44 AM (4).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.44 AM (5).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.44 AM (6).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.44 AM (7).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.45 AM (5).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.45 AM (6).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.45 AM (7).jpeg",
-      "Catalogo/toyota-yaris-s-2024/WhatsApp Image 2026-06-17 at 10.55.45 AM (8).jpeg"
-    ],
-    highlights: [
-      "Precio a consultar",
-      "Kilometraje a confirmar",
-      "Color a consultar",
-      "Datos comerciales pendientes"
-    ]
-  },
-  {
-    slug: "volkswagen-gol-trend-trendline-16-nafta-2018",
-    brand: "Volkswagen",
-    model: "Gol Trend Trendline 1.6",
-    fullName: "Volkswagen Gol Trend Trendline 1.6 Nafta",
-    type: "Hatchback",
-    year: 2018,
-    kms: null,
-    transmission: "Consultar",
-    fuel: "Nafta",
-    price: "Consultar",
-    priceValue: null,
-    color: "Consultar",
-    status: "Disponible",
-    shortDescription: "Ficha base cargada con datos pendientes de completar.",
-    description:
-      "Volkswagen Gol Trend Trendline 1.6 Nafta 2018. Precio, kilometraje, color y datos comerciales pendientes de completar.",
-    image: "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.49 AM (3).jpeg",
-    imagePosition: "center 56%",
-    cardImage: "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.49 AM (3).jpeg",
-    cardImagePosition: "center 50%",
-    galleryImagePosition: "center 50%",
-    gallery: [
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.49 AM (3).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.49 AM (4).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.50 AM (4).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.50 AM (7).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.50 AM (8).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.50 AM (9).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.51 AM (4).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.51 AM (5).jpeg",
-      "Catalogo/volkswagen-gol-trendline-2018/WhatsApp Image 2026-06-26 at 11.50.51 AM (6).jpeg"
     ],
     highlights: [
       "Precio a consultar",

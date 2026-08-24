@@ -1236,6 +1236,16 @@ p {
   text-align: center;
 }
 
+.status-reservado {
+  background: rgba(255, 184, 77, 0.92);
+  color: #211300;
+}
+
+.status-vendido {
+  background: rgba(74, 78, 88, 0.94);
+  color: #ffffff;
+}
+
 .financing-section {
   padding-top: 8px;
   padding-bottom: 22px;
@@ -2477,6 +2487,40 @@ p {
 .catalog-empty {
   padding: 30px;
   border-radius: var(--radius);
+}
+
+.public-data-state {
+  width: 100%;
+  min-height: 180px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  text-align: center;
+  background: var(--card-strong);
+  grid-column: 1 / -1;
+}
+
+.opportunities-track > .public-data-state {
+  flex: 0 0 100%;
+}
+
+.public-data-loading {
+  opacity: 0.82;
+}
+
+.public-data-notice {
+  width: min(1400px, calc(100% - 40px));
+  margin: 0 auto 18px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 184, 77, 0.35);
+  border-radius: 12px;
+  background: rgba(255, 184, 77, 0.09);
+  color: rgba(255, 255, 255, 0.88);
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 .vehicle-page {

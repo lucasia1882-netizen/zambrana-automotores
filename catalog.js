@@ -4,6 +4,7 @@
     return;
   }
 
+  site.ready.then(() => {
   const { vehicles, createVehicleCard } = site;
 
   const grid = document.querySelector("#catalog-grid");
@@ -26,9 +27,10 @@
   };
 
   const PRICE_FILTER_LIMIT = 90000000;
-  const years = vehicles.map((vehicle) => vehicle.year);
-  const minYear = Math.min(...years);
-  const maxYear = Math.max(...years);
+  const years = vehicles.map((vehicle) => vehicle.year).filter(Number.isFinite);
+  const currentYear = new Date().getFullYear();
+  const minYear = years.length ? Math.min(...years) : currentYear;
+  const maxYear = years.length ? Math.max(...years) : currentYear;
   const minPrice = 0;
   const maxPrice = PRICE_FILTER_LIMIT;
 
@@ -74,7 +76,7 @@
   }
 
   function populateFilters() {
-    populateSelect(filterEls.type, [...new Set(vehicles.map((vehicle) => vehicle.type))]);
+    populateSelect(filterEls.type, [...new Set(vehicles.map((vehicle) => vehicle.type).filter(Boolean))]);
     populateSelect(filterEls.brand, [...new Set(vehicles.map((vehicle) => vehicle.brand))].sort());
 
     filterEls.yearMin.min = String(minYear);
@@ -185,7 +187,13 @@
       case "brand-asc":
         return list.sort((a, b) => a.brand.localeCompare(b.brand));
       default:
-        return list;
+        return list.sort((a, b) => {
+          if (a.isFeatured !== b.isFeatured) return a.isFeatured ? -1 : 1;
+          const aOrder = a.featuredOrder ?? Number.MAX_SAFE_INTEGER;
+          const bOrder = b.featuredOrder ?? Number.MAX_SAFE_INTEGER;
+          if (aOrder !== bOrder) return aOrder - bOrder;
+          return (a.sourceOrder ?? 0) - (b.sourceOrder ?? 0);
+        });
     }
   }
 
@@ -196,7 +204,7 @@
     if (query && !searchable.includes(query)) return false;
     if (state.type && vehicle.type !== state.type) return false;
     if (state.brand && vehicle.brand !== state.brand) return false;
-    if (vehicle.year < state.yearMin || vehicle.year > state.yearMax) return false;
+    if (Number.isFinite(vehicle.year) && (vehicle.year < state.yearMin || vehicle.year > state.yearMax)) return false;
 
     if (Number.isFinite(vehicle.priceValue)) {
       const hasUpperLimit = state.priceMax < PRICE_FILTER_LIMIT;
@@ -315,6 +323,7 @@
     const visibleVehicles = filtered.slice(startIndex, endIndex);
 
     grid.innerHTML = "";
+    grid.removeAttribute("aria-busy");
 
     visibleVehicles.forEach((vehicle) => {
       grid.appendChild(createVehicleCard(vehicle, true));
@@ -324,9 +333,9 @@
       summary.textContent = "Mostrando 0 unidades";
       grid.innerHTML = `
         <article class="catalog-empty">
-          <p class="eyebrow">Sin resultados</p>
-          <h3>No encontramos vehículos con esa combinación de filtros.</h3>
-          <p>Probá limpiando algunos criterios o buscá una marca o modelo diferente.</p>
+          <p class="eyebrow">${vehicles.length ? "Sin resultados" : "Catálogo vacío"}</p>
+          <h3>${vehicles.length ? "No encontramos vehículos con esa combinación de filtros." : "No hay vehículos publicados en este momento."}</h3>
+          <p>${vehicles.length ? "Probá limpiando algunos criterios o buscá una marca o modelo diferente." : "Volvé a consultar pronto o escribinos por WhatsApp."}</p>
         </article>
       `;
     } else {
@@ -406,6 +415,7 @@
     if (nextItemsPerPage === lastItemsPerPage) return;
     lastItemsPerPage = nextItemsPerPage;
     renderCatalog();
+  });
   });
 })();
 

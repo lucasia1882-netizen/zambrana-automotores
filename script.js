@@ -1,14 +1,17 @@
 (() => {
   const config = window.zambranaConfig || {};
-  const vehicles = window.zambranaVehicles || [];
+  const publicVehicles = window.ZambranaPublicVehicles;
+  let vehicles = [];
   const whatsappNumber = config.whatsappNumber || "5493512308551";
 
   const STATUS_MAP = {
     disponible: "status-disponible",
     señalado: "status-senado",
     senado: "status-senado",
+    reservado: "status-reservado",
     "en preparación": "status-en-preparacion",
-    "en preparacion": "status-en-preparacion"
+    "en preparacion": "status-en-preparacion",
+    vendido: "status-vendido"
   };
 
   const BRAND_LOGO_MAP = {
@@ -50,8 +53,17 @@
     return `${new Intl.NumberFormat("es-AR").format(value)} km`;
   }
 
-  function shouldShowPrice(vehicle) {
-    return vehicle.price && String(vehicle.price).trim().toLowerCase() !== "consultar";
+  function formatYear(value) {
+    return value === null || value === undefined || value === "" ? "Consultar" : String(value);
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
   function getStatusClass(status) {
@@ -72,41 +84,77 @@
     const brandLogo = getBrandLogoPath(vehicle.brand);
     const cardImage = vehicle.cardImage || vehicle.image;
     const cardImagePosition = vehicle.cardImagePosition || vehicle.imagePosition || "center 50%";
+    const detailUrl = `vehiculo.html?slug=${encodeURIComponent(vehicle.slug)}`;
     article.className = `vehicle-card ${compact ? "vehicle-card-compact" : ""}`;
 
     article.innerHTML = `
-      <a class="vehicle-card-overlay" href="vehiculo.html?slug=${vehicle.slug}" aria-label="Ver ficha de ${vehicle.fullName}"></a>
-      <a class="vehicle-media-link" href="vehiculo.html?slug=${vehicle.slug}">
+      <a class="vehicle-card-overlay" href="${detailUrl}" aria-label="Ver ficha de ${escapeHtml(vehicle.fullName)}"></a>
+      <a class="vehicle-media-link" href="${detailUrl}">
         <div class="vehicle-media">
-          <div class="vehicle-image-backdrop" style="background-image:url('${cardImage}');"></div>
-          <img class="vehicle-image" src="${cardImage}" alt="${vehicle.fullName}" style="object-position:${cardImagePosition};">
-          <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${vehicle.status}</span>
+          <div class="vehicle-image-backdrop" style="background-image:url('${escapeHtml(cardImage)}');"></div>
+          <img class="vehicle-image" src="${escapeHtml(cardImage)}" alt="${escapeHtml(vehicle.fullName)}" style="object-position:${escapeHtml(cardImagePosition)};">
+          <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${escapeHtml(vehicle.status)}</span>
         </div>
       </a>
         <div class="vehicle-body">
           <div class="vehicle-meta">
-            <span>${vehicle.brand}</span>
-            <span>${vehicle.type}</span>
+            <span>${escapeHtml(vehicle.brand)}</span>
+            <span>${escapeHtml(vehicle.type)}</span>
           </div>
-          <a class="vehicle-title-link" href="vehiculo.html?slug=${vehicle.slug}">
-            <h3 class="vehicle-title">${vehicle.fullName}</h3>
+          <a class="vehicle-title-link" href="${detailUrl}">
+            <h3 class="vehicle-title">${escapeHtml(vehicle.fullName)}</h3>
           </a>
             <div class="vehicle-inline-specs">
               <span class="vehicle-spec-basic">${formatKms(vehicle.kms)}</span>
-              <span class="vehicle-spec-basic">${vehicle.year}</span>
+              <span class="vehicle-spec-basic">${formatYear(vehicle.year)}</span>
               <span class="vehicle-spec-fuel">
                 <img src="assets/icons/gasolinera.png" alt="">
-                <span>${vehicle.fuel}</span>
+                <span>${escapeHtml(vehicle.fuel)}</span>
               </span>
             </div>
           <div class="vehicle-card-footer">
-            <strong class="vehicle-price ${shouldShowPrice(vehicle) ? "" : "is-hidden"}">${vehicle.price}</strong>
-            ${brandLogo ? `<div class="vehicle-card-footer-right"><div class="vehicle-brand-mark" aria-hidden="true"><img src="${brandLogo}" alt="${vehicle.brand}"></div></div>` : ""}
+            <strong class="vehicle-price">${escapeHtml(vehicle.price || "Consultar")}</strong>
+            ${brandLogo ? `<div class="vehicle-card-footer-right"><div class="vehicle-brand-mark" aria-hidden="true"><img src="${brandLogo}" alt="${escapeHtml(vehicle.brand)}"></div></div>` : ""}
           </div>
         </div>
       `;
 
     return article;
+  }
+
+  function renderInitialDataState() {
+    const page = document.body.dataset.page;
+    const target = page === "home"
+      ? document.querySelector("#opportunities-track")
+      : page === "catalog"
+        ? document.querySelector("#catalog-grid")
+        : document.querySelector("#vehicle-detail");
+    if (!target) return;
+    target.setAttribute("aria-busy", "true");
+    target.innerHTML = `
+      <article class="public-data-state public-data-loading" role="status">
+        <p class="eyebrow">Catálogo online</p>
+        <h3>Cargando vehículos...</h3>
+      </article>
+    `;
+  }
+
+  function renderDataSourceNotice(result) {
+    document.body.dataset.vehicleSource = result.source;
+    if (result.reason !== "supabase-error") return;
+    const page = document.body.dataset.page;
+    const anchor = page === "home"
+      ? document.querySelector(".opportunities-section .carousel-shell")
+      : page === "catalog"
+        ? document.querySelector(".catalog-results")
+        : document.querySelector("#vehicle-detail");
+    if (!anchor || document.querySelector("#public-data-notice")) return;
+    const notice = document.createElement("p");
+    notice.id = "public-data-notice";
+    notice.className = "public-data-notice";
+    notice.setAttribute("role", "status");
+    notice.textContent = "No pudimos actualizar el catálogo online. Estás viendo el catálogo de respaldo.";
+    anchor.insertAdjacentElement("beforebegin", notice);
   }
 
   function renderSellers() {
@@ -301,7 +349,7 @@
     if (!brandSelect || !yearSelect) return;
 
     const brands = [...new Set(vehicles.map((vehicle) => vehicle.brand))].sort();
-    const years = [...new Set(vehicles.map((vehicle) => vehicle.year))].sort((a, b) => b - a);
+    const years = [...new Set(vehicles.map((vehicle) => vehicle.year).filter(Number.isFinite))].sort((a, b) => b - a);
 
     brands.forEach((brand) => {
       const option = document.createElement("option");
@@ -417,15 +465,26 @@
     const track = document.querySelector("#opportunities-track");
     if (!track) return;
 
-    const baseItems = vehicles.slice(0, 6);
-    const selected = [];
+    const featured = vehicles
+      .filter((vehicle) => vehicle.isFeatured)
+      .sort((a, b) => (a.featuredOrder ?? Number.MAX_SAFE_INTEGER) - (b.featuredOrder ?? Number.MAX_SAFE_INTEGER));
+    const featuredSlugs = new Set(featured.map((vehicle) => vehicle.slug));
+    const supplements = vehicles.filter((vehicle) => !featuredSlugs.has(vehicle.slug) && vehicle.status === "Disponible");
+    const baseItems = [...featured, ...supplements].slice(0, 6);
 
-    while (selected.length < 8 && baseItems.length > 0) {
-      selected.push(...baseItems);
+    track.removeAttribute("aria-busy");
+    if (!baseItems.length) {
+      track.innerHTML = `
+        <article class="public-data-state">
+          <p class="eyebrow">Oportunidades</p>
+          <h3>No hay unidades destacadas publicadas en este momento.</h3>
+        </article>
+      `;
+      return;
     }
 
     track.innerHTML = "";
-    selected.slice(0, Math.max(8, baseItems.length)).forEach((vehicle) => {
+    baseItems.forEach((vehicle) => {
       track.appendChild(createVehicleCard(vehicle, true));
     });
 
@@ -476,10 +535,11 @@
     const vehicle = vehicles.find((item) => item.slug === slug);
 
     if (!vehicle) {
+      container.removeAttribute("aria-busy");
       container.innerHTML = `
         <section class="vehicle-empty">
           <p class="eyebrow">Unidad no encontrada</p>
-          <h1>No encontramos esa ficha dentro de esta maqueta.</h1>
+          <h1>No encontramos una unidad publicada con ese enlace.</h1>
           <a class="primary-btn" href="catalog.html">Volver al catálogo</a>
         </section>
       `;
@@ -490,6 +550,7 @@
       const galleryImagePosition = vehicle.galleryImagePosition || vehicle.imagePosition || "center 50%";
       const brandLogo = getBrandLogoPath(vehicle.brand);
 
+    container.removeAttribute("aria-busy");
     container.innerHTML = `
         <div class="vehicle-detail-shell">
           <div class="vehicle-detail-gallery">
@@ -500,13 +561,13 @@
                     class="vehicle-detail-slide ${index === 0 ? "is-active" : ""}"
                     type="button"
                     data-gallery-slide="${index}"
-                    style="--slide-image:url('${image}')"
+                    style="--slide-image:url('${escapeHtml(image)}')"
                     aria-label="Ver foto ${index + 1}"
                   >
                     <img
-                      src="${image}"
-                      alt="${vehicle.fullName} foto ${index + 1}"
-                      style="object-position:${galleryImagePosition};"
+                      src="${escapeHtml(image)}"
+                      alt="${escapeHtml(vehicle.fullName)} foto ${index + 1}"
+                      style="object-position:${escapeHtml(galleryImagePosition)};"
                     >
                   </button>
                 `).join("")}
@@ -533,29 +594,29 @@
           <a class="text-link" href="catalog.html">Volver al catálogo</a>
           <div class="vehicle-detail-top">
             <div class="vehicle-detail-heading">
-              <p class="eyebrow">${vehicle.brand} · ${vehicle.type}</p>
-              <h1>${vehicle.fullName}</h1>
+              <p class="eyebrow">${escapeHtml(vehicle.brand)} · ${escapeHtml(vehicle.type)}</p>
+              <h1>${escapeHtml(vehicle.fullName)}</h1>
               <div class="vehicle-detail-header">
-                <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${vehicle.status}</span>
+                <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${escapeHtml(vehicle.status)}</span>
               </div>
             </div>
             ${brandLogo ? `
               <div class="vehicle-detail-brand-mark" aria-hidden="true">
-                <img src="${brandLogo}" alt="${vehicle.brand}">
+                <img src="${brandLogo}" alt="${escapeHtml(vehicle.brand)}">
               </div>
             ` : ""}
           </div>
-            <p class="vehicle-description">${vehicle.description}</p>
+            <p class="vehicle-description">${escapeHtml(vehicle.description)}</p>
             <ul class="vehicle-specs">
-              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Año</strong><span>${vehicle.year}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Año</strong><span>${formatYear(vehicle.year)}</span></li>
               <li><strong><img class="vehicle-spec-icon" src="assets/icons/coche.png" alt="">Kilómetros</strong><span>${formatKms(vehicle.kms)}</span></li>
-              <li><strong><img class="vehicle-spec-icon" src="assets/icons/vehiculo.png" alt="">Transmisión</strong><span>${vehicle.transmission}</span></li>
-              <li><strong><img class="vehicle-spec-icon" src="assets/icons/gasolinera.png" alt="">Combustible</strong><span>${vehicle.fuel}</span></li>
-              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Color</strong><span>${vehicle.color}</span></li>
-              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Estado</strong><span>${vehicle.status}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/vehiculo.png" alt="">Transmisión</strong><span>${escapeHtml(vehicle.transmission)}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/gasolinera.png" alt="">Combustible</strong><span>${escapeHtml(vehicle.fuel)}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Color</strong><span>${escapeHtml(vehicle.color)}</span></li>
+              <li><strong><img class="vehicle-spec-icon" src="assets/icons/etiqueta.png" alt="">Estado</strong><span>${escapeHtml(vehicle.status)}</span></li>
             </ul>
           <div class="vehicle-highlights">
-            ${vehicle.highlights.map((highlight) => `<span>${highlight}</span>`).join("")}
+            ${vehicle.highlights.map((highlight) => `<span>${escapeHtml(highlight)}</span>`).join("")}
           </div>
           <div class="hero-actions">
             <a class="primary-btn" href="${createWhatsAppLink(vehicle)}" target="_blank" rel="noreferrer">Consultar esta unidad</a>
@@ -705,21 +766,42 @@
       refresh();
     }
 
-  window.ZambranaSite = {
+  const site = {
     vehicles,
     config,
     slugify,
     formatKms,
+    formatYear,
     getBrandLogoPath,
     getStatusClass,
     createVehicleCard,
     createWhatsAppLink
   };
 
-  document.addEventListener("DOMContentLoaded", () => {
+  site.ready = (publicVehicles?.ready || Promise.resolve({
+    vehicles: Array.from(window.zambranaVehicles || []),
+    source: "legacy",
+    reason: "data-layer-missing",
+    error: null
+  })).then((result) => {
+    vehicles = result.vehicles;
+    site.vehicles = vehicles;
+    site.dataSource = result.source;
+    site.dataResult = result;
+    return result;
+  });
+  window.ZambranaSite = site;
+  renderInitialDataState();
+
+  document.addEventListener("DOMContentLoaded", async () => {
     initPageTransitions();
     initHeroIntro();
-    initVehicleDetail();
+    const dataResult = await site.ready;
+    renderDataSourceNotice(dataResult);
+
+    if (document.body.dataset.page === "vehicle") {
+      initVehicleDetail();
+    }
 
     if (document.body.dataset.page === "home") {
       initHeroSlider();

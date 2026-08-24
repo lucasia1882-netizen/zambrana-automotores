@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Zambrana Admin</title>
+  <link rel="icon" type="image/png" href="../assets/branding/logo-zambrana-positivo.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <section id="setup-screen" class="center-screen" hidden>
+      <div class="auth-card">
+        <img src="../assets/branding/logo-zambrana-positivo.png" alt="Zambrana Automotores" class="auth-logo">
+        <h1>Panel Administrativo</h1>
+        <p>Falta configurar la URL y la publishable key de Supabase en <code>admin/admin-config.js</code>.</p>
+      </div>
+    </section>
+
+    <section id="loading-screen" class="center-screen">
+      <div class="loading-block" role="status">
+        <span class="spinner" aria-hidden="true"></span>
+        <p>Inicializando panel…</p>
+      </div>
+    </section>
+
+    <section id="login-screen" class="center-screen" hidden>
+      <form id="login-form" class="auth-card">
+        <img src="../assets/branding/logo-zambrana-positivo.png" alt="Zambrana Automotores" class="auth-logo">
+        <p class="brand-name">Zambrana Automotores</p>
+        <h1>Panel Administrativo</h1>
+        <label>
+          Email
+          <input id="login-email" name="email" type="email" autocomplete="username" required>
+        </label>
+        <label>
+          Contraseña
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button id="login-submit" class="button button-primary button-full" type="submit">Ingresar</button>
+        <p id="login-error" class="form-message form-message-error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section id="unauthorized-screen" class="center-screen" hidden>
+      <div class="auth-card">
+        <img src="../assets/branding/logo-zambrana-positivo.png" alt="Zambrana Automotores" class="auth-logo">
+        <h1>Acceso bloqueado</h1>
+        <p>La sesión es válida, pero este usuario no tiene un perfil administrativo activo.</p>
+        <button id="unauthorized-logout" class="button button-secondary button-full" type="button">Cerrar sesión</button>
+      </div>
+    </section>
+
+    <main id="dashboard" hidden>
+      <header class="topbar">
+        <div>
+          <p class="admin-brand">ZAMBRANA ADMIN</p>
+          <p class="admin-subtitle">Gestión de inventario</p>
+        </div>
+        <div class="user-actions">
+          <span id="current-user" class="current-user"></span>
+          <button id="logout-button" class="button button-ghost" type="button">Cerrar sesión</button>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+        <section class="metrics" aria-label="Resumen del inventario">
+          <article class="metric"><span>Total</span><strong id="metric-total">0</strong></article>
+          <article class="metric metric-available"><span>Disponibles</span><strong id="metric-available">0</strong></article>
+          <article class="metric metric-reserved"><span>Reservados</span><strong id="metric-reserved">0</strong></article>
+          <article class="metric metric-sold"><span>Vendidos</span><strong id="metric-sold">0</strong></article>
+        </section>
+
+        <section class="inventory-panel">
+          <div class="inventory-toolbar">
+            <label class="search-field">
+              <span class="sr-only">Buscar vehículo</span>
+              <input id="vehicle-search" type="search" placeholder="Buscar vehículo...">
+            </label>
+            <button id="new-vehicle-button" class="button button-primary" type="button">+ Nuevo vehículo</button>
+          </div>
+
+          <div id="dashboard-message" class="form-message" role="status" hidden></div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Vehículo</th>
+                  <th>Año</th>
+                  <th>Precio</th>
+                  <th>Kilómetros</th>
+                  <th>Estado</th>
+                  <th>Publicado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="vehicle-table-body"></tbody>
+            </table>
+            <div id="table-empty" class="empty-state" hidden>No hay vehículos para mostrar.</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div id="editor-backdrop" class="editor-backdrop" hidden></div>
+    <aside id="vehicle-editor" class="editor" aria-hidden="true" aria-labelledby="editor-title" inert hidden>
+      <form id="vehicle-form" novalidate>
+        <header class="editor-header">
+          <div>
+            <h2 id="editor-title">Nuevo vehículo</h2>
+            <p id="editor-subtitle">Completá la información de la unidad.</p>
+          </div>
+          <button id="close-editor" class="icon-button" type="button" aria-label="Cerrar editor">×</button>
+        </header>
+
+        <div class="editor-body">
+          <div id="form-error" class="form-message form-message-error" role="alert" hidden></div>
+
+          <fieldset>
+            <legend>Información principal</legend>
+            <div class="form-grid form-grid-3">
+              <label>Marca <span aria-hidden="true">*</span><input name="brand" required></label>
+              <label>Modelo <span aria-hidden="true">*</span><input name="model" required></label>
+              <label class="span-2">Nombre completo <span aria-hidden="true">*</span><input name="full_name" required></label>
+              <label>Slug <span aria-hidden="true">*</span><input name="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*"></label>
+              <label>Tipo<input name="type"></label>
+              <label>Año<input name="year" type="number" min="1886" max="2100" inputmode="numeric"></label>
+              <label>Kilometraje<input name="mileage" type="number" min="0" step="1" inputmode="numeric"></label>
+              <label>Transmisión<input name="transmission"></label>
+              <label>Combustible<input name="fuel"></label>
+              <label>Color<input name="color"></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Precio</legend>
+            <div class="form-grid">
+              <label>Precio<input name="price_amount" type="number" min="0" step="0.01" inputmode="decimal"></label>
+              <label>Moneda<select name="currency"><option value="ARS">ARS</option><option value="USD">USD</option></select></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Estado y publicación</legend>
+            <div class="form-grid form-grid-3">
+              <label>Estado<select name="status" required><option value="available">Disponible</option><option value="reserved">Reservado</option><option value="preparing">En preparación</option><option value="sold">Vendido</option></select></label>
+              <label class="toggle-label"><input name="is_published" type="checkbox"><span>Publicado</span></label>
+              <label class="toggle-label"><input name="is_featured" type="checkbox"><span>Destacado</span></label>
+              <label id="featured-order-field">Orden destacado<input name="featured_order" type="number" min="0" step="1" inputmode="numeric"></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Textos</legend>
+            <div class="form-stack">
+              <label>Descripción corta<textarea name="short_description" rows="2"></textarea></label>
+              <label>Descripción completa<textarea name="description" rows="5"></textarea></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Características</legend>
+            <div id="highlights-list" class="highlights-list"></div>
+            <button id="add-highlight" class="button button-secondary button-small" type="button">+ Agregar característica</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Imágenes</legend>
+            <p class="field-help">JPG, JPEG, PNG o WEBP. Máximo 10 MB por imagen.</p>
+            <label class="file-button">
+              Seleccionar imágenes
+              <input id="image-input" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+            </label>
+            <div id="pending-images" class="pending-images"></div>
+            <div id="image-list" class="image-list"></div>
+          </fieldset>
+
+          <section id="danger-zone" class="danger-zone" hidden>
+            <h3>Zona de riesgo</h3>
+            <p>Esta acción elimina el vehículo del administrador y sus registros de imágenes.</p>
+            <button id="delete-vehicle" class="button button-danger-outline" type="button">Eliminar vehículo</button>
+          </section>
+        </div>
+
+        <footer class="editor-footer">
+          <button id="cancel-editor" class="button button-secondary" type="button">Cancelar</button>
+          <button id="save-vehicle" class="button button-primary" type="submit">Guardar vehículo</button>
+        </footer>
+      </form>
+    </aside>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+  <script src="admin-config.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

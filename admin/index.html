@@ -66,18 +66,61 @@
 
       <div class="dashboard-content">
         <section class="metrics" aria-label="Resumen del inventario">
-          <article class="metric"><span>Total</span><strong id="metric-total">0</strong></article>
-          <article class="metric metric-available"><span>Disponibles</span><strong id="metric-available">0</strong></article>
-          <article class="metric metric-reserved"><span>Reservados</span><strong id="metric-reserved">0</strong></article>
-          <article class="metric metric-sold"><span>Vendidos</span><strong id="metric-sold">0</strong></article>
+          <article class="metric metric-total"><span class="metric-label">Total</span><strong id="metric-total">0</strong><span class="metric-detail">Unidades registradas</span></article>
+          <article class="metric metric-available"><span class="metric-label">Disponibles</span><strong id="metric-available">0</strong><span class="metric-detail">Listas para ofrecer</span></article>
+          <article class="metric metric-reserved"><span class="metric-label">Reservados</span><strong id="metric-reserved">0</strong><span class="metric-detail">Con operación activa</span></article>
+          <article class="metric metric-sold"><span class="metric-label">Vendidos</span><strong id="metric-sold">0</strong><span class="metric-detail">Operaciones cerradas</span></article>
+        </section>
+
+        <section id="attention-summary" class="attention-summary" aria-live="polite" hidden>
+          <span class="attention-summary-icon" aria-hidden="true">!</span>
+          <div class="attention-summary-copy">
+            <strong id="attention-summary-title">0 vehículos requieren atención</strong>
+            <span>Hay unidades con datos pendientes que conviene completar.</span>
+          </div>
+          <button id="show-attention-vehicles" class="button attention-summary-button" type="button">Ver vehículos</button>
         </section>
 
         <section class="inventory-panel">
           <div class="inventory-toolbar">
-            <label class="search-field">
-              <span class="sr-only">Buscar vehículo</span>
-              <input id="vehicle-search" type="search" placeholder="Buscar vehículo...">
-            </label>
+            <div class="inventory-filters">
+              <label class="search-field">
+                <span class="search-icon" aria-hidden="true"></span>
+                <span class="sr-only">Buscar vehículo</span>
+                <input id="vehicle-search" type="search" placeholder="Buscar por vehículo, marca o ID">
+              </label>
+              <label class="filter-field">
+                <span class="sr-only">Filtrar por estado</span>
+                <select id="status-filter" aria-label="Filtrar por estado">
+                  <option value="all">Todos los estados</option>
+                  <option value="available">Disponibles</option>
+                  <option value="reserved">Reservados</option>
+                  <option value="preparing">En preparación</option>
+                  <option value="sold">Vendidos</option>
+                </select>
+              </label>
+              <label class="filter-field">
+                <span class="sr-only">Filtrar por publicación</span>
+                <select id="published-filter" aria-label="Filtrar por publicación">
+                  <option value="all">Todos</option>
+                  <option value="published">Publicados</option>
+                  <option value="unpublished">Sin publicar</option>
+                </select>
+              </label>
+              <label class="filter-field sort-field">
+                <span class="sr-only">Ordenar inventario</span>
+                <select id="inventory-sort" aria-label="Ordenar inventario">
+                  <option value="newest">Más recientes</option>
+                  <option value="name">Nombre A–Z</option>
+                  <option value="year-desc">Año: mayor a menor</option>
+                  <option value="price-desc">Precio: mayor a menor</option>
+                  <option value="mileage-asc">Menor kilometraje</option>
+                </select>
+              </label>
+              <button id="attention-filter-chip" class="attention-filter-chip" type="button" aria-label="Quitar filtro Requieren atención" hidden>
+                <span aria-hidden="true">!</span> Requieren atención <strong aria-hidden="true">×</strong>
+              </button>
+            </div>
             <button id="new-vehicle-button" class="button button-primary" type="button">+ Nuevo vehículo</button>
           </div>
 
@@ -98,8 +141,21 @@
               </thead>
               <tbody id="vehicle-table-body"></tbody>
             </table>
-            <div id="table-empty" class="empty-state" hidden>No hay vehículos para mostrar.</div>
+            <div id="table-empty" class="empty-state" hidden>
+              <span class="empty-state-icon" aria-hidden="true"></span>
+              <strong>Sin vehículos para mostrar</strong>
+              <p id="table-empty-message">Probá ajustar la búsqueda o los filtros.</p>
+              <button id="clear-filters" class="button button-secondary button-small" type="button">Limpiar filtros</button>
+            </div>
           </div>
+          <footer class="table-footer">
+            <p id="table-count">0 vehículos</p>
+            <nav class="pagination" aria-label="Paginación del inventario">
+              <button id="page-previous" class="pagination-button" type="button" aria-label="Página anterior">←</button>
+              <span id="page-label">Página 1 de 1</span>
+              <button id="page-next" class="pagination-button" type="button" aria-label="Página siguiente">→</button>
+            </nav>
+          </footer>
         </section>
       </div>
     </main>

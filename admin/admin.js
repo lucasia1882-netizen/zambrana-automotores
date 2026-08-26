@@ -1,3 +1,5 @@
+import { getVehicleCompletionStatus, hasCriticalIssues } from "./vehicle-completion.mjs";
+
 const SUPABASE_JS_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/+esm";
 const STORAGE_BUCKET = "vehicle-images";
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
@@ -23,9 +25,22 @@ const dom = {
   logoutButton: document.querySelector("#logout-button"),
   unauthorizedLogout: document.querySelector("#unauthorized-logout"),
   search: document.querySelector("#vehicle-search"),
+  statusFilter: document.querySelector("#status-filter"),
+  publishedFilter: document.querySelector("#published-filter"),
+  inventorySort: document.querySelector("#inventory-sort"),
+  attentionSummary: document.querySelector("#attention-summary"),
+  attentionSummaryTitle: document.querySelector("#attention-summary-title"),
+  showAttentionVehicles: document.querySelector("#show-attention-vehicles"),
+  attentionFilterChip: document.querySelector("#attention-filter-chip"),
   newVehicleButton: document.querySelector("#new-vehicle-button"),
   tableBody: document.querySelector("#vehicle-table-body"),
   tableEmpty: document.querySelector("#table-empty"),
+  tableEmptyMessage: document.querySelector("#table-empty-message"),
+  clearFilters: document.querySelector("#clear-filters"),
+  tableCount: document.querySelector("#table-count"),
+  pagePrevious: document.querySelector("#page-previous"),
+  pageNext: document.querySelector("#page-next"),
+  pageLabel: document.querySelector("#page-label"),
   dashboardMessage: document.querySelector("#dashboard-message"),
   metricTotal: document.querySelector("#metric-total"),
   metricAvailable: document.querySelector("#metric-available"),
@@ -61,7 +76,11 @@ const state = {
   editorDirty: false,
   slugTouched: false,
   imageUrlCache: new Map(),
-  busy: false
+  busy: false,
+  tableLoading: false,
+  attentionOnly: false,
+  page: 1,
+  pageSize: 10
 };
 
 function showOnly(target) {
@@ -150,33 +169,158 @@ function renderMetrics() {
   dom.metricSold.textContent = String(state.vehicles.filter((item) => item.status === "sold").length);
 }
 
+function renderAttentionSummary() {
+  const attentionVehiclesCount = state.vehicles.filter(hasCriticalIssues).length;
+  dom.attentionSummary.hidden = attentionVehiclesCount === 0;
+  dom.attentionSummaryTitle.textContent = attentionVehiclesCount === 1
+    ? "1 vehículo requiere atención"
+    : `${attentionVehiclesCount} vehículos requieren atención`;
+  dom.attentionFilterChip.hidden = !state.attentionOnly;
+}
+
 function filteredVehicles() {
   const query = dom.search.value.trim().toLocaleLowerCase("es");
-  if (!query) return state.vehicles;
-  return state.vehicles.filter((vehicle) =>
-    [vehicle.full_name, vehicle.brand, vehicle.model, vehicle.slug]
+  const status = dom.statusFilter.value;
+  const published = dom.publishedFilter.value;
+  const vehicles = state.vehicles.filter((vehicle) => {
+    const matchesQuery = !query || [vehicle.full_name, vehicle.brand, vehicle.model, vehicle.slug, vehicle.id]
       .filter(Boolean)
       .some((value) => String(value).toLocaleLowerCase("es").includes(query))
-  );
+    const matchesStatus = status === "all" || vehicle.status === status;
+    const matchesPublished = published === "all"
+      || (published === "published" ? vehicle.is_published : !vehicle.is_published);
+    const matchesAttention = !state.attentionOnly || hasCriticalIssues(vehicle);
+    return matchesQuery && matchesStatus && matchesPublished && matchesAttention;
+  });
+
+  return vehicles.sort((a, b) => {
+    switch (dom.inventorySort.value) {
+      case "name":
+        return String(a.full_name).localeCompare(String(b.full_name), "es", { sensitivity: "base" });
+      case "year-desc":
+        return (b.year ?? -1) - (a.year ?? -1);
+      case "price-desc":
+        return (b.price_amount ?? -1) - (a.price_amount ?? -1);
+      case "mileage-asc":
+        return (a.mileage ?? Number.POSITIVE_INFINITY) - (b.mileage ?? Number.POSITIVE_INFINITY);
+      default:
+        return String(b.created_at || "").localeCompare(String(a.created_at || ""));
+    }
+  });
+}
+
+function coverImage(vehicle) {
+  const images = vehicle.vehicle_images || [];
+  return images.find((image) => image.is_cover) || images[0] || null;
+}
+
+function createVehicleCell(vehicle) {
+  const cell = document.createElement("td");
+  const wrapper = document.createElement("div");
+  wrapper.className = "vehicle-cell";
+  const media = document.createElement("div");
+  media.className = "vehicle-thumbnail vehicle-thumbnail-placeholder";
+  media.setAttribute("aria-hidden", "true");
+  const cover = coverImage(vehicle);
+  if (cover?.storage_path) {
+    signedImageUrl(cover.storage_path).then((url) => {
+      if (!url || !media.isConnected) return;
+      const image = document.createElement("img");
+      image.src = url;
+      image.alt = "";
+      image.loading = "lazy";
+      image.addEventListener("load", () => media.classList.remove("vehicle-thumbnail-placeholder"));
+      media.appendChild(image);
+    });
+  }
+
+  const name = document.createElement("div");
+  name.className = "vehicle-name";
+  const strong = document.createElement("strong");
+  strong.textContent = vehicle.full_name;
+  const meta = document.createElement("span");
+  meta.textContent = [vehicle.brand, vehicle.model].filter(Boolean).join(" · ") || "Marca y modelo sin informar";
+  const id = document.createElement("small");
+  id.textContent = `ID ${String(vehicle.id || vehicle.slug).slice(0, 8).toUpperCase()}`;
+  name.append(strong, meta, id);
+
+  const completion = getVehicleCompletionStatus(vehicle);
+  if (completion.requiresAttention) {
+    const details = document.createElement("details");
+    details.className = "vehicle-issues";
+    const summary = document.createElement("summary");
+    const pendingLabel = completion.criticalCount === 1 ? "1 pendiente" : `${completion.criticalCount} pendientes`;
+    summary.textContent = pendingLabel;
+    summary.setAttribute("aria-label", `${pendingLabel}. Mostrar detalle`);
+
+    const issueList = document.createElement("ul");
+    issueList.className = "vehicle-issues-list";
+    completion.criticalIssues.forEach((item) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = item.label;
+      issueList.appendChild(listItem);
+    });
+    completion.warnings.forEach((item) => {
+      const listItem = document.createElement("li");
+      listItem.className = "vehicle-issue-warning";
+      listItem.textContent = item.label;
+      issueList.appendChild(listItem);
+    });
+    details.append(summary, issueList);
+    name.appendChild(details);
+  }
+  wrapper.append(media, name);
+  cell.appendChild(wrapper);
+  return cell;
+}
+
+function renderTableLoading() {
+  dom.tableBody.replaceChildren();
+  dom.tableEmpty.hidden = true;
+  dom.tableCount.textContent = "Cargando inventario…";
+  dom.pageLabel.textContent = "Cargando…";
+  dom.pagePrevious.disabled = true;
+  dom.pageNext.disabled = true;
+  for (let index = 0; index < 5; index += 1) {
+    const row = document.createElement("tr");
+    row.className = "skeleton-row";
+    for (let cellIndex = 0; cellIndex < 7; cellIndex += 1) {
+      const cell = document.createElement("td");
+      const line = document.createElement("span");
+      line.className = "skeleton-line";
+      cell.appendChild(line);
+      row.appendChild(cell);
+    }
+    dom.tableBody.appendChild(row);
+  }
 }
 
 function renderTable() {
+  if (state.tableLoading) {
+    renderTableLoading();
+    return;
+  }
   const vehicles = filteredVehicles();
+  const pageCount = Math.max(1, Math.ceil(vehicles.length / state.pageSize));
+  state.page = Math.min(state.page, pageCount);
+  const pageStart = (state.page - 1) * state.pageSize;
+  const visibleVehicles = vehicles.slice(pageStart, pageStart + state.pageSize);
   dom.tableBody.replaceChildren();
   dom.tableEmpty.hidden = vehicles.length > 0;
+  dom.tableEmptyMessage.textContent = state.vehicles.length
+    ? (state.attentionOnly
+      ? "No hay vehículos que requieran atención con los filtros actuales."
+      : "Probá ajustar la búsqueda o los filtros.")
+    : "Creá tu primera unidad para empezar a gestionar el inventario.";
+  dom.clearFilters.hidden = state.vehicles.length === 0;
+  dom.tableCount.textContent = vehicles.length === 1 ? "1 vehículo" : `${vehicles.length} vehículos`;
+  dom.pageLabel.textContent = `Página ${state.page} de ${pageCount}`;
+  dom.pagePrevious.disabled = state.page <= 1;
+  dom.pageNext.disabled = state.page >= pageCount;
 
-  vehicles.forEach((vehicle) => {
+  visibleVehicles.forEach((vehicle) => {
     const row = document.createElement("tr");
-
-    const nameCell = document.createElement("td");
-    const name = document.createElement("div");
-    name.className = "vehicle-name";
-    const strong = document.createElement("strong");
-    strong.textContent = vehicle.full_name;
-    const meta = document.createElement("span");
-    meta.textContent = `${vehicle.brand} · ${vehicle.model}`;
-    name.append(strong, meta);
-    nameCell.appendChild(name);
+    const nameCell = createVehicleCell(vehicle);
 
     const yearCell = document.createElement("td");
     yearCell.textContent = vehicle.year ?? "—";
@@ -186,7 +330,7 @@ function renderTable() {
 
     const mileageCell = document.createElement("td");
     mileageCell.textContent = vehicle.mileage === null || vehicle.mileage === undefined
-      ? "Consultar"
+      ? "—"
       : `${formatNumber(vehicle.mileage)} km`;
 
     const statusCell = document.createElement("td");
@@ -204,7 +348,22 @@ function renderTable() {
     editButton.className = "button button-secondary button-small";
     editButton.textContent = "Editar";
     editButton.addEventListener("click", () => openEditor(vehicle));
-    actionsCell.appendChild(editButton);
+    const viewLink = document.createElement("a");
+    viewLink.className = `button button-ghost-neutral button-small${vehicle.is_published ? "" : " is-disabled"}`;
+    viewLink.textContent = "Ver";
+    if (vehicle.is_published) {
+      viewLink.href = `../vehiculo.html?slug=${encodeURIComponent(vehicle.slug)}`;
+      viewLink.target = "_blank";
+      viewLink.rel = "noopener noreferrer";
+      viewLink.setAttribute("aria-label", `Ver publicación de ${vehicle.full_name}`);
+    } else {
+      viewLink.setAttribute("aria-disabled", "true");
+      viewLink.title = "Publicá el vehículo para ver su ficha";
+    }
+    const actions = document.createElement("div");
+    actions.className = "row-actions";
+    actions.append(editButton, viewLink);
+    actionsCell.appendChild(actions);
 
     row.append(nameCell, yearCell, priceCell, mileageCell, statusCell, publishedCell, actionsCell);
     dom.tableBody.appendChild(row);
@@ -213,17 +372,22 @@ function renderTable() {
 
 function renderDashboard() {
   renderMetrics();
+  renderAttentionSummary();
   renderTable();
 }
 
 async function loadVehicles() {
-  setMessage(dom.dashboardMessage, "Cargando vehículos…");
+  state.tableLoading = true;
+  renderTable();
+  setMessage(dom.dashboardMessage);
   const { data, error } = await state.supabase
     .from("vehicles")
     .select("*, vehicle_images(*)")
     .order("created_at", { ascending: false });
 
   if (error) {
+    state.tableLoading = false;
+    renderTable();
     setMessage(dom.dashboardMessage, errorMessage(error, "No se pudo cargar el inventario."), true);
     throw error;
   }
@@ -232,6 +396,7 @@ async function loadVehicles() {
     ...vehicle,
     vehicle_images: [...(vehicle.vehicle_images || [])].sort((a, b) => a.position - b.position || a.id.localeCompare(b.id))
   }));
+  state.tableLoading = false;
   setMessage(dom.dashboardMessage);
   renderDashboard();
 }
@@ -837,7 +1002,48 @@ dom.loginForm.addEventListener("submit", async (event) => {
 
 dom.logoutButton.addEventListener("click", signOut);
 dom.unauthorizedLogout.addEventListener("click", signOut);
-dom.search.addEventListener("input", renderTable);
+function resetTableView() {
+  state.page = 1;
+  renderTable();
+}
+
+dom.search.addEventListener("input", resetTableView);
+dom.statusFilter.addEventListener("change", resetTableView);
+dom.publishedFilter.addEventListener("change", resetTableView);
+dom.inventorySort.addEventListener("change", resetTableView);
+dom.showAttentionVehicles.addEventListener("click", () => {
+  state.attentionOnly = true;
+  resetTableView();
+  renderAttentionSummary();
+  dom.attentionFilterChip.focus();
+});
+dom.attentionFilterChip.addEventListener("click", () => {
+  state.attentionOnly = false;
+  resetTableView();
+  renderAttentionSummary();
+  dom.showAttentionVehicles.focus();
+});
+dom.clearFilters.addEventListener("click", () => {
+  dom.search.value = "";
+  dom.statusFilter.value = "all";
+  dom.publishedFilter.value = "all";
+  dom.inventorySort.value = "newest";
+  state.attentionOnly = false;
+  resetTableView();
+  renderAttentionSummary();
+  dom.search.focus();
+});
+dom.pagePrevious.addEventListener("click", () => {
+  if (state.page <= 1) return;
+  state.page -= 1;
+  renderTable();
+});
+dom.pageNext.addEventListener("click", () => {
+  const pageCount = Math.max(1, Math.ceil(filteredVehicles().length / state.pageSize));
+  if (state.page >= pageCount) return;
+  state.page += 1;
+  renderTable();
+});
 dom.newVehicleButton.addEventListener("click", () => openEditor());
 dom.closeEditor.addEventListener("click", () => closeEditor());
 dom.cancelEditor.addEventListener("click", () => closeEditor());

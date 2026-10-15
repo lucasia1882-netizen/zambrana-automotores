@@ -174,10 +174,19 @@
         order: "is_featured.desc,featured_order.asc.nullslast,created_at.desc",
         "vehicle_images.order": "position.asc"
       });
+      const isVehicleDetail = window.document?.body?.dataset?.page === "vehicle";
+      if (isVehicleDetail) {
+        const slug = new URLSearchParams(window.location?.search || "").get("slug");
+        if (!slug) return [];
+        params.set("slug", `eq.${slug}`);
+      }
       const vehicles = await fetchJson(`${supabaseUrl}/rest/v1/vehicles?${params}`, {}, controller.signal);
       if (!Array.isArray(vehicles)) throw new Error("Respuesta de vehículos inválida");
       const storagePaths = vehicles.flatMap((vehicle) =>
-        Array.from(vehicle.vehicle_images || []).map((image) => image.storage_path)
+        isVehicleDetail
+          ? Array.from(vehicle.vehicle_images || []).map((image) => image.storage_path)
+          : [Array.from(vehicle.vehicle_images || []).find((image) => image.is_cover)
+            || Array.from(vehicle.vehicle_images || [])[0]].map((image) => image?.storage_path)
       );
       const signedByPath = await signImagePaths(storagePaths, controller.signal);
       return vehicles.map((vehicle, index) => transformVehicle(vehicle, signedByPath, index));

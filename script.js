@@ -91,8 +91,7 @@
       <a class="vehicle-card-overlay" href="${detailUrl}" aria-label="Ver ficha de ${escapeHtml(vehicle.fullName)}"></a>
       <a class="vehicle-media-link" href="${detailUrl}">
         <div class="vehicle-media">
-          <div class="vehicle-image-backdrop" style="background-image:url('${escapeHtml(cardImage)}');"></div>
-          <img class="vehicle-image" src="${escapeHtml(cardImage)}" alt="${escapeHtml(vehicle.fullName)}" style="object-position:${escapeHtml(cardImagePosition)};">
+          <img class="vehicle-image" src="${escapeHtml(cardImage)}" alt="${escapeHtml(vehicle.fullName)}" loading="lazy" decoding="async" style="object-position:${escapeHtml(cardImagePosition)};">
           <span class="vehicle-tag ${getStatusClass(vehicle.status)}">${escapeHtml(vehicle.status)}</span>
         </div>
       </a>
@@ -567,6 +566,9 @@
                     <img
                       src="${escapeHtml(image)}"
                       alt="${escapeHtml(vehicle.fullName)} foto ${index + 1}"
+                      loading="${index === 0 ? "eager" : "lazy"}"
+                      decoding="async"
+                      ${index === 0 ? "fetchpriority=\"high\"" : ""}
                       style="object-position:${escapeHtml(galleryImagePosition)};"
                     >
                   </button>
